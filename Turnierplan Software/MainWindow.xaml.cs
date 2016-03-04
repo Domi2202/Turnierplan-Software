@@ -24,5 +24,12 @@ namespace Turnierplan_Software
         {
             InitializeComponent();
         }
+
+        private void button_turnier_hinzufuegen_handler(object sender, RoutedEventArgs e)
+        {
+            Label turniername = new Label();
+            turniername.Content = "Turnier";
+            this.listbox_turniere.Items.Add(turniername);
+        }
     }
 }
