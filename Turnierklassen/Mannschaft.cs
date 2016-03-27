@@ -8,11 +8,11 @@ namespace Turnierklassen
 {
     public class Mannschaft
     {
-        public string name;
-        public bool aus_bayern;
-        public bool ist_spaetstarter;
-        //public Gesamtergebnis gruppenergebnis;
-        public List<Paarung> paarungen;
+        public string Name { get; set; }
+        public bool Ist_aus_Bayern { get; set; }
+        public bool Ist_Spaetstarter { get; set; }
+        //public Gesamtergebnis Gruppenergebnis { get; set; }
+        public List<Paarung> Paarungen { get; set; }
         public enum Geschlecht {Männlich, Weiblich};
         public enum Altersgruppe { Minis, DJugend, CJugend, BJugend, AJugend, Erwachsene };
 

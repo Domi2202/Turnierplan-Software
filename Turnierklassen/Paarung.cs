@@ -8,14 +8,14 @@ namespace Turnierklassen
 {
     public class Paarung
     {
-        public Mannschaft mannschaft_a;
-        public Mannschaft mannschaft_b;
-        public List<Halbzeitergebnis> halbzeitergebnisse;
+        public Mannschaft Mannschaft_A { get; set; }
+        public Mannschaft Mannschaft_B { get; set; }
+        public List<Halbzeitergebnis> Halbzeitergebnisse { get; set; }
     }
 
     public class Halbzeitergebnis
     {
-        public int tore_a;
-        public int tore_b;
+        public int Tore_A { get; set; }
+        public int Tore_B { get; set; }
     }
 }

@@ -8,9 +8,9 @@ namespace Turnierklassen
 {
     public class Gruppe
     {
-        public string name;
-        public int anzahl_teilnehmer;
-        public List<Mannschaft> teilnehmer;
-        public List<Paarung> paarungen;
+        public string Name { get; set; }
+        public int Anzahl_Teilnehmer { get; set; }
+        public List<Mannschaft> Teilnehmer { get; set; }
+        public List<Paarung> Paarungen { get; set; }
     }
 }

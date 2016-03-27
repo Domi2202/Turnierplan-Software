@@ -8,12 +8,12 @@ namespace Turnierklassen
 {
     public class Turnier
     {
-        public string name;
-        public double spieldauer_minuten;
-        public double halbzeitpause_minuten;
-        public List<Mannschaft> mannschaften;
-        public List<Gruppe> gruppen;
-        public Endrunde endrunde;
-        public Endrunde trostrunde;
+        public string Name { get; set; }
+        public double Spieldauer_Minuten { get; set; }
+        public double Halbzeitpause_Minuten { get; set; }
+        public List<Mannschaft> Mannschaften { get; set; }
+        public List<Gruppe> Gruppen { get; set; }
+        public Endrunde Endrunde { get; set; }
+        public Endrunde Trostrunde { get; set; }
     }
 }

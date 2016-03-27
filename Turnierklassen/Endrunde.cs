@@ -8,17 +8,17 @@ namespace Turnierklassen
 {
     public class Endrunde
     {
-        public int anzahl_teilnehmer;
-        //public List<Paarung> paarungen;
-        public bool ist_trostrunde;
-        public int modus;
-        public List<Runde> runden;
+        public int Anzahl_Teilnehmer { get; set; }
+        //public List<Paarung> Paarungen { get; set; }
+        public bool Ist_Trostrunde { get; set; }
+        public int Modus { get; set; }
+        public List<Runde> Runden { get; set; }
     }
 
     public class Runde
     {
-        //public int id;
-        //public int anzahl_paarungen;
-        public List<Paarung> paarungen;
+        public int ID { get; set; }
+        public int Anzahl_Paarungen { get; set; }
+        public List<Paarung> Paarungen { get; set; }
     }
 }

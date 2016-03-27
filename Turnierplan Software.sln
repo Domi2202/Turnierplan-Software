@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Turnierplan Software", "Turnierplan Software\Turnierplan Software.csproj", "{884286AD-52FA-48F3-A8C4-1C4EC449C52D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Turnierklassen", "Turnierklassen\Turnierklassen.csproj", "{8AD5ADBD-E645-441F-A55F-61F9CE56A68A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TurnierklassenTests", "TurnierklassenTests\TurnierklassenTests.csproj", "{A9B96155-4A21-4333-BE0F-AAFF23923920}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,6 +23,10 @@ Global
 		{8AD5ADBD-E645-441F-A55F-61F9CE56A68A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8AD5ADBD-E645-441F-A55F-61F9CE56A68A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8AD5ADBD-E645-441F-A55F-61F9CE56A68A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9B96155-4A21-4333-BE0F-AAFF23923920}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9B96155-4A21-4333-BE0F-AAFF23923920}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9B96155-4A21-4333-BE0F-AAFF23923920}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9B96155-4A21-4333-BE0F-AAFF23923920}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
