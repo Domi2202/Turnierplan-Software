@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Turnierklassen
 {
-    class Gruppe
+    public class Gruppe
     {
         public string name;
         public int anzahl_teilnehmer;

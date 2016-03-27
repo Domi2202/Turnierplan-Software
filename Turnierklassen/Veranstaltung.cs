@@ -15,4 +15,16 @@ namespace Turnierklassen
         public List<Slot> spielplan;
     }
 
+    public class Spieltag
+    {
+        public DateTime startzeit;
+        public DateTime endezeit;
+    }
+
+    public class Slot
+    {
+        public DateTime uhrzeit;
+        public int feld;
+        public Paarung paarung;
+    }
 }

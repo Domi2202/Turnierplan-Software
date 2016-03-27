@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Turnierklassen
 {
-    class Turnier
+    public class Turnier
     {
         public string name;
         public double spieldauer_minuten;
