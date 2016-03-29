@@ -5,8 +5,9 @@
     <Grid>
         <Label x:Name="label_veranstaltung" Content="Label" Margin="20,10,0,0" FontSize="50" Height="75" VerticalAlignment="Top" HorizontalAlignment="Left" Width="974"/>
         <StackPanel x:Name="stackpanel_navigation" HorizontalAlignment="Left" Margin="20,105,0,26" Width="180">
-            <ListBox x:Name="listbox_turniere" Height="500" Margin="0"/>
+            <ListBox x:Name="listbox_turniere" Height="200" Margin="0"/>
             <Button x:Name="button_turnier_hinzufuegen" Content="Turnier hinzufügen" Click="button_turnier_hinzufuegen_handler"/>
+            <Button x:Name="button_veranstaltung_erstellen" Content="Neue Veranstaltung" Click="button_veranstaltung_erstellen_Click"/>
         </StackPanel>
         <Grid HorizontalAlignment="Left" Height="521" Margin="220,105,0,0" VerticalAlignment="Top" Width="750"/>
     </Grid>

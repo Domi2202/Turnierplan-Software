@@ -1,0 +1,10 @@
+﻿<Window x:Class="Turnierplan_Software.Dialog_Objektdetails"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Dialog_Objektdetails" Height="300" Width="510">
+    <Grid Height="270" Margin="0,0,-0.4,0.4" VerticalAlignment="Bottom">
+        <Button x:Name="button_bestaetigen" Content="OK" HorizontalAlignment="Left" Margin="120,0,10,10" VerticalAlignment="Bottom" Width="75"/>
+        <Button x:Name="button_abbrechen" Content="Abbrechen" HorizontalAlignment="Left" Margin="315,0,0,10" VerticalAlignment="Bottom" Width="75"/>
+
+    </Grid>
+</Window>

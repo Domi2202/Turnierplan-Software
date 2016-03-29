@@ -31,5 +31,12 @@ namespace Turnierplan_Software
             turniername.Content = "Turnier";
             this.listbox_turniere.Items.Add(turniername);
         }
+
+        private void button_veranstaltung_erstellen_Click(object sender, RoutedEventArgs e)
+        {
+            Window Dialog = new Dialog_Objektdetails("Veranstaltung hinzufügen");
+            Dialog.Show();
+            //nue veranstaltung und name steht danach im label
+        }
     }
 }
