@@ -21,21 +21,23 @@ namespace Turnierplan_Software
     /// </summary>
     public partial class Dialog_Objektdetails : Window
     {
+        private ObjektErsteller _Ersteller;
         public Dialog_Objektdetails(ObjektErsteller ersteller)
         {
             InitializeComponent();
-            Titel_setzen(ersteller);
-            Dialog_aufbauen(ersteller);            
+            _Ersteller = ersteller;
+            Titel_setzen();
+            Dialog_aufbauen();            
         }
 
-        private void Titel_setzen(ObjektErsteller ersteller)
+        private void Titel_setzen()
         {
-            Title = ersteller.Dialogtyp;
+            Title = _Ersteller.Dialogtyp;
         }
 
-        private void Dialog_aufbauen(ObjektErsteller ersteller)
+        private void Dialog_aufbauen()
         {
-            foreach (DialogFeld dialog_feld in ersteller.Dialogfelder_bereitstellen())
+            foreach (DialogFeld dialog_feld in _Ersteller.Dialogfelder_bereitstellen())
             {
                 Fenster_anpassen(dialog_feld);
                 Dialogfeld_setzen(dialog_feld);
@@ -59,6 +61,12 @@ namespace Turnierplan_Software
 
         private void button_abbrechen_Click(object sender, RoutedEventArgs e)
         {
+            this.Close();
+        }
+
+        private void button_bestaetigen_Click(object sender, RoutedEventArgs e)
+        {
+            _Ersteller.Anfrage_entgegennehmen();
             this.Close();
         }
     }
