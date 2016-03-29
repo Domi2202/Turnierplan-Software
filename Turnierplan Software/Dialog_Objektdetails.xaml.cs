@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Turnier_Controller;
+using Turnier_Prefabs;
 
 namespace Turnierplan_Software
 {
@@ -23,6 +25,11 @@ namespace Turnierplan_Software
         {
             InitializeComponent();
             this.Title = name;
+            foreach (DialogFeld dialog_feld in VeranstaltungsErsteller.Dialog_bereitstellen())
+            {
+                panel_name.Children.Add(dialog_feld.Feld_Name);
+                panel_value.Children.Add(dialog_feld.Feld_Inhalt);
+            }
         }
     }
 }

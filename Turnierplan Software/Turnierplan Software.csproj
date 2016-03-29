@@ -103,6 +103,16 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Turnier Prefabs\Turnier Prefabs.csproj">
+      <Project>{5a2b44a0-a0a9-40b0-9af0-daa8cb69a32c}</Project>
+      <Name>Turnier Prefabs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Turnier_Controller\Turnier_Controller.csproj">
+      <Project>{a4cbd415-3239-4c38-954b-aeb810248c6f}</Project>
+      <Name>Turnier_Controller</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
