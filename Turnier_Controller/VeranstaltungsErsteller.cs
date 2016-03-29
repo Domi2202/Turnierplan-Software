@@ -8,19 +8,19 @@ using Turnier_Prefabs;
 
 namespace Turnier_Controller
 {
-    public class VeranstaltungsErsteller
+    public class VeranstaltungsErsteller : ObjektErsteller
     {
-        public static List<DialogFeld> Dialog_bereitstellen() 
+        public VeranstaltungsErsteller()
         {
-            List<DialogFeld> dialog_felder = new List<DialogFeld>();
-            dialog_felder.Add(new DialogFeld_Text("Name der Veranstaltung"));
-            dialog_felder.Add(new DialogFeld_Checkbox("Test"));
-            dialog_felder.Add(new DialogFeld_Text("Name der Veranstaltung"));
-            dialog_felder.Add(new DialogFeld_Text("Name der Veranstaltung"));
-            dialog_felder.Add(new DialogFeld_Checkbox("Test"));
-            dialog_felder.Add(new DialogFeld_Text("Name der Veranstaltung"));
+            Dialogtyp = "Veranstaltung erstellen";
+        }
+        public override List<DialogFeld> Dialogfelder_bereitstellen() 
+        {
+            Dialog_Felder.Add(new DialogFeld_Text("Name der Veranstaltung"));
+            Dialog_Felder.Add(new DialogFeld_Checkbox("Test"));
+            Dialog_Felder.Add(new Dialogfeld_Zahl("Bespielte Felder"));
 
-            return dialog_felder;
+            return Dialog_Felder;
         }
 
         //Eingabe entgegennehmen

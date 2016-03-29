@@ -1,11 +1,11 @@
 ﻿<Window x:Class="Turnierplan_Software.Dialog_Objektdetails"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Dialog_Objektdetails" Height="300" Width="510">
-    <Grid Height="270" Margin="0,0,-0.4,0.4" VerticalAlignment="Bottom">
-        <Button x:Name="button_bestaetigen" Content="OK" HorizontalAlignment="Left" Margin="120,0,0,10" VerticalAlignment="Bottom" Width="75" Grid.Row="1"/>
-        <Button x:Name="button_abbrechen" Content="Abbrechen" HorizontalAlignment="Left" Margin="315,0,0,10" VerticalAlignment="Bottom" Width="75" Grid.Row="1"/>
-        <StackPanel x:Name="panel_name" HorizontalAlignment="Left" Height="211" Margin="10,10,0,0" VerticalAlignment="Top" Width="240"/>
-        <StackPanel x:Name="panel_value" Height="211" Margin="0,10,10.4,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="240"/>
+        Title="Dialog_Objektdetails" Height="80" Width="510" ResizeMode="NoResize">
+    <Grid x:Name="hauptraster" Height="50" Margin="0,0,-0.4,0.4" VerticalAlignment="Bottom">
+        <Button x:Name="button_bestaetigen" Content="OK" HorizontalAlignment="right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="75"/>
+        <Button x:Name="button_abbrechen" Content="Abbrechen" HorizontalAlignment="right" Margin="0,0,100,10" VerticalAlignment="Bottom" Width="75" Click="button_abbrechen_Click"/>
+        <StackPanel x:Name="panel_name" HorizontalAlignment="Left" Height="0" Margin="10,10,0,0" VerticalAlignment="Top" Width="240"/>
+        <StackPanel x:Name="panel_value" Height="0" Margin="0,10,10.4,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="240"/>
     </Grid>
 </Window>

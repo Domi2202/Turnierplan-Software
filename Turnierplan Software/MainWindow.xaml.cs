@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Turnier_Controller;
 
 namespace Turnierplan_Software
 {
@@ -34,7 +35,7 @@ namespace Turnierplan_Software
 
         private void button_veranstaltung_erstellen_Click(object sender, RoutedEventArgs e)
         {
-            Window Dialog = new Dialog_Objektdetails("Veranstaltung hinzufügen");
+            Window Dialog = new Dialog_Objektdetails(new VeranstaltungsErsteller());
             Dialog.Show();
             //nue veranstaltung und name steht danach im label
         }

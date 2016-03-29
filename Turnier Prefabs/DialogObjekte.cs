@@ -43,4 +43,18 @@ namespace Turnier_Prefabs
             Feld_Inhalt_Box.Margin = new Thickness(0, 7.4, 0, 3);
         }
     }
+
+    public class Dialogfeld_Zahl : DialogFeld
+    {
+        public Dialogfeld_Zahl (string Bezeichner_des_Feldes) : base (Bezeichner_des_Feldes)
+        {
+            Feld_Inhalt = new TextBox();
+            TextBox Feld_Inhalt_Box = Feld_Inhalt as TextBox;
+            Feld_Inhalt_Box.Height = 18;
+            Feld_Inhalt_Box.Width = 20;
+            Feld_Inhalt_Box.HorizontalAlignment = HorizontalAlignment.Left;
+            Feld_Inhalt_Box.TextAlignment = TextAlignment.Center;
+            Feld_Inhalt_Box.Margin = new Thickness(0, 4.6, 0, 3);
+        }
+    }
 }
