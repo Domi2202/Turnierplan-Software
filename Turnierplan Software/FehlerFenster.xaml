@@ -1,0 +1,14 @@
+﻿<Window x:Class="Turnierplan_Software.FehlerFenster"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Turnierplan_Software"
+        mc:Ignorable="d"
+        Title="Hinweis" Height="200" Width="300" ResizeMode="NoResize">
+    <Grid>
+        <TextBlock x:Name="textblock_fehlertext" Margin="10,10,10,0" TextWrapping="Wrap" VerticalAlignment="Top" TextAlignment="Center" Height="100"/>
+        <Button x:Name="button" Content="Schließen" Margin="110,0,110,10" Height="18" VerticalAlignment="Bottom" Click="button_Click"/>
+
+    </Grid>
+</Window>

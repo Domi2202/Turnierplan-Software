@@ -31,27 +31,33 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ObjektErsteller.cs" />
-    <Compile Include="VeranstaltungsErsteller.cs" />
+    <Compile Include="DialogFenster_Interakteur.cs" />
+    <Compile Include="Exceptions.cs" />
+    <Compile Include="Hauptfenster_Interakteur.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DialogFensterVeranstaltung_Interakteur.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Turnier Prefabs\Turnier Prefabs.csproj">
-      <Project>{5a2b44a0-a0a9-40b0-9af0-daa8cb69a32c}</Project>
-      <Name>Turnier Prefabs</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Turnierklassen\Turnierklassen.csproj">
       <Project>{8ad5adbd-e645-441f-a55f-61f9ce56a68a}</Project>
       <Name>Turnierklassen</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Turnierplan Software\Turnierplan Software.csproj">
+      <Project>{884286ad-52fa-48f3-a8c4-1c4ec449c52d}</Project>
+      <Name>Turnierplan Software</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

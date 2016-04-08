@@ -7,7 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 
 
-namespace Turnier_Prefabs
+namespace Turnierplan_Software
 {
     public abstract class DialogFeld
     {

@@ -11,8 +11,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Turnier_Controller;
-using Turnier_Prefabs;
 
 namespace Turnierplan_Software
 {
@@ -21,53 +19,40 @@ namespace Turnierplan_Software
     /// </summary>
     public partial class Dialog_Objektdetails : Window
     {
-        private ObjektErsteller _Ersteller;
-        public Dialog_Objektdetails(ObjektErsteller ersteller)
+        public EventHandler Input_Submitted;
+        public EventHandler Input_Canceled;
+        public UIElementCollection Panel_Keys;
+        public UIElementCollection Panel_Values;
+
+        public Dialog_Objektdetails()
         {
             InitializeComponent();
-            _Ersteller = ersteller;
-            Titel_setzen();
-            Dialog_aufbauen();            
+            Panel_Keys = panel_name.Children;
+            Panel_Values = panel_value.Children;         
         }
 
-        private void Titel_setzen()
+        public void ResizeWindowHeight(double amount)
         {
-            Title = _Ersteller.Dialogtyp;
-        }
-
-        private void Dialog_aufbauen()
-        {
-            foreach (DialogFeld dialog_feld in _Ersteller.Dialogfelder_bereitstellen())
-            {
-                Fenster_anpassen(dialog_feld);
-                Dialogfeld_setzen(dialog_feld);
-            }
-        }
-
-        private void Fenster_anpassen(DialogFeld dialog_feld)
-        {
-            double betrag = dialog_feld.Feld_Name.Height;
-            Height += betrag;
-            hauptraster.Height += betrag;
-            panel_name.Height += betrag;
-            panel_value.Height += betrag;
-        }
-
-        private void Dialogfeld_setzen(DialogFeld dialog_feld)
-        {
-            panel_name.Children.Add(dialog_feld.Feld_Name);
-            panel_value.Children.Add(dialog_feld.Feld_Inhalt);
+            Height += amount;
+            hauptraster.Height += amount;
+            panel_name.Height += amount;
+            panel_value.Height += amount;
         }
 
         private void button_abbrechen_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            if (Input_Canceled != null)
+            {
+                Input_Canceled(this, null);
+            }
         }
 
         private void button_bestaetigen_Click(object sender, RoutedEventArgs e)
         {
-            _Ersteller.Anfrage_entgegennehmen();
-            this.Close();
+            if (Input_Submitted != null)
+            {
+                Input_Submitted(this, null);
+            }
         }
     }
 }

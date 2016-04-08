@@ -10,29 +10,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Turnierplan_Software
 {
     /// <summary>
-    /// Interaktionslogik für MainWindow.xaml
+    /// Interaction logic for FehlerFenster.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class FehlerFenster : Window
     {
-        public EventHandler VeranstaltungErstellen { get; set; }
-
-        public MainWindow()
+        public FehlerFenster(string hinweis)
         {
             InitializeComponent();
+            textblock_fehlertext.Text = hinweis;
         }
 
-        private void button_veranstaltung_erstellen_Click(object sender, RoutedEventArgs e)
+        private void button_Click(object sender, RoutedEventArgs e)
         {
-            if (VeranstaltungErstellen != null)
-            {
-                VeranstaltungErstellen(this, null);
-            }
+            Close();
         }
     }
 }

@@ -34,7 +34,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Turnierplan_Software.App</StartupObject>
+    <StartupObject>
+    </StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -60,6 +61,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="FehlerFenster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -68,8 +73,12 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DialogObjekte.cs" />
     <Compile Include="Dialog_Objektdetails.xaml.cs">
       <DependentUpon>Dialog_Objektdetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FehlerFenster.xaml.cs">
+      <DependentUpon>FehlerFenster.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -102,16 +111,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Turnier Prefabs\Turnier Prefabs.csproj">
-      <Project>{5a2b44a0-a0a9-40b0-9af0-daa8cb69a32c}</Project>
-      <Name>Turnier Prefabs</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Turnier_Controller\Turnier_Controller.csproj">
-      <Project>{a4cbd415-3239-4c38-954b-aeb810248c6f}</Project>
-      <Name>Turnier_Controller</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
