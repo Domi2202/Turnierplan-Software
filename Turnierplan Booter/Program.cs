@@ -12,6 +12,12 @@ namespace TurnierplanBooter
         [STAThread]
         static void Main(string[] args)
         {
+            try
+            {
+                Datei_Interakteur.Path = args[0];
+                Datei_Interakteur.Load();
+            }
+            catch {}
             new Hauptfenster_Interakteur();
         }
     }

@@ -20,6 +20,7 @@ namespace Turnier_Controller
             _Programm = new Application();
             _Hauptfenster = new MainWindow();
             Set_Event_Listeners();
+            Ansicht_aktualisieren();
             Show_Window();
         }
 
@@ -30,10 +31,25 @@ namespace Turnier_Controller
 
         private void Set_Event_Listeners()
         {
+            Datei_Interakteur.Daten_aktualisiert += On_DatenAktualisiert;
             _Hauptfenster.VeranstaltungErstellen += On_VeranstaltungErstellen;
         }
 
+        private void Ansicht_aktualisieren()
+        {
+            try
+            {
+                _Hauptfenster.Label_Veranstaltung.Content = Datei_Interakteur.Geladene_Veranstaltung.Name;
+            }
+            catch { }
+        }
+
         #region Event Handler
+
+        private void On_DatenAktualisiert(object sender, EventArgs e)
+        {
+            Ansicht_aktualisieren();
+        }
 
         private void On_VeranstaltungErstellen(object sender, EventArgs e)
         {

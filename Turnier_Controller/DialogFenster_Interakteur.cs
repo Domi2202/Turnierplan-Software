@@ -36,11 +36,14 @@ namespace Turnier_Controller
 
         protected abstract void Objekt_anlegen();
 
+        protected abstract void Objekt_speichern();
+
         private void On_InputSubmitted(object sender, EventArgs e)
         {
             try
             {
                 Objekt_anlegen();
+                Objekt_speichern();
                 _Dialogfenster.Close();
             }
             catch (InvalidInputException exc)

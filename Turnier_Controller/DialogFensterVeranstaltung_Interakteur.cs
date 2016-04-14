@@ -35,5 +35,14 @@ namespace Turnier_Controller
                 throw new InvalidInputException("Bei der Verarbeitung der Daten ist ein Fehler aufgetreten!\nBitte prüfen Sie ob alle Felder korrekt ausgefüllt sind!");
             }
         }
+
+        protected override void Objekt_speichern()
+        {
+            Datei_Interakteur.Geladene_Veranstaltung = new Veranstaltung();
+            Datei_Interakteur.Geladene_Veranstaltung.Name = _AnzulegendesObjekt.Name;
+            Datei_Interakteur.Geladene_Veranstaltung.Anzahl_Spielfelder = _AnzulegendesObjekt.Anzahl_Spielfelder;
+            Datei_Interakteur.Path = "C:\\Users\\Dominik\\Desktop\\testytest.tps"; //gaaaanz gaaaaaaaaaanz schlecht SOOOOO SCHLECHT, MACHT DAS BLOSS NICHT SO!!!!!!!!
+            Datei_Interakteur.Save_Temp();
+        }
     }
 }
