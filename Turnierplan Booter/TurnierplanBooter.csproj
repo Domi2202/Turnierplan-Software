@@ -38,6 +38,12 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+<<<<<<< HEAD:Turnierplan Booter/TurnierplanBooter.csproj
+=======
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Controls.Ribbon" />
+    <Reference Include="System.Xaml" />
+>>>>>>> 09b7a0294027884e1da36a8e48dd66afe3fe68a6:Turnier Prefabs/Turnier Prefabs.csproj
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
