@@ -26,12 +26,21 @@ namespace Turnierplan_Software
         public MainWindow()
         {
             InitializeComponent();
+
+            
+
             XamlElemente_zuordnen();
         }
 
         private void XamlElemente_zuordnen()
         {
             Label_Veranstaltung = label_veranstaltung;
+            
+
+            
+
+
+        
         }
 
         private void button_veranstaltung_erstellen_Click(object sender, RoutedEventArgs e)

@@ -9,6 +9,6 @@
             <Button x:Name="button_turnier_hinzufuegen" Content="Turnier hinzufügen"/>
             <Button x:Name="button_veranstaltung_erstellen" Content="Neue Veranstaltung" Click="button_veranstaltung_erstellen_Click"/>
         </StackPanel>
-        <Grid HorizontalAlignment="Left" Height="521" Margin="220,105,0,0" VerticalAlignment="Top" Width="750"/>
+        <Grid x:Name="Grid_Informationen" HorizontalAlignment="Left" Height="521" Margin="220,105,0,0" VerticalAlignment="Top" Width="750"/>
     </Grid>
 </Window>

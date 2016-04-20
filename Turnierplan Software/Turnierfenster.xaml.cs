@@ -16,13 +16,15 @@ using System.Windows.Shapes;
 namespace Turnierplan_Software
 {
     /// <summary>
-    /// Interaktionslogik für Page1.xaml
+    /// Interaktionslogik für Turnierfenster.xaml
     /// </summary>
-    public partial class Page1 : Page
+    public partial class Turnierfenster : Page
     {
-        public Page1()
+        public Turnierfenster()
         {
             InitializeComponent();
         }
+
+
     }
 }
