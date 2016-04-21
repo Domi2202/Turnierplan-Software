@@ -83,6 +83,7 @@
     <Compile Include="FehlerFenster.xaml.cs">
       <DependentUpon>FehlerFenster.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Listenelement.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

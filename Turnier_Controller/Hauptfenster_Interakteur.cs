@@ -33,16 +33,41 @@ namespace Turnier_Controller
         {
             Datei_Interakteur.Daten_aktualisiert += On_DatenAktualisiert;
             _Hauptfenster.VeranstaltungErstellen += On_VeranstaltungErstellen;
+            _Hauptfenster.TurnierHinzufuegen += On_TurnierHinzufuegen;
         }
+
+        #region Ansicht
 
         private void Ansicht_aktualisieren()
         {
             try
             {
-                _Hauptfenster.Label_Veranstaltung.Content = Datei_Interakteur.Geladene_Veranstaltung.Name;
+                Veranstaltungsnamen_setzen();
+                Turnierliste_bereinigen();
+                Turnierliste_aufbauen();
             }
             catch { }
         }
+
+        private void Veranstaltungsnamen_setzen()
+        {
+            _Hauptfenster.Label_Veranstaltung.Content = Datei_Interakteur.Geladene_Veranstaltung.Name;
+        }
+
+        private void Turnierliste_bereinigen()
+        {
+            _Hauptfenster.Turnierliste.Items.Clear();
+        }
+
+        private void Turnierliste_aufbauen()
+        {
+            foreach (Turnier turnier in Datei_Interakteur.Geladene_Veranstaltung.Turniere)
+                {
+                _Hauptfenster.Turnierliste.Items.Add(new Listenelement<Turnier>(turnier, turnier.Name));
+            }
+        }
+
+        #endregion Ansicht
 
         #region Event Handler
 
@@ -54,6 +79,11 @@ namespace Turnier_Controller
         private void On_VeranstaltungErstellen(object sender, EventArgs e)
         {
             new DialogFensterVeranstaltung_Interakteur();
+        }
+
+        private void On_TurnierHinzufuegen(object sender, EventArgs e)
+        {
+            new DialogFensterTurnier_Interakteur();
         }
 
         #endregion

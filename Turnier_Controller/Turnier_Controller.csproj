@@ -50,6 +50,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Datei_Interakteur.cs" />
+    <Compile Include="DialogFensterMannschaft_Interakteur.cs" />
+    <Compile Include="DialogFensterTurnier_Interakteur.cs" />
     <Compile Include="DialogFenster_Interakteur.cs" />
     <Compile Include="Exceptions.cs" />
     <Compile Include="Hauptfenster_Interakteur.cs" />

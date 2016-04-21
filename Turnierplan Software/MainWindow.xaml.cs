@@ -21,7 +21,9 @@ namespace Turnierplan_Software
     public partial class MainWindow : Window
     {
         public EventHandler VeranstaltungErstellen { get; set; }
+        public EventHandler TurnierHinzufuegen { get; set; }
         public Label Label_Veranstaltung { get; set; }
+        public ListBox Turnierliste { get; set; }
 
         public MainWindow()
         {
@@ -32,6 +34,7 @@ namespace Turnierplan_Software
         private void XamlElemente_zuordnen()
         {
             Label_Veranstaltung = label_veranstaltung;
+            Turnierliste = listbox_turniere;
         }
 
         private void button_veranstaltung_erstellen_Click(object sender, RoutedEventArgs e)
@@ -39,6 +42,14 @@ namespace Turnierplan_Software
             if (VeranstaltungErstellen != null)
             {
                 VeranstaltungErstellen(this, null);
+            }
+        }
+
+        private void button_turnier_hinzufuegen_Click(object sender, RoutedEventArgs e)
+        {
+            if (TurnierHinzufuegen != null)
+            {
+                TurnierHinzufuegen(this, null);
             }
         }
     }
