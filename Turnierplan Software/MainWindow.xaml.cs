@@ -27,7 +27,10 @@ namespace Turnierplan_Software
         {
             InitializeComponent();
 
-            
+            /*Turnierfenster turnierfenster = new Turnierfenster();
+            /turnierfenster.InitializeComponent();
+            Grid_Informationen = turnierfenster.InitializeComponent();
+            */
 
             XamlElemente_zuordnen();
         }
