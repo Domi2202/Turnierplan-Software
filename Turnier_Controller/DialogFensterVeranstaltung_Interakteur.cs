@@ -41,7 +41,7 @@ namespace Turnier_Controller
             Datei_Interakteur.Geladene_Veranstaltung = new Veranstaltung();
             Datei_Interakteur.Geladene_Veranstaltung.Name = _AnzulegendesObjekt.Name;
             Datei_Interakteur.Geladene_Veranstaltung.Anzahl_Spielfelder = _AnzulegendesObjekt.Anzahl_Spielfelder;
-            Datei_Interakteur.Path = "C:\\Users\\Dominik\\Desktop\\testytest.tps"; //gaaaanz gaaaaaaaaaanz schlecht SOOOOO SCHLECHT, MACHT DAS BLOSS NICHT SO!!!!!!!!
+            Datei_Interakteur.File_Name = _AnzulegendesObjekt.Name;
             Datei_Interakteur.Save_Temp();
         }
     }

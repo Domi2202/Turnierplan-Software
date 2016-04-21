@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.ComponentModel;
 using System.Windows;
 using Turnierplan_Software;
 using Turnierklassen;
@@ -32,6 +33,8 @@ namespace Turnier_Controller
         private void Set_Event_Listeners()
         {
             Datei_Interakteur.Daten_aktualisiert += On_DatenAktualisiert;
+            _Hauptfenster.ProgrammBeenden += On_ProgrammBeenden;
+            _Hauptfenster.Speichern += On_Speichern;
             _Hauptfenster.VeranstaltungErstellen += On_VeranstaltungErstellen;
             _Hauptfenster.TurnierHinzufuegen += On_TurnierHinzufuegen;
         }
@@ -84,6 +87,31 @@ namespace Turnier_Controller
         private void On_TurnierHinzufuegen(object sender, EventArgs e)
         {
             new DialogFensterTurnier_Interakteur();
+        }
+
+        private void On_Speichern(object sender, EventArgs e)
+        {
+            Datei_Interakteur.Save();
+        }
+
+        private void On_ProgrammBeenden(object sender, CancelEventArgs e)
+        {
+            if (!Datei_Interakteur.All_Saved)
+            {
+                e.Cancel = true;
+                AnfrageFenster_Speichern anfrage = new AnfrageFenster_Speichern(On_Shutdown);
+            }
+            else
+            {
+                On_Shutdown(this, null);
+            }
+            
+        }
+
+        private void On_Shutdown(object sender, EventArgs e)
+        {
+            Datei_Interakteur.Delete_Temp();
+            _Programm.Shutdown();
         }
 
         #endregion

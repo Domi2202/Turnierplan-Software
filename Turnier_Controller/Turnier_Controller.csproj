@@ -49,6 +49,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnfrageFenster_Speichern.cs" />
     <Compile Include="Datei_Interakteur.cs" />
     <Compile Include="DialogFensterMannschaft_Interakteur.cs" />
     <Compile Include="DialogFensterTurnier_Interakteur.cs" />

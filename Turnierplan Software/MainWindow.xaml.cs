@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,8 @@ namespace Turnierplan_Software
     {
         public EventHandler VeranstaltungErstellen { get; set; }
         public EventHandler TurnierHinzufuegen { get; set; }
+        public EventHandler Speichern { get; set; }
+        public CancelEventHandler ProgrammBeenden { get; set; }
         public Label Label_Veranstaltung { get; set; }
         public ListBox Turnierliste { get; set; }
 
@@ -50,6 +53,22 @@ namespace Turnierplan_Software
             if (TurnierHinzufuegen != null)
             {
                 TurnierHinzufuegen(this, null);
+            }
+        }
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            if (ProgrammBeenden != null)
+            {
+                ProgrammBeenden(this, e);
+            }  
+        }
+
+        private void button_speichern_Click(object sender, RoutedEventArgs e)
+        {
+            if (Speichern != null)
+            {
+                Speichern(this, null);
             }
         }
     }
