@@ -41,7 +41,7 @@ namespace Turnier_Controller
 
         public static void Load()
         {
-            if (System.IO.File.Exists(Folder + "\\" + File_Name + ".tps"))
+            if (File.Exists(Folder + "\\" + File_Name + ".tps"))
             {
                 string veranstaltung_json = File.ReadAllText(Folder + "\\" + File_Name);
                 Geladene_Veranstaltung = JsonConvert.DeserializeObject<Veranstaltung>(veranstaltung_json);
