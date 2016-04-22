@@ -18,7 +18,7 @@ namespace Turnierplan_Software
     /// <summary>
     /// Interaktionslogik für Turnierfenster.xaml
     /// </summary>
-    public partial class Turnierfenster : Page
+    public partial class Turnierfenster : UserControl
     {
         public Turnierfenster()
         {

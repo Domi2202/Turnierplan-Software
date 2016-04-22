@@ -22,15 +22,22 @@ namespace Turnierplan_Software
     {
         public EventHandler VeranstaltungErstellen { get; set; }
         public Label Label_Veranstaltung { get; set; }
+        public Grid grid_Informationen { get; set; }
+        public Turnierfenster fenster1 = new Turnierfenster();
+
 
         public MainWindow()
         {
             InitializeComponent();
+            /*grid_Informationen.VerticalAlignment=fenster1;
 
-            /*Turnierfenster turnierfenster = new Turnierfenster();
+            
+
+            Turnierfenster turnierfenster = new Turnierfenster();
             /turnierfenster.InitializeComponent();
             Grid_Informationen = turnierfenster.InitializeComponent();
             */
+
 
             XamlElemente_zuordnen();
         }
@@ -48,6 +55,9 @@ namespace Turnierplan_Software
 
         private void button_veranstaltung_erstellen_Click(object sender, RoutedEventArgs e)
         {
+            Turnierfenster.Visibility = System.Windows.Visibility.Visible;
+            Mannschaftsfenster.Visibility = System.Windows.Visibility.Visible;
+
             if (VeranstaltungErstellen != null)
             {
                 VeranstaltungErstellen(this, null);

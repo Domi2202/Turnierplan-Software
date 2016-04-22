@@ -18,7 +18,7 @@ namespace Turnierplan_Software
     /// <summary>
     /// Interaktionslogik für Mannschaftsseite.xaml
     /// </summary>
-    public partial class Mannschaftsseite : Page
+    public partial class Mannschaftsseite : UserControl
     {
         public Mannschaftsseite()
         {
