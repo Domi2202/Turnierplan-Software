@@ -24,6 +24,7 @@ namespace Turnierplan_Software
         public EventHandler VeranstaltungErstellen { get; set; }
         public EventHandler TurnierHinzufuegen { get; set; }
         public EventHandler Speichern { get; set; }
+        public EventHandler Laden { get; set; }
         public CancelEventHandler ProgrammBeenden { get; set; }
         public Label Label_Veranstaltung { get; set; }
         public ListBox Turnierliste { get; set; }
@@ -69,6 +70,14 @@ namespace Turnierplan_Software
             if (Speichern != null)
             {
                 Speichern(this, null);
+            }
+        }
+
+        private void button_laden_Click(object sender, RoutedEventArgs e)
+        {
+            if (Laden != null)
+            {
+                Laden(this, null);
             }
         }
     }

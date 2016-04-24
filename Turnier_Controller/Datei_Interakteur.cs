@@ -31,7 +31,7 @@ namespace Turnier_Controller
         {
             Directory.CreateDirectory(Folder);
             string json_serialized = JsonConvert.SerializeObject(Geladene_Veranstaltung);
-            File.WriteAllText(Folder + "\\" + File_Name + ".tps.temp", json_serialized);
+            File.WriteAllText(File_Name + ".tps.temp", json_serialized);
             if ( Daten_aktualisiert != null)
             {
                 Daten_aktualisiert(null, null);
@@ -43,17 +43,54 @@ namespace Turnier_Controller
         {
             if (File.Exists(Folder + "\\" + File_Name + ".tps"))
             {
-                string veranstaltung_json = File.ReadAllText(Folder + "\\" + File_Name);
+                string veranstaltung_json = File.ReadAllText(Folder + "\\" + File_Name + ".tps");
                 Geladene_Veranstaltung = JsonConvert.DeserializeObject<Veranstaltung>(veranstaltung_json);
+                if (Daten_aktualisiert != null)
+                {
+                    Daten_aktualisiert(null, null);
+                }
+            }
+        }
+
+        public static void Delete(string veranstaltungsname)
+        {
+            if (File_Name == veranstaltungsname)
+            {
+                Geladene_Veranstaltung = null;
+                if (Daten_aktualisiert != null)
+                {
+                    Daten_aktualisiert(null, null);
+                }
+            }
+            if (File.Exists(Folder + "\\" + veranstaltungsname + ".tps"))
+            {
+                File.Delete(Folder + "\\" + veranstaltungsname + ".tps");
             }
         }
 
         public static void Delete_Temp()
         {
-            if(File.Exists(Folder + "\\" + File_Name + ".tps.temp"))
+            if(File.Exists(File_Name + ".tps.temp"))
             {
-                File.Delete(Folder + "\\" + File_Name + ".tps.temp");
+                File.Delete(File_Name + ".tps.temp");
             }
+        }
+
+        public static List<string> Speicherordner_scannen()
+        {
+            if (Directory.Exists(Folder))
+            {
+                string[] veranstaltungen = Directory.GetFiles(Folder);
+                List<string> veranstaltungsnamen = new List<string>();
+                foreach (string veranstaltung in veranstaltungen)
+                {
+                    string ohne_ordner = veranstaltung.Substring(veranstaltung.IndexOf('\\') + 1);
+                    string ohne_erweiterung = ohne_ordner.Substring(0, ohne_ordner.LastIndexOf(".tps"));
+                    veranstaltungsnamen.Add(ohne_erweiterung);
+                }
+                return veranstaltungsnamen;
+            }
+            else throw new DirectoryNotFoundException("Es wurden noch keine Veranstaltungen erstellt");
         }
     }
 }

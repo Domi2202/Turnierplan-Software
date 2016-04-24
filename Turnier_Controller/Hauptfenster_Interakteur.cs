@@ -35,6 +35,7 @@ namespace Turnier_Controller
             Datei_Interakteur.Daten_aktualisiert += On_DatenAktualisiert;
             _Hauptfenster.ProgrammBeenden += On_ProgrammBeenden;
             _Hauptfenster.Speichern += On_Speichern;
+            _Hauptfenster.Laden += On_Laden;
             _Hauptfenster.VeranstaltungErstellen += On_VeranstaltungErstellen;
             _Hauptfenster.TurnierHinzufuegen += On_TurnierHinzufuegen;
         }
@@ -92,6 +93,11 @@ namespace Turnier_Controller
         private void On_Speichern(object sender, EventArgs e)
         {
             Datei_Interakteur.Save();
+        }
+
+        private void On_Laden(object sender, EventArgs e)
+        {
+            new LadeFenster_Interakteur();
         }
 
         private void On_ProgrammBeenden(object sender, CancelEventArgs e)

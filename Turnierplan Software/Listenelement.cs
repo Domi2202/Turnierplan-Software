@@ -8,7 +8,7 @@ using System.Windows.Controls;
 
 namespace Turnierplan_Software
 {
-    public class Listenelement<T> : Label where T : new()
+    public class Listenelement<T> : Label
     {
         public T Details { get; set; }
 
