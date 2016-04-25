@@ -39,6 +39,7 @@ namespace Turnierplan_Software
         {
             Label_Veranstaltung = label_veranstaltung;
             Turnierliste = listbox_turniere;
+            Grid_Informationen = grid_informationen;
         }
 
         private void button_turnier_hinzufuegen_Click(object sender, RoutedEventArgs e)

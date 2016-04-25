@@ -45,6 +45,7 @@ namespace Turnier_Controller
             _Hauptfenster.Speichern += On_Speichern;
             _Hauptfenster.Laden += On_Laden;
             _Hauptfenster.TurnierHinzufuegen += On_TurnierHinzufuegen;
+            _Hauptfenster.Turnierliste.SelectionChanged += On_Turnier_angeklickt;
         }
 
         #region Ansicht
@@ -53,6 +54,7 @@ namespace Turnier_Controller
         {
             Turnierliste_bereinigen();
             Veranstaltungsnamen_bereinigen();
+
             if (Datei_Interakteur.Geladene_Veranstaltung != null)
             {
                 Veranstaltungsnamen_setzen();
@@ -85,6 +87,11 @@ namespace Turnier_Controller
                 {
                 _Hauptfenster.Turnierliste.Items.Add(new Listenelement<Turnier>(turnier, turnier.Name));
             }
+        }
+
+        private void Informationsgitter_bereinigen()
+        {
+            _Hauptfenster.Grid_Informationen.Children.Clear();
         }
 
         #endregion Ansicht
@@ -134,6 +141,16 @@ namespace Turnier_Controller
                 On_Shutdown(this, null);
             }
             
+        }
+
+        private void On_Turnier_angeklickt(object sender, EventArgs e)
+        {
+            Listenelement<Turnier> angeklickt = _Hauptfenster.Turnierliste.SelectedItem as Listenelement<Turnier>;
+            if (angeklickt != null)
+            {
+                Informationsgitter_bereinigen();
+                new Turnierfenster_Interakteur(_Hauptfenster.Grid_Informationen, angeklickt.Details);
+            }
         }
 
         private void On_Shutdown(object sender, EventArgs e)

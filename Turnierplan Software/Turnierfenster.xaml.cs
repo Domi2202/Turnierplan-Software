@@ -20,11 +20,25 @@ namespace Turnierplan_Software
     /// </summary>
     public partial class Turnierfenster : UserControl
     {
+        public Label Turniername { get; set; }
+        public EventHandler Mannschaft_Hinzufuegen { get; set; }
         public Turnierfenster()
         {
             InitializeComponent();
+            Xaml_Elemente_zuordnen();
         }
 
+        private void Xaml_Elemente_zuordnen()
+        {
+            Turniername = turnier_name;
+        }
 
+        private void mannschaft_hinzufuegen_Click(object sender, RoutedEventArgs e)
+        {
+            if (Mannschaft_Hinzufuegen != null)
+            {
+                Mannschaft_Hinzufuegen(this, null);
+            }
+        }
     }
 }

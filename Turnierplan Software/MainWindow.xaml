@@ -17,8 +17,6 @@
                 <ColumnDefinition Width="350"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <controls:Turnierfenster x:Name="Turnierfenster" Visibility="Hidden" Grid.Column="0"></controls:Turnierfenster>
-            <controls:Mannschaftsseite x:Name="Mannschaftsfenster" Visibility="Hidden" Grid.Column="1"></controls:Mannschaftsseite>
         </Grid>
     </Grid>
 </Window>
