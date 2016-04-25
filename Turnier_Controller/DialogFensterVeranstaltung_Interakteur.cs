@@ -43,6 +43,7 @@ namespace Turnier_Controller
             Datei_Interakteur.Geladene_Veranstaltung.Anzahl_Spielfelder = _AnzulegendesObjekt.Anzahl_Spielfelder;
             Datei_Interakteur.File_Name = _AnzulegendesObjekt.Name;
             Datei_Interakteur.Save_Temp();
+            Datei_Interakteur.Save();
         }
     }
 }

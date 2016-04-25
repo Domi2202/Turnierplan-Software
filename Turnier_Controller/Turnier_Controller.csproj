@@ -50,13 +50,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnfrageFenster_Speichern.cs" />
+    <Compile Include="AnfrageFenster_Wiederherstellen.cs" />
     <Compile Include="Datei_Interakteur.cs" />
     <Compile Include="DialogFensterMannschaft_Interakteur.cs" />
     <Compile Include="DialogFensterTurnier_Interakteur.cs" />
     <Compile Include="DialogFenster_Interakteur.cs" />
     <Compile Include="Exceptions.cs" />
     <Compile Include="Hauptfenster_Interakteur.cs" />
-    <Compile Include="LadeFenster_Interakteur.cs" />
+    <Compile Include="Veranstaltungsmanager_Interakteur.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DialogFensterVeranstaltung_Interakteur.cs" />
   </ItemGroup>

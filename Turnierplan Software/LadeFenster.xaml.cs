@@ -17,21 +17,17 @@ namespace Turnierplan_Software
     /// <summary>
     /// Interaction logic for LadeFenster.xaml
     /// </summary>
-    public partial class LadeFenster : Window
+    public partial class Veranstaltunsmanager : Window
     {
         public EventHandler Laden { get; set; }
         public EventHandler Loeschen { get; set; }
+        public EventHandler Neu { get; set; }
         public ListBox Veranstaltungen { get; private set; }
 
-        public LadeFenster()
+        public Veranstaltunsmanager()
         {
             InitializeComponent();
             Veranstaltungen = listBox_veranstaltungen;
-        }
-        
-        private void button_abbrechen_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
         }
 
         private void button_loeschen_Click(object sender, RoutedEventArgs e)
@@ -47,6 +43,14 @@ namespace Turnierplan_Software
             if (Laden != null)
             {
                 Laden(this, null);
+            }
+        }
+
+        private void button_neu_Click(object sender, RoutedEventArgs e)
+        {
+            if (Neu != null)
+            {
+                Neu(this, null);
             }
         }
     }

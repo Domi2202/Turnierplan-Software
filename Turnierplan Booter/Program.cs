@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using Turnier_Controller;
 
 namespace TurnierplanBooter
@@ -20,8 +21,9 @@ namespace TurnierplanBooter
                 Datei_Interakteur.File_Name = args[0];
                 Datei_Interakteur.Load();
             }
-            catch {}
+            catch { }
             new Hauptfenster_Interakteur();
         }
+            
     }
 }

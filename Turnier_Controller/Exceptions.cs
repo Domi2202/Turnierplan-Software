@@ -12,4 +12,11 @@ namespace Turnier_Controller
 
         public InvalidInputException(string message) : base(message) { }
     }
+
+    class NoSelectedItemException : Exception
+    {
+        public NoSelectedItemException() { }
+
+        public NoSelectedItemException(string message) : base(message) { }
+    }
 }

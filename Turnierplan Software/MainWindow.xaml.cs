@@ -21,7 +21,6 @@ namespace Turnierplan_Software
     /// </summary>
     public partial class MainWindow : Window
     {
-        public EventHandler VeranstaltungErstellen { get; set; }
         public EventHandler TurnierHinzufuegen { get; set; }
         public EventHandler Speichern { get; set; }
         public EventHandler Laden { get; set; }
@@ -39,14 +38,6 @@ namespace Turnierplan_Software
         {
             Label_Veranstaltung = label_veranstaltung;
             Turnierliste = listbox_turniere;
-        }
-
-        private void button_veranstaltung_erstellen_Click(object sender, RoutedEventArgs e)
-        {
-            if (VeranstaltungErstellen != null)
-            {
-                VeranstaltungErstellen(this, null);
-            }
         }
 
         private void button_turnier_hinzufuegen_Click(object sender, RoutedEventArgs e)
@@ -79,6 +70,11 @@ namespace Turnierplan_Software
             {
                 Laden(this, null);
             }
+        }
+
+        private void button_crash_Click(object sender, RoutedEventArgs e)
+        {
+            throw new Exception();
         }
     }
 }
