@@ -3,23 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Diagnostics;
 using Turnierklassen;
 using Turnierplan_Software;
 
 namespace Turnier_Controller
 {
-    class DialogFensterVeranstaltung_Interakteur : DialogFenster_Interakteur<Veranstaltung>
+    class DialogFensterTurnier_Interakteur : DialogFenster_Interakteur<Turnier>
     {
         protected override string Titel_ausgeben()
         {
-            return "Veranstaltung erstellen";
+            return "Turnier erstellen";
         }
 
         protected override void Dialogfelder_erstellen()
         {
-            _Dialogfelder.Add(new DialogFeld_Text("Name der Veranstaltung"));
-            _Dialogfelder.Add(new DialogFeld_Zahl("Bespielte Felder"));
+            _Dialogfelder.Add(new DialogFeld_Text("Name des Turniers"));
         }
 
         protected override void Objekt_anlegen()
@@ -28,7 +26,6 @@ namespace Turnier_Controller
             try
             {
                 _AnzulegendesObjekt.Name = _Dialogfelder.ElementAt(0).Get_Inhalt();
-                _AnzulegendesObjekt.Anzahl_Spielfelder = Convert.ToInt32(_Dialogfelder.ElementAt(1).Get_Inhalt());
             }
             catch
             {
@@ -38,12 +35,13 @@ namespace Turnier_Controller
 
         protected override void Objekt_speichern()
         {
-            Datei_Interakteur.Geladene_Veranstaltung = new Veranstaltung();
-            Datei_Interakteur.Geladene_Veranstaltung.Name = _AnzulegendesObjekt.Name;
-            Datei_Interakteur.Geladene_Veranstaltung.Anzahl_Spielfelder = _AnzulegendesObjekt.Anzahl_Spielfelder;
-            Datei_Interakteur.File_Name = _AnzulegendesObjekt.Name;
+            if (Datei_Interakteur.Geladene_Veranstaltung == null)
+            {
+                throw new InvalidOperationException("Es muss eine Veranstaltung erstellt werden, bevor Turniere hinzugefügt werden können!");
+            }
+            Datei_Interakteur.Geladene_Veranstaltung.Turniere.Add(new Turnier());
+            Datei_Interakteur.Geladene_Veranstaltung.Turniere.Last().Name = _AnzulegendesObjekt.Name;
             Datei_Interakteur.Save_Temp();
-            Datei_Interakteur.Save();
         }
     }
 }

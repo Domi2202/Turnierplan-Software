@@ -46,7 +46,7 @@ namespace Turnier_Controller
                 Objekt_speichern();
                 _Dialogfenster.Close();
             }
-            catch (InvalidInputException exc)
+            catch (Exception exc)
             {
                 new FehlerFenster(exc.Message).Show();
             }

@@ -3,23 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Diagnostics;
 using Turnierklassen;
 using Turnierplan_Software;
 
 namespace Turnier_Controller
 {
-    class DialogFensterVeranstaltung_Interakteur : DialogFenster_Interakteur<Veranstaltung>
+    class DialogFensterMannschaft_Interakteur : DialogFenster_Interakteur<Mannschaft>
     {
         protected override string Titel_ausgeben()
         {
-            return "Veranstaltung erstellen";
+            return "Mannschaft hinzufügen";
         }
 
         protected override void Dialogfelder_erstellen()
         {
-            _Dialogfelder.Add(new DialogFeld_Text("Name der Veranstaltung"));
-            _Dialogfelder.Add(new DialogFeld_Zahl("Bespielte Felder"));
+            _Dialogfelder.Add(new DialogFeld_Text("Name der Mannschaft"));
+            _Dialogfelder.Add(new DialogFeld_Checkbox("Aus Bayern"));
+            _Dialogfelder.Add(new DialogFeld_Checkbox("Spätstarter"));
         }
 
         protected override void Objekt_anlegen()
@@ -28,7 +28,8 @@ namespace Turnier_Controller
             try
             {
                 _AnzulegendesObjekt.Name = _Dialogfelder.ElementAt(0).Get_Inhalt();
-                _AnzulegendesObjekt.Anzahl_Spielfelder = Convert.ToInt32(_Dialogfelder.ElementAt(1).Get_Inhalt());
+                _AnzulegendesObjekt.Ist_aus_Bayern = Convert.ToBoolean(_Dialogfelder.ElementAt(1).Get_Inhalt());
+                _AnzulegendesObjekt.Ist_Spaetstarter = Convert.ToBoolean(_Dialogfelder.ElementAt(2).Get_Inhalt());
             }
             catch
             {
@@ -38,12 +39,9 @@ namespace Turnier_Controller
 
         protected override void Objekt_speichern()
         {
-            Datei_Interakteur.Geladene_Veranstaltung = new Veranstaltung();
-            Datei_Interakteur.Geladene_Veranstaltung.Name = _AnzulegendesObjekt.Name;
-            Datei_Interakteur.Geladene_Veranstaltung.Anzahl_Spielfelder = _AnzulegendesObjekt.Anzahl_Spielfelder;
-            Datei_Interakteur.File_Name = _AnzulegendesObjekt.Name;
-            Datei_Interakteur.Save_Temp();
-            Datei_Interakteur.Save();
+            /*Datei_Interakteur.Geladene_Veranstaltung.Turniere
+            Datei_Interakteur.Path = "C:\\Users\\Dominik\\Desktop\\testytest.tps"; //gaaaanz gaaaaaaaaaanz schlecht SOOOOO SCHLECHT, MACHT DAS BLOSS NICHT SO!!!!!!!!
+            Datei_Interakteur.Save_Temp();*/
         }
     }
 }
