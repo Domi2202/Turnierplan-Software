@@ -41,6 +41,7 @@ namespace Turnier_Controller
         {
             Datei_Interakteur.Aktualisierung_erforderlich += On_Aktualisierung_erforderlich;
             Datei_Interakteur.Daten_gespeichert += Veranstaltungsnamen_setzen;
+            Datei_Interakteur.Speichern_erforderlich += Veranstaltungsname_Stern_setzen;
             _Hauptfenster.ProgrammBeenden += On_ProgrammBeenden;
             _Hauptfenster.Speichern += On_Speichern;
             _Hauptfenster.Laden += On_Laden;
@@ -54,6 +55,7 @@ namespace Turnier_Controller
         {
             Turnierliste_bereinigen();
             Veranstaltungsnamen_bereinigen();
+            Informationsgitter_bereinigen();
 
             if (Datei_Interakteur.Geladene_Veranstaltung != null)
             {
@@ -65,10 +67,6 @@ namespace Turnier_Controller
         private void Veranstaltungsnamen_setzen()
         {
             _Hauptfenster.Label_Veranstaltung.Content = Datei_Interakteur.Geladene_Veranstaltung.Name;
-            if (!Datei_Interakteur.All_Saved)
-            {
-                _Hauptfenster.Label_Veranstaltung.Content += "*";
-            }
         }
 
         private void Veranstaltungsnamen_bereinigen()
@@ -84,7 +82,7 @@ namespace Turnier_Controller
         private void Turnierliste_aufbauen()
         {
             foreach (Turnier turnier in Datei_Interakteur.Geladene_Veranstaltung.Turniere)
-                {
+            {
                 _Hauptfenster.Turnierliste.Items.Add(new Listenelement<Turnier>(turnier, turnier.Name));
             }
         }
@@ -103,6 +101,17 @@ namespace Turnier_Controller
             Veranstaltungsnamen_setzen();
         }
 
+        private void Veranstaltungsname_Stern_setzen(object sender, EventArgs e)
+        {
+            _Hauptfenster.Label_Veranstaltung.Content += "*";
+        }
+
+        private void Turnierliste_erneuern(object sender, EventArgs e)
+        {
+            Turnierliste_bereinigen();
+            Turnierliste_aufbauen();
+        }
+
         private void On_Daten_wiederhergestellt(object sender, EventArgs e)
         {
             Ansicht_aktualisieren();
@@ -116,7 +125,7 @@ namespace Turnier_Controller
 
         private void On_TurnierHinzufuegen(object sender, EventArgs e)
         {
-            new DialogFensterTurnier_Interakteur();
+            new DialogFensterTurnier_Interakteur(Turnierliste_erneuern);
         }
 
         private void On_Speichern(object sender, EventArgs e)
@@ -126,7 +135,7 @@ namespace Turnier_Controller
 
         private void On_Laden(object sender, EventArgs e)
         {
-            new Veranstaltungsmanager_Interakteur();
+            new Veranstaltungsmanager_Interakteur(On_Aktualisierung_erforderlich);
         }
 
         private void On_ProgrammBeenden(object sender, CancelEventArgs e)

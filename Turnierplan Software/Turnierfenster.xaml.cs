@@ -21,6 +21,7 @@ namespace Turnierplan_Software
     public partial class Turnierfenster : UserControl
     {
         public Label Turniername { get; set; }
+        public ListBox Mannschaften { get; set; }
         public EventHandler Mannschaft_Hinzufuegen { get; set; }
         public Turnierfenster()
         {
@@ -31,6 +32,7 @@ namespace Turnierplan_Software
         private void Xaml_Elemente_zuordnen()
         {
             Turniername = turnier_name;
+            Mannschaften = listBox_mannschaften;
         }
 
         private void mannschaft_hinzufuegen_Click(object sender, RoutedEventArgs e)

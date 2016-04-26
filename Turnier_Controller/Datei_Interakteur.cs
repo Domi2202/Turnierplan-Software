@@ -17,6 +17,7 @@ namespace Turnier_Controller
         public static string File_Name { get; set; }
         public static EventHandler Aktualisierung_erforderlich { get; set; }
         public static EventHandler Daten_gespeichert { get; set; }
+        public static EventHandler Speichern_erforderlich { get; set; }
         public static Veranstaltung Geladene_Veranstaltung { get; set; }
         public static bool All_Saved { get { return _All_Saved; } }
 
@@ -40,10 +41,13 @@ namespace Turnier_Controller
         {
             string json_serialized = JsonConvert.SerializeObject(Geladene_Veranstaltung);
             File.WriteAllText("tps.temp", json_serialized);
-            _All_Saved = false;
-            if ( Aktualisierung_erforderlich != null)
+            if(_All_Saved == true)
             {
-                Aktualisierung_erforderlich(null, null);
+                if (Speichern_erforderlich != null)
+                {
+                    Speichern_erforderlich(null, null);
+                }
+                _All_Saved = false;
             }
         }
 
@@ -54,10 +58,6 @@ namespace Turnier_Controller
                 string veranstaltung_json = File.ReadAllText(Folder + "\\" + File_Name + ".tps");
                 Geladene_Veranstaltung = JsonConvert.DeserializeObject<Veranstaltung>(veranstaltung_json);
                 _All_Saved = true;
-                if (Aktualisierung_erforderlich != null)
-                {
-                    Aktualisierung_erforderlich(null, null);
-                }
             }
         }
 
@@ -68,10 +68,6 @@ namespace Turnier_Controller
                 string veranstaltung_json = File.ReadAllText(file);
                 Geladene_Veranstaltung = JsonConvert.DeserializeObject<Veranstaltung>(veranstaltung_json);
                 File_Name = Geladene_Veranstaltung.Name;
-                if (Aktualisierung_erforderlich != null)
-                {
-                    Aktualisierung_erforderlich(null, null);
-                }
             }
         }
 

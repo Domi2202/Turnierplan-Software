@@ -10,6 +10,8 @@ namespace Turnier_Controller
 {
     class DialogFensterTurnier_Interakteur : DialogFenster_Interakteur<Turnier>
     {
+        public DialogFensterTurnier_Interakteur(EventHandler On_Turnier_hinzugefügt) : base (On_Turnier_hinzugefügt) { } 
+
         protected override string Titel_ausgeben()
         {
             return "Turnier erstellen";

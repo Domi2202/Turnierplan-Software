@@ -11,6 +11,8 @@ namespace Turnier_Controller
 {
     class DialogFensterVeranstaltung_Interakteur : DialogFenster_Interakteur<Veranstaltung>
     {
+        public DialogFensterVeranstaltung_Interakteur(EventHandler on_veranstaltung_erstellt) : base(on_veranstaltung_erstellt) { }
+
         protected override string Titel_ausgeben()
         {
             return "Veranstaltung erstellen";

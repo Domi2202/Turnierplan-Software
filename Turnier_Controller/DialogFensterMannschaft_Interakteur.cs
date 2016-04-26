@@ -16,7 +16,7 @@ namespace Turnier_Controller
             return "Mannschaft hinzufügen";
         }
 
-        public DialogFensterMannschaft_Interakteur(Turnier turnier) : base()
+        public DialogFensterMannschaft_Interakteur(EventHandler on_mannschaft_angelgt, Turnier turnier) : base(on_mannschaft_angelgt)
         {
             _Turnier = turnier;
         }

@@ -16,8 +16,9 @@ namespace Turnier_Controller
         protected Dialog_Objektdetails _Dialogfenster;
         protected List<DialogFeld> _Dialogfelder;
         protected T _AnzulegendesObjekt;
+        protected EventHandler _ObjektAngelegt;
 
-        public DialogFenster_Interakteur()
+        public DialogFenster_Interakteur(EventHandler on_objekt_angelegt)
         {
             _AnzulegendesObjekt = new T();
             _Dialogfenster = new Dialog_Objektdetails();
@@ -25,6 +26,7 @@ namespace Turnier_Controller
             _Dialogfenster.Input_Submitted += On_InputSubmitted;
             _Dialogfenster.Input_Canceled += On_InputCanceled;
             _Dialogfenster.Title = Titel_ausgeben();
+            _ObjektAngelegt += on_objekt_angelegt;
             Dialogfelder_erstellen();
             Dialog_aufbauen();
             _Dialogfenster.Show();
@@ -44,6 +46,10 @@ namespace Turnier_Controller
             {
                 Objekt_anlegen();
                 Objekt_speichern();
+                if(_ObjektAngelegt != null)
+                {
+                    _ObjektAngelegt(this, null);
+                }
                 _Dialogfenster.Close();
             }
             catch (Exception exc)
