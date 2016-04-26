@@ -31,7 +31,7 @@ namespace Turnierplan_Software
 
         private void Xaml_Elemente_zuordnen()
         {
-            Turniername = turnier_name;
+            Turniername = label_turniername;
             Mannschaften = listBox_mannschaften;
         }
 
