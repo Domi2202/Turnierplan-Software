@@ -8,10 +8,11 @@
         <StackPanel x:Name="stackpanel_navigation" HorizontalAlignment="Left" Margin="20,105,0,10" Width="180">
             <ListBox x:Name="listbox_turniere" Height="300" Margin="0"/>
             <Button x:Name="button_turnier_hinzufuegen" Content="Turnier hinzufügen" Click="button_turnier_hinzufuegen_Click"/>
+            <Button x:Name="button_turnier_loeschen" Content="Turnier löschen" Click="button_turnier_loeschen_Click"/>
             <Button x:Name="button_speichern" Content="Speichern" Click="button_speichern_Click"/>
             <Button x:Name="button_laden" Content="Meine Veranstaltungen" Click="button_laden_Click"/>
             <Button x:Name="button_crash" Content="Absturz" Click="button_crash_Click"/>
         </StackPanel>
-        <Grid x:Name="grid_informationen" Margin="220,105,10,10"/>
+        <Grid x:Name="grid_informationen" Margin="220,105,0,0" Height="535" VerticalAlignment="Top" HorizontalAlignment="Left" Width="788"/>
     </Grid>
 </Window>

@@ -43,11 +43,7 @@ namespace Turnier_Controller
             File.WriteAllText("tps.temp", json_serialized);
             if(_All_Saved == true)
             {
-                if (Speichern_erforderlich != null)
-                {
-                    Speichern_erforderlich(null, null);
-                }
-                _All_Saved = false;
+                Speicherbenachrichtigung_geben();
             }
         }
 
@@ -112,7 +108,7 @@ namespace Turnier_Controller
                 }
                 return veranstaltungsnamen;
             }
-            else throw new DirectoryNotFoundException("Es wurden noch keine Veranstaltungen erstellt");
+            else return new List<string>();
         }
 
         public static bool Wiederherstellungsdatei_vorhanden()
@@ -123,7 +119,43 @@ namespace Turnier_Controller
         public static void Wiederherstellungsdatei_laden()
         {
             Load("tps.temp");
+            Speicherbenachrichtigung_geben();
+        }
+
+        public static void Speicherbenachrichtigung_geben()
+        {
+            if (Speichern_erforderlich != null)
+            {
+                Speichern_erforderlich(null, null);
+            }
             _All_Saved = false;
+        }
+
+        public static bool Name_verfügbar(Veranstaltung neue_veranstaltung)
+        {
+            if (File.Exists(Folder + "\\" + neue_veranstaltung.Name + ".tps"))
+            {
+                return false;
+            }
+            else return true;
+        }
+
+        public static bool Name_verfügbar(Turnier neues_Turnier)
+        {
+            if (Geladene_Veranstaltung.Turniere.Exists(x => x.Name == neues_Turnier.Name))
+            {
+                return false;
+            }
+            else return true;
+        }
+
+        public static bool Name_verfügbar(Mannschaft neue_Mannschaft, Turnier turnier)
+        {
+            if (turnier.Mannschaften.Exists(x => x.Name == neue_Mannschaft.Name))
+            {
+                return false;
+            }
+            else return true;
         }
     }
 }

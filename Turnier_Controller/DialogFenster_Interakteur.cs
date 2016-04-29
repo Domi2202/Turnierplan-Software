@@ -28,7 +28,7 @@ namespace Turnier_Controller
             _Dialogfenster.Title = Titel_ausgeben();
             _ObjektAngelegt += on_objekt_angelegt;
             Dialogfelder_erstellen();
-            Dialog_aufbauen();
+            Dialog_aufbauen();         
             _Dialogfenster.Show();
         }
 
@@ -36,7 +36,11 @@ namespace Turnier_Controller
 
         protected abstract void Dialogfelder_erstellen();
 
-        protected abstract void Objekt_anlegen();
+        protected virtual void Objekt_anlegen()
+        {
+            Feldwerte_pruefen();
+            Feldwerte_bereinigen();
+        }
 
         protected abstract void Objekt_speichern();
 
@@ -86,6 +90,14 @@ namespace Turnier_Controller
                 {
                     throw new InvalidInputException("Bitte alle Felder ausfüllen!\nDie Eingaben können später noch geändert werden!");
                 }
+            }
+        }
+
+        protected void Feldwerte_bereinigen()
+        {
+            foreach (DialogFeld feld in _Dialogfelder)
+            {
+                feld.Leerzeichen_korrigieren();
             }
         }
     }

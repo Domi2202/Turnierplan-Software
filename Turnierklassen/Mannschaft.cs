@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,8 +14,9 @@ namespace Turnierklassen
         public bool Ist_Spaetstarter { get; set; }
         //public Gesamtergebnis Gruppenergebnis { get; set; }
         public List<Paarung> Paarungen { get; set; }
-        public enum Geschlecht {Männlich, Weiblich};
-        public enum Altersgruppe { Minis, DJugend, CJugend, BJugend, AJugend, Erwachsene };
-
+        public Altersgruppe Altersgruppe { get; set; }
+        public Geschlecht Geschlecht { get; set; }
     }
+    public enum Geschlecht { Männlich, Weiblich };
+    public enum Altersgruppe { Erwachsene, AJugend, BJugend, CJugend, DJugend, Minis /*[Description("D-jugend")]*/ };
 }

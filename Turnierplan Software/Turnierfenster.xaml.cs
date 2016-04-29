@@ -23,6 +23,8 @@ namespace Turnierplan_Software
         public Label Turniername { get; set; }
         public ListBox Mannschaften { get; set; }
         public EventHandler Mannschaft_Hinzufuegen { get; set; }
+        public EventHandler Mannschaft_Loeschen { get; set; }
+        public Grid Bereich_fuer_Mannschaftsdetails { get; set; }
         public Turnierfenster()
         {
             InitializeComponent();
@@ -33,6 +35,7 @@ namespace Turnierplan_Software
         {
             Turniername = label_turniername;
             Mannschaften = listBox_mannschaften;
+            Bereich_fuer_Mannschaftsdetails = grid_mannschaftsdetails;
         }
 
         private void mannschaft_hinzufuegen_Click(object sender, RoutedEventArgs e)
@@ -40,6 +43,14 @@ namespace Turnierplan_Software
             if (Mannschaft_Hinzufuegen != null)
             {
                 Mannschaft_Hinzufuegen(this, null);
+            }
+        }
+
+        private void button_loeschen_Click(object sender, RoutedEventArgs e)
+        {
+            if(Mannschaft_Loeschen != null)
+            {
+                Mannschaft_Loeschen(this, null);
             }
         }
     }
