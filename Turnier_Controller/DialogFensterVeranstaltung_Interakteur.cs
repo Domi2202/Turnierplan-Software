@@ -11,6 +11,8 @@ namespace Turnier_Controller
 {
     class DialogFensterVeranstaltung_Interakteur : DialogFenster_Interakteur<Veranstaltung>
     {
+        public DialogFensterVeranstaltung_Interakteur(EventHandler on_veranstaltung_erstellt) : base(on_veranstaltung_erstellt) { }
+
         protected override string Titel_ausgeben()
         {
             return "Veranstaltung erstellen";
@@ -24,7 +26,7 @@ namespace Turnier_Controller
 
         protected override void Objekt_anlegen()
         {
-            Feldwerte_pruefen();
+            base.Objekt_anlegen();
             try
             {
                 _AnzulegendesObjekt.Name = _Dialogfelder.ElementAt(0).Get_Inhalt();
@@ -38,12 +40,16 @@ namespace Turnier_Controller
 
         protected override void Objekt_speichern()
         {
-            Datei_Interakteur.Geladene_Veranstaltung = new Veranstaltung();
-            Datei_Interakteur.Geladene_Veranstaltung.Name = _AnzulegendesObjekt.Name;
-            Datei_Interakteur.Geladene_Veranstaltung.Anzahl_Spielfelder = _AnzulegendesObjekt.Anzahl_Spielfelder;
-            Datei_Interakteur.File_Name = _AnzulegendesObjekt.Name;
-            Datei_Interakteur.Save_Temp();
-            Datei_Interakteur.Save();
+            if (Datei_Interakteur.Name_verfügbar(_AnzulegendesObjekt))
+            {
+                Datei_Interakteur.Geladene_Veranstaltung = new Veranstaltung();
+                Datei_Interakteur.Geladene_Veranstaltung.Name = _AnzulegendesObjekt.Name;
+                Datei_Interakteur.Geladene_Veranstaltung.Anzahl_Spielfelder = _AnzulegendesObjekt.Anzahl_Spielfelder;
+                Datei_Interakteur.File_Name = _AnzulegendesObjekt.Name;
+                Datei_Interakteur.Save_Temp();
+                Datei_Interakteur.Save();
+            }
+            else throw new DuplicateIdentifierException("Die Veranstaltung " + _AnzulegendesObjekt.Name + " existiert bereits!");
         }
     }
 }

@@ -19,4 +19,11 @@ namespace Turnier_Controller
 
         public NoSelectedItemException(string message) : base(message) { }
     }
+
+    class DuplicateIdentifierException : Exception
+    {
+        public DuplicateIdentifierException() { }
+
+        public DuplicateIdentifierException(string message) : base(message) { }
+    }
 }

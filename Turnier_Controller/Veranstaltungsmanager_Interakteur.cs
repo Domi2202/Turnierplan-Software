@@ -11,9 +11,11 @@ namespace Turnier_Controller
     {
         private Veranstaltunsmanager _Fenster;
         private Listenelement<string> _Markierte_Veranstaltung;
+        private EventHandler _Veranstaltung_gewechselt;
 
-        public Veranstaltungsmanager_Interakteur() 
+        public Veranstaltungsmanager_Interakteur(EventHandler on_veranstaltung_gewechselt) 
         {
+            _Veranstaltung_gewechselt += on_veranstaltung_gewechselt;
             _Fenster = new Veranstaltunsmanager();
             _Fenster.Laden += On_Laden;
             _Fenster.Loeschen += On_Loeschen;
@@ -48,6 +50,10 @@ namespace Turnier_Controller
             _Markierte_Veranstaltung = _Fenster.Veranstaltungen.SelectedItem as Listenelement<string>;
             Datei_Interakteur.File_Name = _Markierte_Veranstaltung.Details;
             Datei_Interakteur.Load();
+            if(_Veranstaltung_gewechselt != null)
+            {
+                _Veranstaltung_gewechselt(this, null);
+            }
             _Fenster.Close();
         }
 
@@ -73,7 +79,7 @@ namespace Turnier_Controller
 
         private void Neue_Veranstaltung(object sender, EventArgs e)
         {
-            new DialogFensterVeranstaltung_Interakteur();
+            new DialogFensterVeranstaltung_Interakteur(_Veranstaltung_gewechselt);
             _Fenster.Close();
         }
 

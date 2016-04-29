@@ -1,16 +1,18 @@
 ﻿<Window x:Name="window_turnierplan" x:Class="Turnierplan_Software.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="clr-namespace:Turnierplan_Software"
         Title="Turnierplan" Height="680" Width="1024" WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Grid>
         <Label x:Name="label_veranstaltung" Content="Label" Margin="20,10,0,0" FontSize="50" Height="75" VerticalAlignment="Top" HorizontalAlignment="Left" Width="974"/>
-        <StackPanel x:Name="stackpanel_navigation" HorizontalAlignment="Left" Margin="20,105,0,26" Width="180">
-            <ListBox x:Name="listbox_turniere" Height="200" Margin="0"/>
+        <StackPanel x:Name="stackpanel_navigation" HorizontalAlignment="Left" Margin="20,105,0,10" Width="180">
+            <ListBox x:Name="listbox_turniere" Height="300" Margin="0"/>
             <Button x:Name="button_turnier_hinzufuegen" Content="Turnier hinzufügen" Click="button_turnier_hinzufuegen_Click"/>
+            <Button x:Name="button_turnier_loeschen" Content="Turnier löschen" Click="button_turnier_loeschen_Click"/>
             <Button x:Name="button_speichern" Content="Speichern" Click="button_speichern_Click"/>
             <Button x:Name="button_laden" Content="Meine Veranstaltungen" Click="button_laden_Click"/>
             <Button x:Name="button_crash" Content="Absturz" Click="button_crash_Click"/>
         </StackPanel>
-        <Grid HorizontalAlignment="Left" Height="521" Margin="220,105,0,0" VerticalAlignment="Top" Width="750"/>
+        <Grid x:Name="grid_informationen" Margin="220,105,0,0" Height="535" VerticalAlignment="Top" HorizontalAlignment="Left" Width="788"/>
     </Grid>
 </Window>

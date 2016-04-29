@@ -41,11 +41,15 @@ namespace Turnier_Controller
         {
             Datei_Interakteur.Aktualisierung_erforderlich += On_Aktualisierung_erforderlich;
             Datei_Interakteur.Daten_gespeichert += Veranstaltungsnamen_setzen;
+            Datei_Interakteur.Speichern_erforderlich += Veranstaltungsname_Stern_setzen;
             _Hauptfenster.ProgrammBeenden += On_ProgrammBeenden;
             _Hauptfenster.Speichern += On_Speichern;
             _Hauptfenster.Laden += On_Laden;
             _Hauptfenster.TurnierHinzufuegen += On_TurnierHinzufuegen;
+            _Hauptfenster.TurnierLoeschen += TurnierLoeschen;
+            _Hauptfenster.Turnierliste.SelectionChanged += On_Turnier_angeklickt;
         }
+
 
         #region Ansicht
 
@@ -53,6 +57,8 @@ namespace Turnier_Controller
         {
             Turnierliste_bereinigen();
             Veranstaltungsnamen_bereinigen();
+            Informationsgitter_bereinigen();
+
             if (Datei_Interakteur.Geladene_Veranstaltung != null)
             {
                 Veranstaltungsnamen_setzen();
@@ -63,10 +69,6 @@ namespace Turnier_Controller
         private void Veranstaltungsnamen_setzen()
         {
             _Hauptfenster.Label_Veranstaltung.Content = Datei_Interakteur.Geladene_Veranstaltung.Name;
-            if (!Datei_Interakteur.All_Saved)
-            {
-                _Hauptfenster.Label_Veranstaltung.Content += "*";
-            }
         }
 
         private void Veranstaltungsnamen_bereinigen()
@@ -82,9 +84,14 @@ namespace Turnier_Controller
         private void Turnierliste_aufbauen()
         {
             foreach (Turnier turnier in Datei_Interakteur.Geladene_Veranstaltung.Turniere)
-                {
+            {
                 _Hauptfenster.Turnierliste.Items.Add(new Listenelement<Turnier>(turnier, turnier.Name));
             }
+        }
+
+        private void Informationsgitter_bereinigen()
+        {
+            _Hauptfenster.Grid_Informationen.Children.Clear();
         }
 
         #endregion Ansicht
@@ -96,9 +103,25 @@ namespace Turnier_Controller
             Veranstaltungsnamen_setzen();
         }
 
+        private void Veranstaltungsname_Stern_setzen(object sender, EventArgs e)
+        {
+            _Hauptfenster.Label_Veranstaltung.Content += "*";
+        }
+
+        private void Turnierliste_erneuern(object sender, EventArgs e)
+        {
+            Turnierliste_bereinigen();
+            Turnierliste_aufbauen();
+            _Hauptfenster.Turnierliste.SelectedItem = _Hauptfenster.Turnierliste.Items.GetItemAt(_Hauptfenster.Turnierliste.Items.Count - 1);
+        }
+
         private void On_Daten_wiederhergestellt(object sender, EventArgs e)
         {
             Ansicht_aktualisieren();
+            if (Datei_Interakteur.Geladene_Veranstaltung != null)
+            {
+                Veranstaltungsname_Stern_setzen(this, null);
+            }
             _Hauptfenster.Show();
         }
 
@@ -109,7 +132,20 @@ namespace Turnier_Controller
 
         private void On_TurnierHinzufuegen(object sender, EventArgs e)
         {
-            new DialogFensterTurnier_Interakteur();
+            new DialogFensterTurnier_Interakteur(Turnierliste_erneuern);
+        }
+
+        private void TurnierLoeschen(object sender, EventArgs e)
+        {
+            Listenelement<Turnier> zu_loeschen = _Hauptfenster.Turnierliste.SelectedItem as Listenelement<Turnier>;
+            if(zu_loeschen != null)
+            {
+                Datei_Interakteur.Geladene_Veranstaltung.Turniere.Remove(zu_loeschen.Details);
+                Informationsgitter_bereinigen();
+                Turnierliste_bereinigen();
+                Turnierliste_aufbauen();
+                Datei_Interakteur.Save_Temp();
+            }
         }
 
         private void On_Speichern(object sender, EventArgs e)
@@ -119,7 +155,14 @@ namespace Turnier_Controller
 
         private void On_Laden(object sender, EventArgs e)
         {
-            new Veranstaltungsmanager_Interakteur();
+            if(_Programm.Windows.Count != 1)
+            {
+                new FehlerFenster("Bitte schließen Sie zunächste alle offenen Dialoge!").Show();
+            }
+            else
+            {
+                new Veranstaltungsmanager_Interakteur(On_Aktualisierung_erforderlich);
+            }
         }
 
         private void On_ProgrammBeenden(object sender, CancelEventArgs e)
@@ -134,6 +177,16 @@ namespace Turnier_Controller
                 On_Shutdown(this, null);
             }
             
+        }
+
+        private void On_Turnier_angeklickt(object sender, EventArgs e)
+        {
+            Listenelement<Turnier> angeklickt = _Hauptfenster.Turnierliste.SelectedItem as Listenelement<Turnier>;
+            if (angeklickt != null)
+            {
+                Informationsgitter_bereinigen();
+                new Turnierfenster_Interakteur(_Hauptfenster.Grid_Informationen, angeklickt.Details);
+            }
         }
 
         private void On_Shutdown(object sender, EventArgs e)

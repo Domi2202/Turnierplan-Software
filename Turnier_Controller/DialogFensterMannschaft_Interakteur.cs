@@ -10,9 +10,15 @@ namespace Turnier_Controller
 {
     class DialogFensterMannschaft_Interakteur : DialogFenster_Interakteur<Mannschaft>
     {
+        private Turnier _Turnier;
         protected override string Titel_ausgeben()
         {
             return "Mannschaft hinzufügen";
+        }
+
+        public DialogFensterMannschaft_Interakteur(EventHandler on_mannschaft_angelgt, Turnier turnier) : base(on_mannschaft_angelgt)
+        {
+            _Turnier = turnier;
         }
 
         protected override void Dialogfelder_erstellen()
@@ -24,7 +30,7 @@ namespace Turnier_Controller
 
         protected override void Objekt_anlegen()
         {
-            Feldwerte_pruefen();
+            base.Objekt_anlegen();
             try
             {
                 _AnzulegendesObjekt.Name = _Dialogfelder.ElementAt(0).Get_Inhalt();
@@ -39,9 +45,16 @@ namespace Turnier_Controller
 
         protected override void Objekt_speichern()
         {
-            /*Datei_Interakteur.Geladene_Veranstaltung.Turniere
-            Datei_Interakteur.Path = "C:\\Users\\Dominik\\Desktop\\testytest.tps"; //gaaaanz gaaaaaaaaaanz schlecht SOOOOO SCHLECHT, MACHT DAS BLOSS NICHT SO!!!!!!!!
-            Datei_Interakteur.Save_Temp();*/
+            if (Datei_Interakteur.Name_verfügbar(_AnzulegendesObjekt, _Turnier))
+            {
+                Turnier turnier = Datei_Interakteur.Geladene_Veranstaltung.Turniere.Find(x => x.Name == _Turnier.Name);
+                turnier.Mannschaften.Add(new Mannschaft());
+                turnier.Mannschaften.Last().Name = _AnzulegendesObjekt.Name;
+                turnier.Mannschaften.Last().Ist_aus_Bayern = _AnzulegendesObjekt.Ist_aus_Bayern;
+                turnier.Mannschaften.Last().Ist_Spaetstarter = _AnzulegendesObjekt.Ist_Spaetstarter;
+                Datei_Interakteur.Save_Temp();
+            }
+            else throw new DuplicateIdentifierException("Die Mannschaft " + _AnzulegendesObjekt.Name + " existiert in " + _Turnier.Name + " bereits");
         }
     }
 }

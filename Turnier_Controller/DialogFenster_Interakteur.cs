@@ -16,8 +16,9 @@ namespace Turnier_Controller
         protected Dialog_Objektdetails _Dialogfenster;
         protected List<DialogFeld> _Dialogfelder;
         protected T _AnzulegendesObjekt;
+        protected EventHandler _ObjektAngelegt;
 
-        public DialogFenster_Interakteur()
+        public DialogFenster_Interakteur(EventHandler on_objekt_angelegt)
         {
             _AnzulegendesObjekt = new T();
             _Dialogfenster = new Dialog_Objektdetails();
@@ -25,8 +26,9 @@ namespace Turnier_Controller
             _Dialogfenster.Input_Submitted += On_InputSubmitted;
             _Dialogfenster.Input_Canceled += On_InputCanceled;
             _Dialogfenster.Title = Titel_ausgeben();
+            _ObjektAngelegt += on_objekt_angelegt;
             Dialogfelder_erstellen();
-            Dialog_aufbauen();
+            Dialog_aufbauen();         
             _Dialogfenster.Show();
         }
 
@@ -34,7 +36,11 @@ namespace Turnier_Controller
 
         protected abstract void Dialogfelder_erstellen();
 
-        protected abstract void Objekt_anlegen();
+        protected virtual void Objekt_anlegen()
+        {
+            Feldwerte_pruefen();
+            Feldwerte_bereinigen();
+        }
 
         protected abstract void Objekt_speichern();
 
@@ -44,6 +50,10 @@ namespace Turnier_Controller
             {
                 Objekt_anlegen();
                 Objekt_speichern();
+                if(_ObjektAngelegt != null)
+                {
+                    _ObjektAngelegt(this, null);
+                }
                 _Dialogfenster.Close();
             }
             catch (Exception exc)
@@ -80,6 +90,14 @@ namespace Turnier_Controller
                 {
                     throw new InvalidInputException("Bitte alle Felder ausfüllen!\nDie Eingaben können später noch geändert werden!");
                 }
+            }
+        }
+
+        protected void Feldwerte_bereinigen()
+        {
+            foreach (DialogFeld feld in _Dialogfelder)
+            {
+                feld.Leerzeichen_korrigieren();
             }
         }
     }

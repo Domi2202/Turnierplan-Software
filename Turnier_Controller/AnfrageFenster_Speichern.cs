@@ -28,6 +28,7 @@ namespace Turnier_Controller
 
         private void On_Bestaetigung_nicht_gegeben(object sender, EventArgs e)
         {
+            Datei_Interakteur.Delete_Temp();
             _Fenster.Close();
         }
     }

@@ -17,6 +17,7 @@ namespace Turnier_Controller
         public static string File_Name { get; set; }
         public static EventHandler Aktualisierung_erforderlich { get; set; }
         public static EventHandler Daten_gespeichert { get; set; }
+        public static EventHandler Speichern_erforderlich { get; set; }
         public static Veranstaltung Geladene_Veranstaltung { get; set; }
         public static bool All_Saved { get { return _All_Saved; } }
 
@@ -40,10 +41,9 @@ namespace Turnier_Controller
         {
             string json_serialized = JsonConvert.SerializeObject(Geladene_Veranstaltung);
             File.WriteAllText("tps.temp", json_serialized);
-            _All_Saved = false;
-            if ( Aktualisierung_erforderlich != null)
+            if(_All_Saved == true)
             {
-                Aktualisierung_erforderlich(null, null);
+                Speicherbenachrichtigung_geben();
             }
         }
 
@@ -54,10 +54,6 @@ namespace Turnier_Controller
                 string veranstaltung_json = File.ReadAllText(Folder + "\\" + File_Name + ".tps");
                 Geladene_Veranstaltung = JsonConvert.DeserializeObject<Veranstaltung>(veranstaltung_json);
                 _All_Saved = true;
-                if (Aktualisierung_erforderlich != null)
-                {
-                    Aktualisierung_erforderlich(null, null);
-                }
             }
         }
 
@@ -68,10 +64,6 @@ namespace Turnier_Controller
                 string veranstaltung_json = File.ReadAllText(file);
                 Geladene_Veranstaltung = JsonConvert.DeserializeObject<Veranstaltung>(veranstaltung_json);
                 File_Name = Geladene_Veranstaltung.Name;
-                if (Aktualisierung_erforderlich != null)
-                {
-                    Aktualisierung_erforderlich(null, null);
-                }
             }
         }
 
@@ -116,7 +108,7 @@ namespace Turnier_Controller
                 }
                 return veranstaltungsnamen;
             }
-            else throw new DirectoryNotFoundException("Es wurden noch keine Veranstaltungen erstellt");
+            else return new List<string>();
         }
 
         public static bool Wiederherstellungsdatei_vorhanden()
@@ -127,7 +119,43 @@ namespace Turnier_Controller
         public static void Wiederherstellungsdatei_laden()
         {
             Load("tps.temp");
+            Speicherbenachrichtigung_geben();
+        }
+
+        public static void Speicherbenachrichtigung_geben()
+        {
+            if (Speichern_erforderlich != null)
+            {
+                Speichern_erforderlich(null, null);
+            }
             _All_Saved = false;
+        }
+
+        public static bool Name_verfügbar(Veranstaltung neue_veranstaltung)
+        {
+            if (File.Exists(Folder + "\\" + neue_veranstaltung.Name + ".tps"))
+            {
+                return false;
+            }
+            else return true;
+        }
+
+        public static bool Name_verfügbar(Turnier neues_Turnier)
+        {
+            if (Geladene_Veranstaltung.Turniere.Exists(x => x.Name == neues_Turnier.Name))
+            {
+                return false;
+            }
+            else return true;
+        }
+
+        public static bool Name_verfügbar(Mannschaft neue_Mannschaft, Turnier turnier)
+        {
+            if (turnier.Mannschaften.Exists(x => x.Name == neue_Mannschaft.Name))
+            {
+                return false;
+            }
+            else return true;
         }
     }
 }
