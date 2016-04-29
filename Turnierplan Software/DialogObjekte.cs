@@ -26,6 +26,8 @@ namespace Turnierplan_Software
             return Convert.ToString(Feld_Name.Content).TrimEnd(':');
         }
         public abstract string Get_Inhalt();
+
+        public abstract void Leerzeichen_korrigieren();
     }
 
     public class DialogFeld_Text : DialogFeld
@@ -43,6 +45,12 @@ namespace Turnierplan_Software
         public override string Get_Inhalt()
         {
             return Convert.ToString(_Feld_Inhalt_Box.Text);
+        }
+
+        public override void Leerzeichen_korrigieren()
+        {
+            _Feld_Inhalt_Box.Text = _Feld_Inhalt_Box.Text.TrimStart(' ');
+            _Feld_Inhalt_Box.Text = _Feld_Inhalt_Box.Text.TrimEnd(' ');
         }
     }
 
@@ -62,6 +70,8 @@ namespace Turnierplan_Software
         {
             return Convert.ToString(_Feld_Inhalt_Box.IsChecked);
         }
+
+        public override void Leerzeichen_korrigieren() { }
     }
 
     public class DialogFeld_Zahl : DialogFeld
@@ -83,5 +93,12 @@ namespace Turnierplan_Software
         {
             return Convert.ToString(_Feld_Inhalt_Box.Text);
         }
+
+        public override void Leerzeichen_korrigieren()
+        {
+            _Feld_Inhalt_Box.Text = _Feld_Inhalt_Box.Text.TrimStart(' ');
+            _Feld_Inhalt_Box.Text = _Feld_Inhalt_Box.Text.TrimEnd(' ');
+        }
     }
 }
+

@@ -22,6 +22,7 @@ namespace Turnierplan_Software
     public partial class MainWindow : Window
     {
         public EventHandler TurnierHinzufuegen { get; set; }
+        public EventHandler TurnierLoeschen { get; set; }
         public EventHandler Speichern { get; set; }
         public EventHandler Laden { get; set; }
         public CancelEventHandler ProgrammBeenden { get; set; }
@@ -77,6 +78,14 @@ namespace Turnierplan_Software
         private void button_crash_Click(object sender, RoutedEventArgs e)
         {
             throw new Exception();
+        }
+
+        private void button_turnier_loeschen_Click(object sender, RoutedEventArgs e)
+        {
+            if (TurnierLoeschen != null)
+            {
+                TurnierLoeschen(this, null);
+            }
         }
     }
 }

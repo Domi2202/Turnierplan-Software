@@ -6,38 +6,15 @@
       xmlns:local="clr-namespace:Turnierplan_Software"
       mc:Ignorable="d" 
       d:DesignHeight="500" Width="709.104">
-    <Grid x:Name="grid_turnier" Margin="10,10,369,10" Background="#FFCDCBCB">
-        <Label x:Name="label_turniername" Content="Label" Margin="10,10,188,442" FontSize="13.333" FontWeight="Bold"/>
-        <Label x:Name="label_mannschaften" Content="Mannschaften" Margin="10,38,208,416"/>
-        <ListBox x:Name="listBox_mannschaften" Margin="10,69,142,156"/>
-        <Button x:Name="button_hinzufügen" Content="Hinzufügen" Margin="10,329,205,129" RenderTransformOrigin="-0.016,0.405" Click="mannschaft_hinzufuegen_Click"/>
-        <Button x:Name="button_generieren" Content="Generieren" Margin="10,448,205,10" RenderTransformOrigin="-0.016,0.405"/>
-        <Grid x:Name="grid_mannschaftsdeatils" Margin="355,0,-355,0" Background="#FFCDCBCB" HorizontalAlignment="Left" Width="330">
-            <Label x:Name="label_mannschaftsname" Content="Label" Margin="10,10,188,442" FontSize="13.333" FontWeight="Bold"/>
-            <Button x:Name="button_speichern" Content="Speichern" Margin="205,448,10,10" RenderTransformOrigin="-0.016,0.405"/>
-            <ComboBox x:Name="comboBox_altersgruppe" Margin="10,69,200,389">
-                <ComboBoxItem Content="A-Jugend"/>
-                <ComboBoxItem Content="B-Jugend"/>
-                <ComboBoxItem Content="C-Jugend"/>
-                <ComboBoxItem Content="D-Jugend"/>
-                <ComboBoxItem Content="Minis"/>
-                <ComboBoxItem Content="Erwachsene"/>
-
-            </ComboBox>
-            <ComboBox x:Name="comboBox_geschlecht" Margin="10,129,200,329" SelectedIndex="0">
-
-                <ComboBoxItem Content="Männlich"/>
-                <ComboBoxItem Content="Weiblich"/>
-            </ComboBox>
-            <CheckBox x:Name="checkBox_Bayern" Content="Bayern" Margin="10,183,200,275" RenderTransformOrigin="0.505,1.34"/>
-            <CheckBox x:Name="checkBox_Spätstarter" Content="Spätstarter" Margin="10,210,200,248"/>
-            <Button x:Name="button_edit" Content="Edit" Margin="147,10,154,448"/>
-            <Label x:Name="label_altersgruppe" Content="Altersgruppe : " Margin="10,38,200,416"/>
-            <Label x:Name="label_geschlecht" Content="Geschlecht : " Margin="10,96,200,356"/>
+    <Grid x:Name="grid_full" >
+        <Grid x:Name="grid_turnier" Margin="10,10,369,10" Background="#FFCDCBCB">
+            <Label x:Name="label_turniername" Content="Label" Margin="10,10,188,442" FontSize="13.333" FontWeight="Bold"/>
+            <Label x:Name="label_mannschaften" Content="Mannschaften" Margin="10,38,208,416"/>
+            <ListBox x:Name="listBox_mannschaften" Margin="10,69,10,0" Height="255" VerticalAlignment="Top"/>
+            <Button x:Name="button_hinzufügen" Content="Hinzufügen" Margin="10,329,204.8,0" RenderTransformOrigin="-0.016,0.405" Click="mannschaft_hinzufuegen_Click" Height="22" VerticalAlignment="Top"/>
+            <Button x:Name="button_loeschen" Content="Löschen" Margin="10,359,204.8,0" RenderTransformOrigin="-0.016,0.405" Height="22" VerticalAlignment="Top" Click="button_loeschen_Click"/>
+            <Button x:Name="button_generieren" Content="Generieren" Margin="10,0,204.8,10" RenderTransformOrigin="-0.016,0.405" Height="22" VerticalAlignment="Bottom"/>
         </Grid>
-
-        
+        <Grid x:Name="grid_mannschaftsdetails" Margin="0,0,0,0" HorizontalAlignment="Right" Width="344"/>
     </Grid>
-
-
 </UserControl>

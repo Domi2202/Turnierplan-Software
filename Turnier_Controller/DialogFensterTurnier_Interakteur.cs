@@ -24,7 +24,7 @@ namespace Turnier_Controller
 
         protected override void Objekt_anlegen()
         {
-            Feldwerte_pruefen();
+            base.Objekt_anlegen();
             try
             {
                 _AnzulegendesObjekt.Name = _Dialogfelder.ElementAt(0).Get_Inhalt();
@@ -41,9 +41,13 @@ namespace Turnier_Controller
             {
                 throw new InvalidOperationException("Es muss eine Veranstaltung erstellt werden, bevor Turniere hinzugefügt werden können!");
             }
-            Datei_Interakteur.Geladene_Veranstaltung.Turniere.Add(new Turnier());
-            Datei_Interakteur.Geladene_Veranstaltung.Turniere.Last().Name = _AnzulegendesObjekt.Name;
-            Datei_Interakteur.Save_Temp();
+            if (Datei_Interakteur.Name_verfügbar(_AnzulegendesObjekt))
+            {
+                Datei_Interakteur.Geladene_Veranstaltung.Turniere.Add(new Turnier());
+                Datei_Interakteur.Geladene_Veranstaltung.Turniere.Last().Name = _AnzulegendesObjekt.Name;
+                Datei_Interakteur.Save_Temp();
+            }
+            else throw new DuplicateIdentifierException("Das Turnier " + _AnzulegendesObjekt.Name + " existiert in " + Datei_Interakteur.Geladene_Veranstaltung.Name + " bereits!");
         }
     }
 }

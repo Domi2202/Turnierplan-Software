@@ -20,9 +20,24 @@ namespace Turnierplan_Software
     /// </summary>
     public partial class Mannschaftsseite : UserControl
     {
+        public Label Mannschaftsname { get; set; }
+        public CheckBox Aus_Bayern { get; set; }
+        public CheckBox Ist_Spaetstarter { get; set; }
+        public ComboBox Altersgruppe { get; set; }
+        public ComboBox Geschlecht { get; set; }
+
         public Mannschaftsseite()
         {
             InitializeComponent();
+            Xmal_Elemente_zuordnen();
+        }
+        private void Xmal_Elemente_zuordnen()
+        {
+            Mannschaftsname = label_Mannschaftsname;
+            Aus_Bayern = checkBox_Bayern;
+            Ist_Spaetstarter = checkBox_Spätstarter;
+            Altersgruppe = comboBox_Altersklassen;
+            Geschlecht = comboBox_Geschlecht;
         }
     }
 }

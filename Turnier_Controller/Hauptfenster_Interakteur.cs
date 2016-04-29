@@ -46,8 +46,10 @@ namespace Turnier_Controller
             _Hauptfenster.Speichern += On_Speichern;
             _Hauptfenster.Laden += On_Laden;
             _Hauptfenster.TurnierHinzufuegen += On_TurnierHinzufuegen;
+            _Hauptfenster.TurnierLoeschen += TurnierLoeschen;
             _Hauptfenster.Turnierliste.SelectionChanged += On_Turnier_angeklickt;
         }
+
 
         #region Ansicht
 
@@ -110,11 +112,16 @@ namespace Turnier_Controller
         {
             Turnierliste_bereinigen();
             Turnierliste_aufbauen();
+            _Hauptfenster.Turnierliste.SelectedItem = _Hauptfenster.Turnierliste.Items.GetItemAt(_Hauptfenster.Turnierliste.Items.Count - 1);
         }
 
         private void On_Daten_wiederhergestellt(object sender, EventArgs e)
         {
             Ansicht_aktualisieren();
+            if (Datei_Interakteur.Geladene_Veranstaltung != null)
+            {
+                Veranstaltungsname_Stern_setzen(this, null);
+            }
             _Hauptfenster.Show();
         }
 
@@ -128,6 +135,19 @@ namespace Turnier_Controller
             new DialogFensterTurnier_Interakteur(Turnierliste_erneuern);
         }
 
+        private void TurnierLoeschen(object sender, EventArgs e)
+        {
+            Listenelement<Turnier> zu_loeschen = _Hauptfenster.Turnierliste.SelectedItem as Listenelement<Turnier>;
+            if(zu_loeschen != null)
+            {
+                Datei_Interakteur.Geladene_Veranstaltung.Turniere.Remove(zu_loeschen.Details);
+                Informationsgitter_bereinigen();
+                Turnierliste_bereinigen();
+                Turnierliste_aufbauen();
+                Datei_Interakteur.Save_Temp();
+            }
+        }
+
         private void On_Speichern(object sender, EventArgs e)
         {
             Datei_Interakteur.Save();
@@ -135,7 +155,14 @@ namespace Turnier_Controller
 
         private void On_Laden(object sender, EventArgs e)
         {
-            new Veranstaltungsmanager_Interakteur(On_Aktualisierung_erforderlich);
+            if(_Programm.Windows.Count != 1)
+            {
+                new FehlerFenster("Bitte schließen Sie zunächste alle offenen Dialoge!").Show();
+            }
+            else
+            {
+                new Veranstaltungsmanager_Interakteur(On_Aktualisierung_erforderlich);
+            }
         }
 
         private void On_ProgrammBeenden(object sender, CancelEventArgs e)
