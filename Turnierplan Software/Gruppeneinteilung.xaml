@@ -1,0 +1,30 @@
+﻿<UserControl x:Name="uc_gruppeneinteilung" x:Class="Turnierplan_Software.Gruppeneinteilung"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="535" d:DesignWidth="788">
+    <Grid>
+        <Grid x:Name="grid_kopfdaten" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="788">
+            <Label x:Name="label_turniername" Content="Label" HorizontalAlignment="Left" Margin="23,21,0,0" VerticalAlignment="Top" Width="152"/>
+            <Label x:Name="label_anzahlGruppen" Content="Anzahl Gruppen" HorizontalAlignment="Left" Margin="23,77,0,0" VerticalAlignment="Top" Width="152"/>
+            <ComboBox x:Name="Combobox_anzahlGruppen" HorizontalAlignment="Left" Margin="212,77,0,0" VerticalAlignment="Top" Width="65" IsEditable="True"/>
+            <Label x:Name="label_anzahlSpiele" Content="Anzahl Spiele" HorizontalAlignment="Left" Margin="402,77,0,0" VerticalAlignment="Top" Width="142"/>
+            <Label x:Name="label_zahl" Content="66" HorizontalAlignment="Left" Margin="544,77,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.477,0.874" Width="70"/>
+        </Grid>
+        <Grid x:Name="grid_gruppenboxen" HorizontalAlignment="Left" Height="415" Margin="0,120,0,0" VerticalAlignment="Top" Width="573">
+            <Button x:Name="btn_rechts" Content="&gt;" HorizontalAlignment="Left" Margin="300,395,0,0" VerticalAlignment="Top" Width="25" RenderTransformOrigin="2.36,0.7" Click="btn_rechts_Click"/>
+            <Button x:Name="btn_links" Content="&lt;" HorizontalAlignment="Left" Margin="250,395,0,0" Width="25" RenderTransformOrigin="2.36,0.7" Height="20" VerticalAlignment="Top" Click="btn_links_Click"/>
+        </Grid>
+        <Grid x:Name="grid_pool" HorizontalAlignment="Left" Height="415" Margin="573,120,0,0" VerticalAlignment="Top" Width="215">
+            <Label x:Name="label_pool" Content="Pool" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="67"/>
+            <Label x:Name="label_poolzahl" Content="66 / 88" HorizontalAlignment="Left" Margin="93,10,0,0" VerticalAlignment="Top" Width="62"/>
+            <ListBox x:Name="listbox_pool" HorizontalAlignment="Left" Height="253" Margin="20,55,0,0" VerticalAlignment="Top" Width="165"/>
+            <Button x:Name="btn_zuteilen" Content="Zuteilen" HorizontalAlignment="Left" Margin="20,326,0,0" VerticalAlignment="Top" Width="165" Click="btn_zuteilen_Click"/>
+            <Button x:Name="btn_ausleeren" Content="Ausleeren" HorizontalAlignment="Left" Margin="20,351,0,0" VerticalAlignment="Top" Width="165" Click="btn_ausleeren_Click"/>
+            <Button x:Name="btn_bestätigen" Content="Bestätigen" HorizontalAlignment="Left" Margin="20,376,0,0" VerticalAlignment="Top" Width="165" Click="btn_bestätigen_Click"/>
+        </Grid>
+
+    </Grid>
+</UserControl>
