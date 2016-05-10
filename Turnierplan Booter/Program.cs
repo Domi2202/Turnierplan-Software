@@ -22,7 +22,8 @@ namespace TurnierplanBooter
                 Datei_Interakteur.Load();
             }
             catch { }
-            new Hauptfenster_Interakteur();
+            new Hauptfenster_Interakteur(); 
+            // unnötiger Kommentar
         }
             
     }
