@@ -74,6 +74,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Gruppenbox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gruppeneinteilung.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LadeFenster.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -95,6 +103,12 @@
     </Compile>
     <Compile Include="FehlerFenster.xaml.cs">
       <DependentUpon>FehlerFenster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gruppenbox.xaml.cs">
+      <DependentUpon>Gruppenbox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gruppeneinteilung.xaml.cs">
+      <DependentUpon>Gruppeneinteilung.xaml</DependentUpon>
     </Compile>
     <Compile Include="LadeFenster.xaml.cs">
       <DependentUpon>LadeFenster.xaml</DependentUpon>
