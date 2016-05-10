@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="Turnierplan_Software.SpielpaarungsBaustein"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" d:DesignWidth="341.3" Height="105.048">
+    <Grid Margin="0,0,-0.4,9.4">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="185*"/>
+            <ColumnDefinition Width="156*"/>
+        </Grid.ColumnDefinitions>
+        <Rectangle x:Name="Gruppenfarbe" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="17" Stroke="Black" VerticalAlignment="Top" Width="342" Margin="0,0,-0.4,0" Grid.ColumnSpan="2"/>
+        <Rectangle x:Name="Spielfeld" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="78" Margin="0,17,0,0" Stroke="Black" VerticalAlignment="Top" Width="33"/>
+        <Label x:Name="label_SpielfeldNummer" Content="Label" HorizontalAlignment="Left" Margin="-2,46,0,0" VerticalAlignment="Top" Width="33"/>
+        <Rectangle x:Name="Uhrzeit" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="78" Margin="33,17,0,0" Stroke="Black" VerticalAlignment="Top" Width="41"/>
+        <Label x:Name="label_UhrzeitEintrag" Content="Label" HorizontalAlignment="Left" Margin="33,46,0,0" VerticalAlignment="Top"/>
+        <Rectangle x:Name="Mannschaft1" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="78" Margin="74,17,0,0" Stroke="Black" VerticalAlignment="Top" Width="95"/>
+        <Label x:Name="label_Mannschaftsname1" Content="Label" HorizontalAlignment="Left" Margin="79,46,0,0" VerticalAlignment="Top" Width="95"/>
+        <Rectangle x:Name="Ergebnis_1" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="27.5" Margin="169,17,0,0" Stroke="Black" VerticalAlignment="Top" Width="68" Grid.ColumnSpan="2"/>
+        <Rectangle x:Name="Ergebnis_2" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="30" Margin="169,44,0,0" Stroke="Black" VerticalAlignment="Top" Width="68" Grid.ColumnSpan="2" RenderTransformOrigin="0.546,0.076"/>
+        <Rectangle x:Name="Ergebnis_Penalty" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="24" Margin="169,71,0,0" Stroke="Black" VerticalAlignment="Top" Width="68" Grid.ColumnSpan="2"/>
+        <Rectangle x:Name="Mannschaft2" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="78" Margin="51.4,17,0,0" Stroke="Black" VerticalAlignment="Top" Width="105" Grid.Column="1"/>
+        <Label x:Name="label_ErgebnisHZ1" Content="Label" HorizontalAlignment="Left" Margin="169,17,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="63"/>
+        <Label x:Name="lbel_ErgebnisHZ2" Content="Label" HorizontalAlignment="Left" Margin="169,46,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="63"/>
+        <Label x:Name="label_ErgebnisPenalty" Content="Label" HorizontalAlignment="Left" Margin="169,72,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="68" Height="23"/>
+        <Label x:Name="label_Mannschaftsname2" Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="56.4,46,0,0" VerticalAlignment="Top" Width="100"/>
+
+    </Grid>
+</UserControl>
