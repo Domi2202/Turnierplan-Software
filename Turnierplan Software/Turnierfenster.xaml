@@ -7,7 +7,11 @@
       mc:Ignorable="d" 
       d:DesignHeight="500" Width="709.104">
     <Grid x:Name="grid_full" >
-        <Grid x:Name="grid_turnier" Margin="10,10,369,10" Background="#FFCDCBCB">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="607*"/>
+            <ColumnDefinition Width="102*"/>
+        </Grid.ColumnDefinitions>
+        <Grid x:Name="grid_turnier" Margin="10,10,266.977,10" Background="#FFCDCBCB">
             <Label x:Name="label_turniername" Content="Label" Margin="10,10,188,442" FontSize="13.333" FontWeight="Bold"/>
             <Label x:Name="label_mannschaften" Content="Mannschaften" Margin="10,38,208,416"/>
             <ListBox x:Name="listBox_mannschaften" Margin="10,69,10,0" Height="255" VerticalAlignment="Top"/>
@@ -15,6 +19,6 @@
             <Button x:Name="button_loeschen" Content="Löschen" Margin="10,359,204.8,0" RenderTransformOrigin="-0.016,0.405" Height="22" VerticalAlignment="Top" Click="button_loeschen_Click"/>
             <Button x:Name="button_generieren" Content="Generieren" Margin="10,0,204.8,10" RenderTransformOrigin="-0.016,0.405" Height="22" VerticalAlignment="Bottom"/>
         </Grid>
-        <Grid x:Name="grid_mannschaftsdetails" Margin="0,0,0,0" HorizontalAlignment="Right" Width="344"/>
+        <Grid x:Name="grid_mannschaftsdetails" Margin="0,0,-0.2,0" HorizontalAlignment="Right" Width="344" Grid.ColumnSpan="2"/>
     </Grid>
 </UserControl>

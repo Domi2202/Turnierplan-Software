@@ -108,6 +108,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="SpielpaarungsBaustein.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Turnierfenster.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -116,6 +120,9 @@
   <ItemGroup>
     <Compile Include="Mannschaftsseite.xaml.cs">
       <DependentUpon>Mannschaftsseite.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SpielpaarungsBaustein.xaml.cs">
+      <DependentUpon>SpielpaarungsBaustein.xaml</DependentUpon>
     </Compile>
     <Compile Include="Turnierfenster.xaml.cs">
       <DependentUpon>Turnierfenster.xaml</DependentUpon>
