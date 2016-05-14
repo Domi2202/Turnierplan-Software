@@ -31,9 +31,19 @@ namespace Turnierplan_Software
         public EventHandler Btn_Bestätigen { get; set; }
         public EventHandler Btn_Rechts { get; set; }
         public EventHandler Btn_Links { get; set; }
+        public Grid Grid_Gruppenboxen { get; set; }
 
 
+        private void XamlElemente_zuordnen()
+        {
+            Label_Turniername = label_turniername;
+            Anzahl_Gruppen = Combobox_anzahlGruppen;
+            Label_Zahl = label_zahl;
+            Label_Poolzahl = label_poolzahl;
+            Listbox_Pool = listbox_pool;
+            Grid_Gruppenboxen = grid_gruppenboxen;
 
+        }
         public Gruppeneinteilung()
         {
             InitializeComponent();

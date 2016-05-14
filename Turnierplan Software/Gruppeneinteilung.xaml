@@ -13,10 +13,7 @@
             <Label x:Name="label_anzahlSpiele" Content="Anzahl Spiele" HorizontalAlignment="Left" Margin="402,77,0,0" VerticalAlignment="Top" Width="142"/>
             <Label x:Name="label_zahl" Content="66" HorizontalAlignment="Left" Margin="544,77,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.477,0.874" Width="70"/>
         </Grid>
-        <Grid x:Name="grid_gruppenboxen" HorizontalAlignment="Left" Height="415" Margin="0,120,0,0" VerticalAlignment="Top" Width="573">
-            <Button x:Name="btn_rechts" Content="&gt;" HorizontalAlignment="Left" Margin="300,395,0,0" VerticalAlignment="Top" Width="25" RenderTransformOrigin="2.36,0.7" Click="btn_rechts_Click"/>
-            <Button x:Name="btn_links" Content="&lt;" HorizontalAlignment="Left" Margin="250,395,0,0" Width="25" RenderTransformOrigin="2.36,0.7" Height="20" VerticalAlignment="Top" Click="btn_links_Click"/>
-        </Grid>
+        <Grid x:Name="grid_gruppenboxen" HorizontalAlignment="Left" Height="395" Margin="0,120,0,0" VerticalAlignment="Top" Width="573"/>
         <Grid x:Name="grid_pool" HorizontalAlignment="Left" Height="415" Margin="573,120,0,0" VerticalAlignment="Top" Width="215">
             <Label x:Name="label_pool" Content="Pool" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="67"/>
             <Label x:Name="label_poolzahl" Content="66 / 88" HorizontalAlignment="Left" Margin="93,10,0,0" VerticalAlignment="Top" Width="62"/>
@@ -24,6 +21,10 @@
             <Button x:Name="btn_zuteilen" Content="Zuteilen" HorizontalAlignment="Left" Margin="20,326,0,0" VerticalAlignment="Top" Width="165" Click="btn_zuteilen_Click"/>
             <Button x:Name="btn_ausleeren" Content="Ausleeren" HorizontalAlignment="Left" Margin="20,351,0,0" VerticalAlignment="Top" Width="165" Click="btn_ausleeren_Click"/>
             <Button x:Name="btn_bestätigen" Content="Bestätigen" HorizontalAlignment="Left" Margin="20,376,0,0" VerticalAlignment="Top" Width="165" Click="btn_bestätigen_Click"/>
+        </Grid>
+        <Grid x:Name="grid_leiste" HorizontalAlignment="Left" Height="20" Margin="0,515,0,0" VerticalAlignment="Top" Width="573">
+            <Button x:Name="btn_rechts" Content="&gt;" HorizontalAlignment="Left" Margin="300,0,0,0" VerticalAlignment="Top" Width="25" Height="20" RenderTransformOrigin="2.36,0.7" Click="btn_rechts_Click"/>
+            <Button x:Name="btn_links" Content="&lt;" HorizontalAlignment="Left" Margin="250,0,0,0" Width="25" RenderTransformOrigin="2.36,0.7" Height="20" VerticalAlignment="Top" Click="btn_links_Click"/>
         </Grid>
 
     </Grid>
