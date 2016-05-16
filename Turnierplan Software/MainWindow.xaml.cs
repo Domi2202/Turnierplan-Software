@@ -27,7 +27,8 @@ namespace Turnierplan_Software
         public EventHandler Laden { get; set; }
         public CancelEventHandler ProgrammBeenden { get; set; }
         public Label Label_Veranstaltung { get; set; }
-        public Grid Grid_Informationen { get; set; }
+        public Grid Grid_Mannschaften { get; set; }
+        public Grid Grid_Gruppeneinteilung { get; set; }
         public ListBox Turnierliste { get; set; }
 
         public MainWindow()
@@ -40,7 +41,8 @@ namespace Turnierplan_Software
         {
             Label_Veranstaltung = label_veranstaltung;
             Turnierliste = listbox_turniere;
-            Grid_Informationen = grid_informationen;
+            Grid_Mannschaften = grid_mannschaften;
+            Grid_Gruppeneinteilung = grid_gruppeneinteilung;
         }
 
         private void button_turnier_hinzufuegen_Click(object sender, RoutedEventArgs e)

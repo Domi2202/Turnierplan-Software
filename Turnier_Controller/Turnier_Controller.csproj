@@ -56,6 +56,8 @@
     <Compile Include="DialogFensterTurnier_Interakteur.cs" />
     <Compile Include="DialogFenster_Interakteur.cs" />
     <Compile Include="Exceptions.cs" />
+    <Compile Include="Gruppenbox_Interakteur.cs" />
+    <Compile Include="Gruppeneinteilung_Interakteur.cs" />
     <Compile Include="Hauptfenster_Interakteur.cs" />
     <Compile Include="Mannschaftsseite_Interakteur.cs" />
     <Compile Include="Turnierfenster_Interakteur.cs" />

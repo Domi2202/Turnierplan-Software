@@ -33,6 +33,14 @@ namespace Turnierplan_Software
         public Gruppenbox()
         {
             InitializeComponent();
+            XamlElemente_zuordnen();
+        }
+
+        private void XamlElemente_zuordnen()
+        {
+            Gruppenname = label_gruppenName;
+            Anzahl = label_anzahl;
+            Mannschaften = listbox_mannschaften;
         }
 
         private void btn_leeren_Click(object sender, RoutedEventArgs e)

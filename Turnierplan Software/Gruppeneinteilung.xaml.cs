@@ -47,6 +47,7 @@ namespace Turnierplan_Software
         public Gruppeneinteilung()
         {
             InitializeComponent();
+            XamlElemente_zuordnen();
         }
 
         private void btn_zuteilen_Click(object sender, RoutedEventArgs e)

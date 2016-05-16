@@ -13,7 +13,16 @@
             <Label x:Name="label_anzahlSpiele" Content="Anzahl Spiele" HorizontalAlignment="Left" Margin="402,77,0,0" VerticalAlignment="Top" Width="142"/>
             <Label x:Name="label_zahl" Content="66" HorizontalAlignment="Left" Margin="544,77,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.477,0.874" Width="70"/>
         </Grid>
-        <Grid x:Name="grid_gruppenboxen" HorizontalAlignment="Left" Height="395" Margin="0,120,0,0" VerticalAlignment="Top" Width="573"/>
+        <Grid x:Name="grid_gruppenboxen" HorizontalAlignment="Left" Height="395" Margin="0,120,0,0" VerticalAlignment="Top" Width="573">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+        </Grid>
         <Grid x:Name="grid_pool" HorizontalAlignment="Left" Height="415" Margin="573,120,0,0" VerticalAlignment="Top" Width="215">
             <Label x:Name="label_pool" Content="Pool" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="67"/>
             <Label x:Name="label_poolzahl" Content="66 / 88" HorizontalAlignment="Left" Margin="93,10,0,0" VerticalAlignment="Top" Width="62"/>
