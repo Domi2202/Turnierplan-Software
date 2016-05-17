@@ -21,7 +21,7 @@
         <Rectangle x:Name="Ergebnis_Penalty" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="24" Margin="169,71,0,0" Stroke="Black" VerticalAlignment="Top" Width="68" Grid.ColumnSpan="2"/>
         <Rectangle x:Name="Mannschaft2" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="78" Margin="51.4,17,0,0" Stroke="Black" VerticalAlignment="Top" Width="105" Grid.Column="1"/>
         <Label x:Name="label_ErgebnisHZ1" Content="Label" HorizontalAlignment="Left" Margin="169,17,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="63"/>
-        <Label x:Name="lbel_ErgebnisHZ2" Content="Label" HorizontalAlignment="Left" Margin="169,46,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="63"/>
+        <Label x:Name="label_ErgebnisHZ2" Content="Label" HorizontalAlignment="Left" Margin="169,46,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="63"/>
         <Label x:Name="label_ErgebnisPenalty" Content="Label" HorizontalAlignment="Left" Margin="169,72,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="68" Height="23"/>
         <Label x:Name="label_Mannschaftsname2" Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="56.4,46,0,0" VerticalAlignment="Top" Width="100"/>
 

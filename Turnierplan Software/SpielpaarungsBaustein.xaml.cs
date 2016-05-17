@@ -28,10 +28,21 @@ namespace Turnierplan_Software
         public Label ErgebnisPenalty { get; set; }
         public Label Mannschaftsname2 { get; set; }
 
+        private void XamlElemente_zuordnen()
+        {
+            SpielfeldNummer = label_SpielfeldNummer;
+            UhrzeitEintrag = label_UhrzeitEintrag;
+            Mannschaftsname1 = label_Mannschaftsname1;
+            ErgebnisHZ1 = label_ErgebnisHZ1;
+            ErgebnisHZ2 = label_ErgebnisHZ2;
+            ErgebnisPenalty = label_ErgebnisPenalty;
+            Mannschaftsname2 = label_Mannschaftsname2;
+        }
 
         public SpielpaarungsBaustein()
         {
             InitializeComponent();
+            XamlElemente_zuordnen();
         }
     }
 }
