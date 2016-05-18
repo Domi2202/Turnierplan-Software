@@ -32,7 +32,12 @@ namespace Turnierplan_Software
         public EventHandler Btn_Rechts { get; set; }
         public EventHandler Btn_Links { get; set; }
         public Grid Grid_Gruppenboxen { get; set; }
-
+        public TextBox Gruppen_von { get; set; }
+        public TextBox Gruppen_bis { get; set; }
+        public Grid Warnung_teilnehmer_entfernt { get; set; }
+        public EventHandler Gruppengrenzen_aktualisiert { get; set; }
+        public EventHandler Gruppengroessen_anpassen { get; set; }
+        public EventHandler Warnung_verstecken { get; set; }
 
         private void XamlElemente_zuordnen()
         {
@@ -42,7 +47,9 @@ namespace Turnierplan_Software
             Label_Poolzahl = label_poolzahl;
             Listbox_Pool = listbox_pool;
             Grid_Gruppenboxen = grid_gruppenboxen;
-
+            Gruppen_von = textbox_gruppenVon;
+            Gruppen_bis = textbox_gruppenBis;
+            Warnung_teilnehmer_entfernt = grid_teilnehmerzahl_verringert;
         }
         public Gruppeneinteilung()
         {
@@ -87,6 +94,30 @@ namespace Turnierplan_Software
             if (Btn_Links != null)
             {
                 Btn_Links(this, null);
+            }
+        }
+
+        private void textbox_gruppenVon_ManipulationCompleted(object sender, TextChangedEventArgs e)
+        {
+            if (Gruppengrenzen_aktualisiert != null)
+            {
+                Gruppengrenzen_aktualisiert(this, null);
+            }
+        }
+
+        private void Hyperlink_Click(object sender, RoutedEventArgs e)
+        {
+            if (Gruppengroessen_anpassen != null)
+            {
+                Gruppengroessen_anpassen(this, null);
+            }
+        }
+
+        private void Hyperlink_ok_Click(object sender, RoutedEventArgs e)
+        {
+            if (Warnung_verstecken != null)
+            {
+                Warnung_verstecken(this, null);
             }
         }
     }

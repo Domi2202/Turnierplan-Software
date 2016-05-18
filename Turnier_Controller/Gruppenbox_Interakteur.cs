@@ -17,16 +17,29 @@ namespace Turnier_Controller
         private Grid _Darstellungsbereich;
         private Gruppe _Gruppe;
         private ListBox _Pool;
+        private List<Mannschaft> _Fehlende_Teilnehmer;
 
-        public int Teilnehmerzahl { get; set; }
+        public int Teilnehmerzahl
+        {
+            get { return _Gruppe.Anzahl_Teilnehmer; }
+            set { _Gruppe.Anzahl_Teilnehmer = value; }
+        }
+
+        public int Fehlende_Teilnehmerzahl
+        {
+            get { return _Fehlende_Teilnehmer.Count; }
+        }
+        public bool Teilnehmer_fehlt { get; private set; } = false;
+        public EventHandler Teilnehmer_verschoben { get; set; }
 
         public Gruppenbox_Interakteur(Grid darstellungsbereich, Gruppe gruppe, ListBox pool)
         {
             _Gruppenbox = new Gruppenbox();
+            _Fehlende_Teilnehmer = new List<Mannschaft>();
             _Gruppe = gruppe;
             _Pool = pool;
             _Darstellungsbereich = darstellungsbereich;
-            Ansicht_aktualisieren();
+            Komplette_Ansicht_laden();
             Set_Event_Listeners();
         }
 
@@ -36,14 +49,42 @@ namespace Turnier_Controller
             _Gruppenbox.Gruppenbox_Raus += Mannschaft_entfernen;
             _Gruppenbox.Gruppenbox_Leeren += Alle_Mannschaften_entfernen;
             _Gruppenbox.Gruppenbox_Füllen += Alle_Mannschaften_hinzufuegen;
+            Teilnehmer_verschoben += Teilnehmerzahl_setzen;
         }
 
-        private void Ansicht_aktualisieren()
+        private void Komplette_Ansicht_laden()
+        {
+            Gruppeninformation_anzeigen();
+            Alle_Mannschaften_aus_Pool_holen();
+            Fehlende_Teilnehmer_entfernen();
+            Teilnehmerliste_erneuern();
+            Teilnehmerzahl_setzen();
+        }
+
+        private void Gruppeninformation_anzeigen()
+        {
+            _Gruppenbox.Gruppenname.Content = _Gruppe.Name;
+        }
+
+        private void Teilnehmerzahl_setzen()
+        {
+            string max_teilnehmer = Convert.ToString(_Gruppe.Anzahl_Teilnehmer);
+            string akt_teilnehmer = Convert.ToString(_Gruppe.Teilnehmer.Count);
+            _Gruppenbox.Anzahl.Content = akt_teilnehmer + "/" + max_teilnehmer;
+        }
+
+        private void Teilnehmerzahl_setzen(object sender, EventArgs e)
+        {
+            Teilnehmerzahl_setzen();
+        }
+
+        private void Teilnehmerliste_erneuern()
         {
             _Gruppenbox.Mannschaften.Items.Clear();
-            _Gruppenbox.Gruppenname.Content = _Gruppe.Name;
-            _Gruppenbox.Anzahl.Content = Convert.ToString(_Gruppe.Anzahl_Teilnehmer);
-            Alle_Mannschaften_aus_Pool_holen();
+            foreach (Mannschaft mannschaft in _Gruppe.Teilnehmer)
+            {
+                _Gruppenbox.Mannschaften.Items.Add(new Listenelement<Mannschaft>(mannschaft, mannschaft.Name));
+            }
         }
 
         private void Alle_Mannschaften_aus_Pool_holen()
@@ -56,12 +97,15 @@ namespace Turnier_Controller
 
         private void Mannschaft_aus_Pool_holen(Mannschaft mannschaft)
         {
-            _Gruppenbox.Mannschaften.Items.Add(new Listenelement<Mannschaft>(mannschaft, mannschaft.Name));
             try
             {
                 _Pool.Items.Remove(Finde_in_Pool(mannschaft));
             }
-            catch (Exception e) { }
+            catch (Exception e)
+            {
+                Teilnehmer_fehlt = true;
+                _Fehlende_Teilnehmer.Add(mannschaft);
+            }
         }
 
         private object Finde_in_Pool(Mannschaft mannschaft)
@@ -77,6 +121,14 @@ namespace Turnier_Controller
             throw new Exception("Die Mannschaft ist nicht im Pool");
         }
 
+        private void Fehlende_Teilnehmer_entfernen()
+        {
+            foreach (Mannschaft teilnehmer in _Fehlende_Teilnehmer)
+            {
+                _Gruppe.Teilnehmer.Remove(teilnehmer);
+            }
+        }
+
         public void Box_platzieren(int col, int row)
         {
             _Darstellungsbereich.Children.Add(_Gruppenbox);
@@ -89,6 +141,11 @@ namespace Turnier_Controller
             if (mannschaft != null && _Gruppe.Teilnehmer.Count < _Gruppe.Anzahl_Teilnehmer)
             {
                 _Gruppe.Teilnehmer.Add(mannschaft);
+                Mannschaft_aus_Pool_holen(mannschaft);
+                if (Teilnehmer_verschoben != null)
+                {
+                    Teilnehmer_verschoben(this, null);
+                }
             }
         }
 
@@ -98,24 +155,31 @@ namespace Turnier_Controller
             if (mannschaft != null)
             { 
                 Mannschaft_Hinzufuegen(mannschaft.Details);
-                Ansicht_aktualisieren();
+                Teilnehmerliste_erneuern();
                 Datei_Interakteur.Save_Temp();
             }
         }
 
-        private void Alle_Mannschaften_hinzufuegen(object sender, EventArgs e)
+        internal void Alle_Mannschaften_hinzufuegen(object sender, EventArgs e)
         {
             int teilnehmer = _Gruppe.Teilnehmer.Count;
             int max_teilnehmer = _Gruppe.Anzahl_Teilnehmer;
             Random ran = new Random();
             for (int i = teilnehmer; i < max_teilnehmer; i++)
             {
-                int next = ran.Next(0, _Pool.Items.Count - 1);
-                Listenelement<Mannschaft> mannschaft = _Pool.Items.GetItemAt(next) as Listenelement<Mannschaft>;
-                Mannschaft_Hinzufuegen(mannschaft.Details);
-                Mannschaft_aus_Pool_holen(mannschaft.Details);
+                if (_Pool.Items.Count == 0)
+                {
+                    new FehlerFenster("Es sind nicht genügend Mannschaften im Pool!").Show();
+                    break;
+                }
+                else
+                {
+                    int next = ran.Next(0, _Pool.Items.Count - 1);
+                    Listenelement<Mannschaft> mannschaft = _Pool.Items.GetItemAt(next) as Listenelement<Mannschaft>;
+                    Mannschaft_Hinzufuegen(mannschaft.Details);
+                }
             }
-            Ansicht_aktualisieren();
+            Teilnehmerliste_erneuern();
             Datei_Interakteur.Save_Temp();
         }
 
@@ -125,25 +189,32 @@ namespace Turnier_Controller
             {
                 _Gruppe.Teilnehmer.Remove(mannschaft);
                 _Pool.Items.Add(new Listenelement<Mannschaft>(mannschaft, mannschaft.Name));
+                if (Teilnehmer_verschoben != null)
+                {
+                    Teilnehmer_verschoben(this, null);
+                }
             }
         }
 
         private void Mannschaft_entfernen(object sender, EventArgs e)
         {
             Listenelement<Mannschaft> mannschaft = _Gruppenbox.Mannschaften.SelectedItem as Listenelement<Mannschaft>;
-            Mannschaft_entfernen(mannschaft.Details);
-            Ansicht_aktualisieren();
-            Datei_Interakteur.Save_Temp();
+            if (mannschaft != null)
+            {
+                Mannschaft_entfernen(mannschaft.Details);
+                Teilnehmerliste_erneuern();
+                Datei_Interakteur.Save_Temp();
+            }
         }
 
-        private void Alle_Mannschaften_entfernen(object sender, EventArgs e)
+        internal void Alle_Mannschaften_entfernen(object sender, EventArgs e)
         {
             foreach (var item in _Gruppenbox.Mannschaften.Items)
             {
                 Listenelement<Mannschaft> list_mannschaft = item as Listenelement<Mannschaft>;
                 Mannschaft_entfernen(list_mannschaft.Details);
             }
-            Ansicht_aktualisieren();
+            Teilnehmerliste_erneuern();
             Datei_Interakteur.Save_Temp();
         }
 

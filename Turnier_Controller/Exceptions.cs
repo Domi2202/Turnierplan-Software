@@ -26,4 +26,5 @@ namespace Turnier_Controller
 
         public DuplicateIdentifierException(string message) : base(message) { }
     }
+
 }
