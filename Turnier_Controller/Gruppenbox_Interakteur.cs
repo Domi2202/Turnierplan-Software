@@ -8,6 +8,7 @@ using Turnierklassen;
 using System.Windows.Controls;
 using System.Windows;
 using System.Diagnostics;
+using System.Windows.Media;
 
 namespace Turnier_Controller
 {
@@ -22,7 +23,14 @@ namespace Turnier_Controller
         public int Teilnehmerzahl
         {
             get { return _Gruppe.Anzahl_Teilnehmer; }
-            set { _Gruppe.Anzahl_Teilnehmer = value; }
+            set
+            {
+                _Gruppe.Anzahl_Teilnehmer = value;
+                if(Gruppenlimit_veraendert != null)
+                {
+                    Gruppenlimit_veraendert(this, null);
+                }
+            }
         }
 
         public int Fehlende_Teilnehmerzahl
@@ -31,6 +39,7 @@ namespace Turnier_Controller
         }
         public bool Teilnehmer_fehlt { get; private set; } = false;
         public EventHandler Teilnehmer_verschoben { get; set; }
+        public EventHandler Gruppenlimit_veraendert { get; set; }
 
         public Gruppenbox_Interakteur(Grid darstellungsbereich, Gruppe gruppe, ListBox pool)
         {
@@ -58,7 +67,7 @@ namespace Turnier_Controller
             Alle_Mannschaften_aus_Pool_holen();
             Fehlende_Teilnehmer_entfernen();
             Teilnehmerliste_erneuern();
-            Teilnehmerzahl_setzen();
+            Teilnehmerzahl_anzeigen();
         }
 
         private void Gruppeninformation_anzeigen()
@@ -66,16 +75,22 @@ namespace Turnier_Controller
             _Gruppenbox.Gruppenname.Content = _Gruppe.Name;
         }
 
-        private void Teilnehmerzahl_setzen()
+        private void Teilnehmerzahl_anzeigen()
         {
+            _Gruppenbox.Anzahl.Foreground = Brushes.Black;
+            if (_Gruppe.Teilnehmer.Count > _Gruppe.Anzahl_Teilnehmer)
+            {
+                _Gruppenbox.Anzahl.Foreground = Brushes.Red;
+            }
             string max_teilnehmer = Convert.ToString(_Gruppe.Anzahl_Teilnehmer);
             string akt_teilnehmer = Convert.ToString(_Gruppe.Teilnehmer.Count);
             _Gruppenbox.Anzahl.Content = akt_teilnehmer + "/" + max_teilnehmer;
+            
         }
 
         private void Teilnehmerzahl_setzen(object sender, EventArgs e)
         {
-            Teilnehmerzahl_setzen();
+            Teilnehmerzahl_anzeigen();
         }
 
         private void Teilnehmerliste_erneuern()
@@ -169,7 +184,7 @@ namespace Turnier_Controller
             {
                 if (_Pool.Items.Count == 0)
                 {
-                    new FehlerFenster("Es sind nicht genügend Mannschaften im Pool!").Show();
+                    new FehlerFenster("Es sind nicht genügend Mannschaften im Pool um "+ _Gruppe.Name + " zu füllen!").Show();
                     break;
                 }
                 else
@@ -218,5 +233,24 @@ namespace Turnier_Controller
             Datei_Interakteur.Save_Temp();
         }
 
+        internal void Gruppengroesse_Auswahl_erstellen(int min, int max)
+        {
+            for (int i = min; i <= max; i++)
+            {
+                Button btn = new Button();
+                btn.Content = Convert.ToString(i);
+                btn.Click += Gruppengroesse_aendern;
+                _Gruppenbox.Gruppengroesse_auswahl.Children.Add(btn);
+            }
+        }
+
+        private void Gruppengroesse_aendern(object sender, RoutedEventArgs e)
+        {
+            Button clicked = sender as Button;
+            int neue_groesse = Convert.ToInt16(clicked.Content);
+            Teilnehmerzahl = neue_groesse;
+            Teilnehmerzahl_anzeigen();
+            Datei_Interakteur.Save_Temp();
+        }
     }
 }

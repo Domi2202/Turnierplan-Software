@@ -9,12 +9,6 @@
             <Label x:Name="label_turniername" Content="Label" Margin="10,21,10,0" VerticalAlignment="Top" FontWeight="Bold"/>
             <Grid x:Name="grid_teilnehmerzahl_verringert" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="500" Margin="150,45,0,0" Visibility="Hidden">
                 <Label  Content="Gruppenteilnehmer und Poolgröße stimmen nicht überein!" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="331" Foreground="DarkRed" FontStyle="Italic" Visibility="Visible"/>
-                <TextBlock Margin="350,5,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="49">
-                    <Hyperlink Foreground="DarkRed" FontStyle="Italic" Click="Hyperlink_Click">Beheben</Hyperlink>
-                </TextBlock>
-                <TextBlock Margin="320,5,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="20">
-                    <Hyperlink Foreground="DarkRed" FontStyle="Italic" Click="Hyperlink_ok_Click">Ok</Hyperlink>
-                </TextBlock>
             </Grid>
             <Label x:Name="label_anzahlGruppen" Content="Gruppenmenge" HorizontalAlignment="Left" Margin="10,77,0,0" VerticalAlignment="Top" Width="100"/>
             <ComboBox x:Name="Combobox_anzahlGruppen" HorizontalAlignment="Left" Margin="130,77,0,0" VerticalAlignment="Top" Width="65"/>

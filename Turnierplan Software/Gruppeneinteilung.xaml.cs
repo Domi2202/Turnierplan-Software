@@ -36,8 +36,6 @@ namespace Turnierplan_Software
         public TextBox Gruppen_bis { get; set; }
         public Grid Warnung_teilnehmer_entfernt { get; set; }
         public EventHandler Gruppengrenzen_aktualisiert { get; set; }
-        public EventHandler Gruppengroessen_anpassen { get; set; }
-        public EventHandler Warnung_verstecken { get; set; }
 
         private void XamlElemente_zuordnen()
         {
@@ -105,20 +103,6 @@ namespace Turnierplan_Software
             }
         }
 
-        private void Hyperlink_Click(object sender, RoutedEventArgs e)
-        {
-            if (Gruppengroessen_anpassen != null)
-            {
-                Gruppengroessen_anpassen(this, null);
-            }
-        }
 
-        private void Hyperlink_ok_Click(object sender, RoutedEventArgs e)
-        {
-            if (Warnung_verstecken != null)
-            {
-                Warnung_verstecken(this, null);
-            }
-        }
     }
 }

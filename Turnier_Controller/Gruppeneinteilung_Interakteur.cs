@@ -36,8 +36,6 @@ namespace Turnier_Controller
             _Gruppenfenster.Btn_Zuteilen += Alle_Gruppen_fuellen;
             _Gruppenfenster.Btn_Ausleeren += Alle_Gruppen_leeren;
             _Gruppenfenster.Gruppengrenzen_aktualisiert += Gruppenrahmen_ersetzen;
-            _Gruppenfenster.Gruppengroessen_anpassen += Gruppengroessen_anpassen;
-            _Gruppenfenster.Warnung_verstecken += Warnung_verstecken;
         }
 
         private void Darstellungsbereich_vorbereiten()
@@ -61,6 +59,11 @@ namespace Turnier_Controller
         }
 
         private void Ansicht_aktualisieren(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            Ansicht_aktualisieren();
+        }
+
+        private void Ansicht_aktualisieren(object sender, EventArgs e)
         {
             Ansicht_aktualisieren();
         }
@@ -107,6 +110,8 @@ namespace Turnier_Controller
                 Gruppenbox_Interakteur grup_int = new Gruppenbox_Interakteur(_Gruppenfenster.Grid_Gruppenboxen, gruppe, _Gruppenfenster.Listbox_Pool);
                 _Gruppenboxen.Add(grup_int);
                 grup_int.Teilnehmer_verschoben += Poolzaehler_erneuern;
+                grup_int.Gruppenlimit_veraendert += Ansicht_aktualisieren;
+                grup_int.Gruppengroesse_Auswahl_erstellen(_Turnier.Gruppen_von_Teilnehmerzahl, _Turnier.Gruppen_bis_Teilnehmerzahl);
             }
         }
 
@@ -195,13 +200,25 @@ namespace Turnier_Controller
         {
             if (_Gruppenfenster.Anzahl_Gruppen.SelectedItem != null)
             {
-                if (_Turnier.Gruppen.Count != (int)_Gruppenfenster.Anzahl_Gruppen.SelectedItem)
+                int gruppen_akt = _Turnier.Gruppen.Count;
+                int gruppen_neu = (int)_Gruppenfenster.Anzahl_Gruppen.SelectedItem;
+
+                if (gruppen_akt < gruppen_neu)
                 {
-                    _Turnier.Gruppen.Clear();
-                    for (int i = 1; i <= (int)_Gruppenfenster.Anzahl_Gruppen.SelectedItem; i++)
+                    for (int i = gruppen_akt + 1; i <= gruppen_neu; i++)
                     {
                         Gruppe neue_gruppe = new Gruppe("Gruppe " + i);
                         _Turnier.Gruppen.Add(neue_gruppe);
+                    }
+                    Gruppenteilnehmerzahlen_setzen();
+                    Ansicht_aktualisieren();
+                    Datei_Interakteur.Save_Temp();
+                }
+                if (gruppen_akt > gruppen_neu)
+                {
+                    for (int i = gruppen_akt - 1; i >= gruppen_neu; i--)
+                    {
+                        _Turnier.Gruppen.RemoveAt(i);
                     }
                     Gruppenteilnehmerzahlen_setzen();
                     Ansicht_aktualisieren();

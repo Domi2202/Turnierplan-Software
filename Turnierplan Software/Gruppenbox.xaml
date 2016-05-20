@@ -10,11 +10,15 @@
         <ListBox x:Name="listbox_mannschaften" HorizontalAlignment="Left" Height="118" Margin="10,43,0,0"  VerticalAlignment="Top" Width="265"/>
         <Label x:Name="label_gruppenName" Content="Gruppe A" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="111"/>
         <Label x:Name="label_mannschaften" Content="Mannschaften :" HorizontalAlignment="Left" Margin="126,10,0,0" VerticalAlignment="Top" Width="91"/>
-        <Label x:Name="label_anzahl" Content="x/y" HorizontalAlignment="Left" Margin="222,10,0,0" VerticalAlignment="Top" Width="53"/>
+        <Label x:Name="label_anzahl" Content="x/y" HorizontalAlignment="Left" Margin="222,10,0,0" VerticalAlignment="Top" Width="30"/>
         <Button x:Name="btn_hinzufügen" Content="+" HorizontalAlignment="Left" Margin="143,166,0,0" VerticalAlignment="Top" Width="30" FontWeight="Bold" Height="20" Click="btn_hinzufügen_Click"/>
         <Button x:Name="btn_raus" Content="-" HorizontalAlignment="Left" Margin="108,166,0,0" VerticalAlignment="Top" Width="30" FontWeight="Bold" Height="20" Click="btn_raus_Click"/>
         <Button x:Name="btn_füllen" Content="Füllen" HorizontalAlignment="Left" Margin="200,166,0,0" VerticalAlignment="Top" Width="75" Height="20" Click="btn_füllen_Click"/>
         <Button x:Name="btn_leeren" Content="Leeren" HorizontalAlignment="Left" Margin="10,165,0,0" VerticalAlignment="Top" Width="75" Height="20" Click="btn_leeren_Click"/>
+        <Expander x:Name="expander" HorizontalAlignment="Left" Margin="252,13,0,0" VerticalAlignment="Top">
+            <StackPanel x:Name="panel_expand_gruppengroesse" >
+            </StackPanel>
+        </Expander>
 
     </Grid>
 </UserControl>

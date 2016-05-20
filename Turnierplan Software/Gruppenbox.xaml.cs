@@ -27,7 +27,7 @@ namespace Turnierplan_Software
         public EventHandler Gruppenbox_Raus { get; set; }
         public EventHandler Gruppenbox_Hinzufügen { get; set; }
         public EventHandler Gruppenbox_Füllen { get; set; }
-
+        public StackPanel Gruppengroesse_auswahl { get; set; }
 
 
         public Gruppenbox()
@@ -41,6 +41,7 @@ namespace Turnierplan_Software
             Gruppenname = label_gruppenName;
             Anzahl = label_anzahl;
             Mannschaften = listbox_mannschaften;
+            Gruppengroesse_auswahl = panel_expand_gruppengroesse;
         }
 
         private void btn_leeren_Click(object sender, RoutedEventArgs e)
