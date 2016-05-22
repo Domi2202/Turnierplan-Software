@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="Turnierplan_Software.Endrunde"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Turnierplan_Software"
+             mc:Ignorable="d" 
+             d:DesignHeight="535" d:DesignWidth="788">
+    <Grid>
+        <Grid Name="grid_grundgrid" HorizontalAlignment="Left" Height="535" VerticalAlignment="Top" Width="788">
+            <Grid   Name="grid_links" HorizontalAlignment="Left" Height="535" VerticalAlignment="Top" Width="200">
+                <Label x:Name="label_turniername" Content="Turniername" HorizontalAlignment="Left" Margin="22,10,0,0" VerticalAlignment="Top" Height="25" Width="130"/>
+                <Label x:Name="label_modus" Content="Modus" HorizontalAlignment="Left" Margin="22,41,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.145,1.385" Height="25" Width="130"/>
+                <RadioButton x:Name="radioButton_sechzehntel" Content="Ab Sechzehntelfinale" HorizontalAlignment="Left" Height="25" Margin="25,71,0,0" VerticalAlignment="Top" Width="130"/>
+                <RadioButton x:Name="radioButton_achtel" Content="Ab Achtelfinale" HorizontalAlignment="Left" Height="25" Margin="25,98,0,0" VerticalAlignment="Top" Width="130"/>
+                <RadioButton x:Name="radioButton_viertel" Content="Ab Viertelfinale" HorizontalAlignment="Left" Height="25" Margin="25,123,0,0" VerticalAlignment="Top" Width="130"/>
+                <RadioButton x:Name="radioButton_halb" Content="Ab Halbfinale" HorizontalAlignment="Left" Height="25" Margin="25,148,0,0" VerticalAlignment="Top" Width="130"/>
+                <RadioButton x:Name="radioButton_finale" Content="Ab Finale" HorizontalAlignment="Left" Height="25" Margin="25,173,0,0" VerticalAlignment="Top" Width="130"/>
+                <CheckBox x:Name="checkBox_3punkte" Content="Spiel um 3 Punkte" HorizontalAlignment="Left" Height="20" Margin="25,203,0,0" VerticalAlignment="Top" Width="130"/>
+                <Label x:Name="label_teilnehmer" Content="Teilnehmerzahl :" HorizontalAlignment="Left" Margin="25,228,0,0" VerticalAlignment="Top" Width="95"/>
+                <Label x:Name="label_teilnehmerzahl" Content="100" HorizontalAlignment="Left" Margin="120,228,0,0" VerticalAlignment="Top" Height="25" Width="35"/>
+                <ListBox x:Name="listBox_teilnehmer" HorizontalAlignment="Left" Height="266" Margin="10,259,0,0" VerticalAlignment="Top" Width="170"/>
+            </Grid>
+            <Grid Name="grid_teilnehmer" HorizontalAlignment="Left" Height="535" Margin="200,0,0,0" VerticalAlignment="Top" Width="588">
+                <!-- <Grid  Name="grid_sechzehntel" HorizontalAlignment="Left" Height="107" VerticalAlignment="Top" Width="588"/>
+                <Grid  Name="grid_achtel" HorizontalAlignment="Left" Height="107" VerticalAlignment="Top" Width="588" Margin="0,107,0,0"/>
+                <Grid  Name="grid_viertel" HorizontalAlignment="Left" Height="107" VerticalAlignment="Top" Width="588" Margin="0,214,0,0"/>
+                <Grid  Name="grid_halb" HorizontalAlignment="Left" Height="107" VerticalAlignment="Top" Width="588" Margin="0,321,0,0"/>
+                <Grid  Name="grid_finale" HorizontalAlignment="Left" Height="107" VerticalAlignment="Top" Width="588" Margin="0,428,0,0"/>-->
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+</UserControl>

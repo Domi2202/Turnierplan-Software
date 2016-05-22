@@ -70,6 +70,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Endrunde.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="FehlerFenster.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -92,6 +96,9 @@
     <Compile Include="DialogObjekte.cs" />
     <Compile Include="Dialog_Objektdetails.xaml.cs">
       <DependentUpon>Dialog_Objektdetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Endrunde.xaml.cs">
+      <DependentUpon>Endrunde.xaml</DependentUpon>
     </Compile>
     <Compile Include="FehlerFenster.xaml.cs">
       <DependentUpon>FehlerFenster.xaml</DependentUpon>
