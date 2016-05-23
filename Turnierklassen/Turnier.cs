@@ -22,8 +22,11 @@ namespace Turnierklassen
         {
             Mannschaften = new List<Mannschaft>();
             Gruppen = new List<Gruppe>();
+            Endrunde = new Endrunde();
             Gruppen_von_Teilnehmerzahl = 3;
             Gruppen_bis_Teilnehmerzahl = 5;
         }
+
+        
     }
 }

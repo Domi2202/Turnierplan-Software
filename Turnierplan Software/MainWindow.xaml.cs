@@ -29,6 +29,7 @@ namespace Turnierplan_Software
         public Label Label_Veranstaltung { get; set; }
         public Grid Grid_Mannschaften { get; set; }
         public Grid Grid_Gruppeneinteilung { get; set; }
+        public Grid Grid_Endrunde { get; set; }
         public ListBox Turnierliste { get; set; }
 
         public MainWindow()
@@ -43,6 +44,7 @@ namespace Turnierplan_Software
             Turnierliste = listbox_turniere;
             Grid_Mannschaften = grid_mannschaften;
             Grid_Gruppeneinteilung = grid_gruppeneinteilung;
+            Grid_Endrunde = grid_endrunde;
         }
 
         private void button_turnier_hinzufuegen_Click(object sender, RoutedEventArgs e)
