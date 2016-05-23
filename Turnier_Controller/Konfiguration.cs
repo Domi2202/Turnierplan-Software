@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.IO;
 
-namespace TurnierplanBooter
+namespace Turnier_Controller
 {
-    class Konfiguration
+    public static class Konfiguration
     {
-        public Einstellungen Einstellungen { get; set; }
-        public void Lese_Einstellungen()
+        public static Einstellungen Einstellungen { get; set; }
+        public static void Lese_Einstellungen()
         {
             if (File.Exists("config.txt") == false)
             {
@@ -22,9 +22,13 @@ namespace TurnierplanBooter
             string conf = File.ReadAllText("config.txt");
             Einstellungen = JsonConvert.DeserializeObject<Einstellungen>(conf);
         }
+        public static void Speichern()
+        {
+            File.WriteAllText("config.txt", JsonConvert.SerializeObject(Einstellungen));
+        }
     }
 
-    class Einstellungen
+    public class Einstellungen
     {
         public string Speicherordner { get; set; }
 

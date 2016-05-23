@@ -15,11 +15,15 @@ namespace Turnierklassen
         public List<Gruppe> Gruppen { get; set; }
         public Endrunde Endrunde { get; set; }
         public Endrunde Trostrunde { get; set; }
+        public int Gruppen_von_Teilnehmerzahl { get; set; }
+        public int Gruppen_bis_Teilnehmerzahl { get; set; }
 
         public Turnier()
         {
             Mannschaften = new List<Mannschaft>();
             Gruppen = new List<Gruppe>();
+            Gruppen_von_Teilnehmerzahl = 3;
+            Gruppen_bis_Teilnehmerzahl = 5;
         }
     }
 }

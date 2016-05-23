@@ -91,7 +91,8 @@ namespace Turnier_Controller
 
         private void Informationsgitter_bereinigen()
         {
-            _Hauptfenster.Grid_Informationen.Children.Clear();
+            _Hauptfenster.Grid_Mannschaften.Children.Clear();
+            _Hauptfenster.Grid_Gruppeneinteilung.Children.Clear();
         }
 
         #endregion Ansicht
@@ -185,7 +186,8 @@ namespace Turnier_Controller
             if (angeklickt != null)
             {
                 Informationsgitter_bereinigen();
-                new Turnierfenster_Interakteur(_Hauptfenster.Grid_Informationen, angeklickt.Details);
+                new Turnierfenster_Interakteur(_Hauptfenster.Grid_Mannschaften, angeklickt.Details);
+                new Gruppeneinteilung_Interakteur(_Hauptfenster.Grid_Gruppeneinteilung, angeklickt.Details);
             }
         }
 

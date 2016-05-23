@@ -13,9 +13,8 @@ namespace TurnierplanBooter
         [STAThread]
         static void Main(string[] args)
         {
-            Konfiguration konf = new Konfiguration();
-            konf.Lese_Einstellungen();
-            Datei_Interakteur.Folder = konf.Einstellungen.Speicherordner;
+            Konfiguration.Lese_Einstellungen();
+            Datei_Interakteur.Folder = Konfiguration.Einstellungen.Speicherordner;
             try
             {
                 Datei_Interakteur.File_Name = args[0];
