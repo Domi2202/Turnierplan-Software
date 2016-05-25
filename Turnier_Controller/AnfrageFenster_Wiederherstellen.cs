@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using Turnierklassen;
 using Turnierplan_Software;
 
 namespace Turnier_Controller

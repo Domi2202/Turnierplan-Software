@@ -189,6 +189,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Kandidat_DialogBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Teilnahmeregel_Dialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Turnierfenster.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -200,6 +208,12 @@
     </Compile>
     <Compile Include="SpielpaarungsBaustein.xaml.cs">
       <DependentUpon>SpielpaarungsBaustein.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Kandidat_DialogBox.xaml.cs">
+      <DependentUpon>Kandidat_DialogBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Teilnahmeregel_Dialog.xaml.cs">
+      <DependentUpon>Teilnahmeregel_Dialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Turnierfenster.xaml.cs">
       <DependentUpon>Turnierfenster.xaml</DependentUpon>

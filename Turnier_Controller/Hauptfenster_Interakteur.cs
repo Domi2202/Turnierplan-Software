@@ -16,8 +16,15 @@ namespace Turnier_Controller
         private Application _Programm;
         private MainWindow _Hauptfenster;
 
-        public Hauptfenster_Interakteur()
+        public Hauptfenster_Interakteur(string[] args)
         {
+            Datei_Interakteur.Folder = Konfiguration.Einstellungen.Speicherordner;
+            try
+            {
+                Datei_Interakteur.File_Name = args[0];
+                Datei_Interakteur.Load();
+            }
+            catch { }
             _Programm = new Application();
             _Hauptfenster = new MainWindow();
             Set_Event_Listeners();

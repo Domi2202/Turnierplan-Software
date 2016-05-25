@@ -8,7 +8,7 @@ using Turnierklassen;
 using System.IO;
 using System.Diagnostics;
 
-namespace Turnier_Controller
+namespace Turnierklassen
 {
     public static class Datei_Interakteur
     {

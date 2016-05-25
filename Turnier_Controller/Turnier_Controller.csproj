@@ -87,7 +87,6 @@
   <ItemGroup>
     <Compile Include="AnfrageFenster_Speichern.cs" />
     <Compile Include="AnfrageFenster_Wiederherstellen.cs" />
-    <Compile Include="Datei_Interakteur.cs" />
     <Compile Include="DialogFensterMannschaft_Interakteur.cs" />
     <Compile Include="DialogFensterTurnier_Interakteur.cs" />
     <Compile Include="DialogFenster_Interakteur.cs" />
@@ -98,6 +97,7 @@
     <Compile Include="Hauptfenster_Interakteur.cs" />
     <Compile Include="Konfiguration.cs" />
     <Compile Include="Mannschaftsseite_Interakteur.cs" />
+    <Compile Include="Teilnahmeregel_Interakteur.cs" />
     <Compile Include="Turnierfenster_Interakteur.cs" />
     <Compile Include="Veranstaltungsmanager_Interakteur.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

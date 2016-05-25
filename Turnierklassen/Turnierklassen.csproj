@@ -78,10 +78,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Datei_Interakteur.cs" />
     <Compile Include="Endrunde.cs" />
     <Compile Include="Gruppe.cs" />
     <Compile Include="Mannschaft.cs" />
     <Compile Include="Paarung.cs" />
+    <Compile Include="ParticipationRule.cs" />
     <Compile Include="Turnier.cs" />
     <Compile Include="Veranstaltung.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

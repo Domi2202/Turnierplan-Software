@@ -21,12 +21,13 @@ namespace Turnierplan_Software
     public partial class Endrundeneinteilung : UserControl
     {
         public Label label_Turniername { get; set; }
-        public Label label_Teilnehmerzahl { get; set; }
         public ComboBox Modus_Auswahl { get; set; }
         public CheckBox checkbox_Punkte { get; set; }
         public ListBox listbox_Teilnehmer { get; set; }
         public Grid grid_Teilnehmer { get; set; }
-
+        public EventHandler AddParticipationRule { get; set; }
+        public EventHandler DeleteParticipationRule { get; set; }
+        public EventHandler TeilnahmeregelAnzeigen { get; set; }
 
         public Endrundeneinteilung()
         {
@@ -39,11 +40,34 @@ namespace Turnierplan_Software
         private void XamlElemente_zuordnen()
         {
             label_Turniername = label_turniername;
-            label_Teilnehmerzahl = label_teilnehmerzahl;
             checkbox_Punkte = checkBox_3punkte;
             listbox_Teilnehmer = listBox_teilnehmer;
             grid_Teilnehmer = grid_teilnehmer;
             Modus_Auswahl = combobox_modus;
+        }
+
+        private void btn_rule_add_Click(object sender, RoutedEventArgs e)
+        {
+            if (AddParticipationRule != null)
+            {
+                AddParticipationRule(this, null);
+            }
+        }
+
+        private void btn_rule_delete_Click(object sender, RoutedEventArgs e)
+        {
+            if (DeleteParticipationRule != null)
+            {
+                DeleteParticipationRule(this, null);
+            }
+        }
+
+        private void btn_rule_info_Click(object sender, RoutedEventArgs e)
+        {
+            if (TeilnahmeregelAnzeigen != null)
+            {
+                TeilnahmeregelAnzeigen(this, null);
+            }
         }
     }
 }

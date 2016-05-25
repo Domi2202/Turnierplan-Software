@@ -22,46 +22,60 @@ namespace Turnier_Controller
             _Turnier = turnier;
             _Darstellungsbereich = darstellungsbereich;
             _Fenster = new Endrundeneinteilung();
-            _Fenster.DataContext = _Turnier.Endrunde;
             Ansicht_Laden();
             Informationen_Laden();
-            EventHandler_setzen();
+            SetEventListeners();
         }
 
         private void Ansicht_Laden()
         {
             _Darstellungsbereich.Children.Add(_Fenster);
-            Modi_Auswahl_füllen();
-        }
-
-        private void Modi_Auswahl_füllen()
-        {
-            _Fenster.Modus_Auswahl.ItemsSource = Enum.GetValues(typeof(Modus)).Cast<Modus>();
         }
 
         private void Informationen_Laden()
         {
-            _Fenster.Modus_Auswahl.SelectedIndex = _Fenster.Modus_Auswahl.Items.IndexOf(_Turnier.Endrunde.Modus);
-            _Fenster.label_Turniername.Content = _Turnier.Name;
+            _Fenster.DataContext = _Turnier.Endrunde;
+            _Fenster.label_Turniername.DataContext = _Turnier;
         }
 
-        private void EventHandler_setzen()
+        private void SetEventListeners()
         {
-            _Fenster.Modus_Auswahl.SelectionChanged += Modus_setzen;
+            _Fenster.AddParticipationRule += AddParticipationRule;
+            _Fenster.DeleteParticipationRule += DeleteParticipationRule;
+            _Fenster.TeilnahmeregelAnzeigen += TeilnahmeregelAnzeigen;
         }
 
-        private void Modus_setzen(object sender, SelectionChangedEventArgs e)
+        #region EventHandler
+
+        private void DeleteParticipationRule(object sender, EventArgs e)
         {
-            if (_Fenster.Modus_Auswahl.SelectedItem != null)
+            if (_Fenster.listbox_Teilnehmer.SelectedItem != null)
             {
-                Modus mod_neu = (Modus)_Fenster.Modus_Auswahl.SelectedItem;
-                Modus mod_alt = _Turnier.Endrunde.Modus;
-                if (mod_neu != mod_alt)
-                {
-                    _Turnier.Endrunde.Modus = mod_neu;
-                    Datei_Interakteur.Save_Temp();
-                }
+                _Turnier.Endrunde.DeleteParticipationRule(_Fenster.listbox_Teilnehmer.SelectedIndex);
             }
         }
+
+        private void AddParticipationRule(object sender, EventArgs e)
+        {
+            new Teilnahmeregel_Interakteur(_Turnier);
+        }
+
+        private void TeilnahmeregelAnzeigen(object sender, EventArgs e)
+        {
+            if (_Fenster.listbox_Teilnehmer.SelectedItem != null)
+            {
+                ParticipationRule regel = _Turnier.Endrunde.Teilnahmeregeln.ElementAt(_Fenster.listbox_Teilnehmer.SelectedIndex);
+                string info = string.Empty;
+                foreach (ParticipationRule.Kandidat kandidat in regel.CriteriaList)
+                {
+                    info += kandidat.Rank + ". Gruppe " + kandidat.Group + "\noder\n";
+                }
+                info = info.TrimEnd('r', 'e', 'd', 'o', '\n');
+                new FehlerFenster(info).Show();
+            }          
+        }
+
+
+        #endregion
     }
 }

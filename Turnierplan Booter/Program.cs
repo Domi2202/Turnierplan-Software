@@ -14,15 +14,7 @@ namespace TurnierplanBooter
         static void Main(string[] args)
         {
             Konfiguration.Lese_Einstellungen();
-            Datei_Interakteur.Folder = Konfiguration.Einstellungen.Speicherordner;
-            try
-            {
-                Datei_Interakteur.File_Name = args[0];
-                Datei_Interakteur.Load();
-            }
-            catch { }
-            new Hauptfenster_Interakteur(); 
-            // unnötiger Kommentar
+            new Hauptfenster_Interakteur(args); 
         }
             
     }
