@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Turnierklassen
 {
-    public class ParticipationRule
+    public class Teilnahmerregel
     {
         public struct Kandidat
         {

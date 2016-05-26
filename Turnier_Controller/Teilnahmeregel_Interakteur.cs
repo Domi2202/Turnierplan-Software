@@ -17,6 +17,8 @@ namespace Turnier_Controller
         private List<Kandidat_DialogBox_Interakteur> _Kandidaten;
         private Turnier _Turnier;
 
+        public EventHandler RegelListenUpdate { get; set; }
+
         public Teilnahmeregel_Interakteur(Turnier turnier)
         {
             _Dialog = new Teilnahmeregel_Dialog();
@@ -71,7 +73,7 @@ namespace Turnier_Controller
 
         private void RegelSpeichern(object sender, EventArgs e)
         {
-            ParticipationRule regel = new ParticipationRule();
+            Teilnahmerregel regel = new Teilnahmerregel();
             foreach (Kandidat_DialogBox_Interakteur kandidat in _Kandidaten)
             {
                 regel.AddCriteria(kandidat.Gruppe, kandidat.Platzierung);
@@ -81,6 +83,10 @@ namespace Turnier_Controller
                 regel.Name = _Dialog.NameDerRegel.Text;
             }
             _Turnier.Endrunde.AddNewParticipationRule(regel);
+            if (RegelListenUpdate != null)
+            {
+                RegelListenUpdate(this, null);
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

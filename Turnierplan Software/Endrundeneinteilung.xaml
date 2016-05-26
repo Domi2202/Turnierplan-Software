@@ -8,23 +8,35 @@
              d:DesignHeight="535" d:DesignWidth="788">
     <Grid>
         <Grid Name="grid_grundgrid" HorizontalAlignment="Left" Width="788" Margin="0,0,0,0.2">
-            <Grid   Name="grid_links" HorizontalAlignment="Left" Width="242">
+            <Grid   Name="grid_links" HorizontalAlignment="Left" Width="242" Margin="0,0,0,150">
                 <Label x:Name="label_turniername" Content="{Binding Name}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="25" Width="130" FontWeight="Bold"/>
                 <Label x:Name="label_modus" Content="Beginnen mit" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.145,1.385" Height="30" Width="130"/>
                 <ComboBox x:Name="combobox_modus" Height="25" Margin="10,71,10,0" VerticalAlignment="Top" ItemsSource="{Binding Moegliche_Modi}" SelectedItem="{Binding Modus}"/>
-                <CheckBox x:Name="checkBox_3punkte" Content="Spiel um Platz 3" HorizontalAlignment="Left" Height="20" Margin="10,110,0,0" VerticalAlignment="Top" Width="130" IsChecked="{Binding Mit_kleinem_Finale}" IsEnabled="{Binding Kleines_Finale_moeglich}"/>
+                <CheckBox x:Name="checkBox_3punkte" Content="Spiel um Platz 3" HorizontalAlignment="Left" Height="20" Margin="10,110,0,0" VerticalAlignment="Top" Width="130" IsChecked="{Binding Kleines_Finale}" IsEnabled="{Binding Kleines_Finale_moeglich}"/>
                 <Label Content="Spiele :" HorizontalAlignment="Left" Margin="10,150,0,0" VerticalAlignment="Top" Width="95"/>
                 <Label x:Name="label_spielezahl" Content="{Binding Anzahl_Spiele}" HorizontalAlignment="Left" Margin="165,150,0,0" VerticalAlignment="Top" Height="25" Width="35"/>
                 <Label x:Name="label_teilnehmer" Content="Teilnehmer :" HorizontalAlignment="Left" Margin="10,180,0,0" VerticalAlignment="Top" Width="95"/>
-                <Label x:Name="label_teilnehmerzahl_max" Content="{Binding Anzahl_Teilnehmer}" HorizontalAlignment="Left" Margin="165,180,0,0" VerticalAlignment="Top" Height="25" Width="35"/>
-                <Label Content="von" Margin="135,180,0,0" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left" Width="30"/>
-                <Label x:Name="label_teilnehmerzahl_akt" Content="{Binding PaticipantsProvided}" HorizontalAlignment="Left" Margin="100,180,0,0" VerticalAlignment="Top" Height="25" Width="35"/>
+                <Label x:Name="label_teilnehmerzahl_max" Content="{Binding Anzahl_Teilnehmer}" HorizontalAlignment="Left" Margin="165,180,0,0" VerticalAlignment="Top" Height="25" Width="35" Foreground="{Binding Warnfarbe}"/>
+                <Label Content="von" Margin="135,180,0,0" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left" Width="30" Foreground="{Binding Warnfarbe}"/>
+                <Label x:Name="label_teilnehmerzahl_akt" Content="{Binding PaticipantsProvided}" HorizontalAlignment="Left" Margin="100,180,0,0" VerticalAlignment="Top" Height="25" Width="35" Foreground="{Binding Warnfarbe}"/>
                 <ListBox x:Name="listBox_teilnehmer" Margin="10,220,10,120" ItemsSource="{Binding ParticipationRules}"/>
                 <Button x:Name="btn_rule_add" Margin="10,0,10,80" VerticalAlignment="Bottom" Content="Teilnahmeregel hinzufügen" Click="btn_rule_add_Click"/>
                 <Button x:Name="btn_rule_info" Margin="10,0,10,50" VerticalAlignment="Bottom" Content="Teilnahmeregel anzeigen" Click="btn_rule_info_Click"/>
                 <Button x:Name="btn_rule_delete" Margin="10,0,10,20" VerticalAlignment="Bottom" Content="Teilnahmeregel löschen" Click="btn_rule_delete_Click"/>
             </Grid>
-            <Grid Name="grid_teilnehmer" HorizontalAlignment="Left" Height="535" Margin="242,0,0,0" VerticalAlignment="Top" Width="546">
+            <Grid x:Name="grid_trostrunde" VerticalAlignment="Bottom" Height="150" Margin="0,0,0,0">
+                <Separator Height="5" Margin="0,0,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="label_trostrunde" Content="Trostrunde" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                <Label x:Name="label_trostrunde_teilnehmer" Content="Teilnehmer:" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="label_trostrunde_teilnehmer_count" Content="{Binding Trostrunde_Teilnehmerzahl}" HorizontalAlignment="Left" Margin="150,30,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="label_trostrunde_spiele" Content="Spiele:" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="label_trostrunde_spiele_count" Content="{Binding Trostrunde_Spielezahl}" HorizontalAlignment="Left" Margin="150,50,0,0" VerticalAlignment="Top"/>
+                <ComboBox x:Name="comboBox_trostrunde_modi" Margin="10,120,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="220" ItemsSource="{Binding Moegliche_Modi}" SelectedItem="{Binding Trostrunde_Modus}" IsEnabled="{Binding Trostrunde_mit_Playoffs}"/>
+                <CheckBox x:Name="checkBox_trostrunde_gruppe" Content="Jeder gegen jeden" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top" IsChecked="{Binding Trostrunde_JederGegenJeden}"/>
+                <CheckBox x:Name="checkBox_trostrunde_playoff" Content="Playoffs" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" IsChecked="{Binding Trostrunde_mit_Playoffs}"/>
+
+            </Grid>
+            <Grid Name="grid_teilnehmer" Margin="242,0,0,150">
                 <!-- <Grid  Name="grid_sechzehntel" HorizontalAlignment="Left" Height="107" VerticalAlignment="Top" Width="588"/>
                 <Grid  Name="grid_achtel" HorizontalAlignment="Left" Height="107" VerticalAlignment="Top" Width="588" Margin="0,107,0,0"/>
                 <Grid  Name="grid_viertel" HorizontalAlignment="Left" Height="107" VerticalAlignment="Top" Width="588" Margin="0,214,0,0"/>

@@ -13,10 +13,29 @@ namespace Turnierklassen
         public List<Mannschaft> Teilnehmer { get; set; }
         public List<Paarung> Paarungen { get; set; }
 
+        public Gruppe() { }
+
         public Gruppe(string name)
         {
             Name = name;
             Teilnehmer = new List<Mannschaft>();
+        }
+
+        public Gruppe(string name, int teilnehmer)
+        {
+            Name = name;
+            Teilnehmer = new List<Mannschaft>();
+            Anzahl_Teilnehmer = teilnehmer;
+        }
+
+        public int AnzahlSpieleBerechnen()
+        {
+            int spiele = 0;
+            for (int i = Anzahl_Teilnehmer - 1; i > 0; i --)
+            {
+                spiele += i;
+            }
+            return spiele;
         }
     }
 }
