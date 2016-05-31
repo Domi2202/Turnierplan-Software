@@ -30,6 +30,7 @@ namespace Turnierplan_Software
         public Grid Grid_Mannschaften { get; set; }
         public Grid Grid_Gruppeneinteilung { get; set; }
         public Grid Grid_Endrunde { get; set; }
+        public Grid Grid_Uebersicht { get; set; }
         public ListBox Turnierliste { get; set; }
 
         public MainWindow()
@@ -45,6 +46,8 @@ namespace Turnierplan_Software
             Grid_Mannschaften = grid_mannschaften;
             Grid_Gruppeneinteilung = grid_gruppeneinteilung;
             Grid_Endrunde = grid_endrunde;
+            Grid_Uebersicht = grid_uebersicht;
+
         }
 
         private void button_turnier_hinzufuegen_Click(object sender, RoutedEventArgs e)

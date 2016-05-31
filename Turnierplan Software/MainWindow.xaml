@@ -23,6 +23,9 @@
             <TabItem Header="Endrunde">
                 <Grid x:Name="grid_endrunde" Background="#FFE5E5E5"/>
             </TabItem>
+            <TabItem Header="Übersicht">
+                <Grid x:Name="grid_uebersicht" Background="#FFE5E5E5"/>
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>
