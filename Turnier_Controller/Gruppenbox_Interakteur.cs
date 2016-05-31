@@ -37,12 +37,13 @@ namespace Turnier_Controller
         {
             get { return _Fehlende_Teilnehmer.Count; }
         }
-        public bool Teilnehmer_fehlt { get; private set; } = false;
+        public bool Teilnehmer_fehlt { get; private set; }
         public EventHandler Teilnehmer_verschoben { get; set; }
         public EventHandler Gruppenlimit_veraendert { get; set; }
 
         public Gruppenbox_Interakteur(Grid darstellungsbereich, Gruppe gruppe, ListBox pool)
         {
+            Teilnehmer_fehlt = false;
             _Gruppenbox = new Gruppenbox();
             _Fehlende_Teilnehmer = new List<Mannschaft>();
             _Gruppe = gruppe;

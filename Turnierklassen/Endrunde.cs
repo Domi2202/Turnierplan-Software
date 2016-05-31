@@ -42,6 +42,7 @@ namespace Turnierklassen
         public Endrunde()
         {
             Teilnahmeregeln = new List<Teilnahmerregel>();
+            Modus = Modus.Keiner;
         }
 
         #region privateFunctions
@@ -61,7 +62,7 @@ namespace Turnierklassen
         public void AddNewParticipationRule(Teilnahmerregel rule)
         {
             Teilnahmerregel newRule = new Teilnahmerregel();
-            foreach (Teilnahmerregel.Kandidat kandidat in rule.CriteriaList)
+            foreach (Kandidat kandidat in rule.CriteriaList)
             {
                 newRule.AddCriteria(kandidat.Group, kandidat.Rank);
             }
@@ -86,5 +87,5 @@ namespace Turnierklassen
         public List<Paarung> Paarungen { get; set; }
     }
 
-    public enum Modus { Finale = 2, Halbfinale = 4, Viertelfinale = 8, Achtelfinale = 16, Sechzehntelfinale = 32 }
+    public enum Modus { Keiner = 0, Finale = 2, Halbfinale = 4, Viertelfinale = 8, Achtelfinale = 16, Sechzehntelfinale = 32 }
 }

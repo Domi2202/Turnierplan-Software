@@ -8,24 +8,33 @@ namespace Turnierklassen
 {
     public class Teilnahmerregel
     {
-        public struct Kandidat
-        {
-            public int Group { get; set; }
-            public int Rank { get; set; }
 
-            public Kandidat(int group, int rank)
-            {
-                Group = group;
-                Rank = rank;
-            }
-        }
-        public List<Kandidat> CriteriaList { get; set; } = new List<Kandidat>();
+        public List<Kandidat> CriteriaList { get; set; }
         public string Name { get; set; }
+
+        public Teilnahmerregel() 
+        {
+            CriteriaList = new List<Kandidat>();
+        }
 
         public void AddCriteria(int group, int rank)
         {
             CriteriaList.Add(new Kandidat(group, rank));
             Name = rank + ". Gruppe " + group;
+        }
+    }
+
+    public class Kandidat
+    {
+        public int Group { get; set; }
+        public int Rank { get; set; }
+
+        public Kandidat() { }
+
+        public Kandidat(int group, int rank)
+        {
+            Group = group;
+            Rank = rank;
         }
     }
 }

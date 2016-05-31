@@ -264,7 +264,7 @@ namespace Turnier_Controller
             {
                 Teilnahmerregel regel = _Turnier.Endrunde.Teilnahmeregeln.ElementAt(_Fenster.listbox_Teilnehmer.SelectedIndex);
                 string info = string.Empty;
-                foreach (Teilnahmerregel.Kandidat kandidat in regel.CriteriaList)
+                foreach (Kandidat kandidat in regel.CriteriaList)
                 {
                     info += kandidat.Rank + ". Gruppe " + kandidat.Group + "\noder\n";
                 }
