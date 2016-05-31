@@ -39,11 +39,14 @@ namespace Turnierklassen
 
         public static void Save_Temp()
         {
-            string json_serialized = JsonConvert.SerializeObject(Geladene_Veranstaltung);
-            File.WriteAllText("tps.temp", json_serialized);
-            if(_All_Saved == true)
+            if (Geladene_Veranstaltung != null)
             {
-                Speicherbenachrichtigung_geben();
+                string json_serialized = JsonConvert.SerializeObject(Geladene_Veranstaltung);
+                File.WriteAllText("tps.temp", json_serialized);
+                if (_All_Saved == true)
+                {
+                    Speicherbenachrichtigung_geben();
+                }
             }
         }
 

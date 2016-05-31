@@ -193,6 +193,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Spielpaarungsbaustein_Minified.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Teilnahmeregel_Dialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -211,6 +215,9 @@
     </Compile>
     <Compile Include="Kandidat_DialogBox.xaml.cs">
       <DependentUpon>Kandidat_DialogBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Spielpaarungsbaustein_Minified.xaml.cs">
+      <DependentUpon>Spielpaarungsbaustein_Minified.xaml</DependentUpon>
     </Compile>
     <Compile Include="Teilnahmeregel_Dialog.xaml.cs">
       <DependentUpon>Teilnahmeregel_Dialog.xaml</DependentUpon>

@@ -42,6 +42,7 @@ namespace Turnierklassen
         public Endrunde()
         {
             Teilnahmeregeln = new List<Teilnahmerregel>();
+            Runden = new List<Runde>();
             Modus = Modus.Keiner;
         }
 
@@ -77,6 +78,17 @@ namespace Turnierklassen
             Datei_Interakteur.Save_Temp();
         }
 
+        public void RundenErzeugen()
+        {
+            Runden.Clear();
+            for (int i = (int)Modus; i > 1; i = i/2)
+            {
+                Runde runde = new Runde(i / 2);
+                Runden.Add(runde);
+            }
+            Datei_Interakteur.Save_Temp();
+        }
+
         #endregion
     }
 
@@ -85,6 +97,21 @@ namespace Turnierklassen
         public int ID { get; set; }
         public int Anzahl_Paarungen { get; set; }
         public List<Paarung> Paarungen { get; set; }
+
+        public Runde(int anzahl_paarungen)
+        {
+            Paarungen = new List<Paarung>();
+            Anzahl_Paarungen = anzahl_paarungen;
+            PaarungenErzeugen();
+        }
+
+        private void PaarungenErzeugen()
+        {
+            for(int i = 0; i < Anzahl_Paarungen; i++)
+            {
+                Paarungen.Add(new Paarung());
+            }
+        }
     }
 
     public enum Modus { Keiner = 0, Finale = 2, Halbfinale = 4, Viertelfinale = 8, Achtelfinale = 16, Sechzehntelfinale = 32 }

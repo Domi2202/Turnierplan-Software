@@ -47,6 +47,7 @@ namespace Turnier_Controller
             set
             {
                 _Turnier.Endrunde.Modus = value;
+                _Turnier.Trostrunde.Teilnehmerzahl = _Turnier.Mannschaften.Count - (int)value;
                 NotifyPropertyChanged("Anzahl_Teilnehmer");
                 NotifyPropertyChanged("Anzahl_Spiele");
                 NotifyPropertyChanged("Kleines_Finale_moeglich");
@@ -138,10 +139,10 @@ namespace Turnier_Controller
         /// </summary>
         public bool Trostrunde_mit_Playoffs
         {
-            get { return _Turnier.Trostrunde.Playoffs != null; }
+            get { return _Turnier.Trostrunde.Playoffs_aktiv; }
             set
             {
-                _Turnier.Trostrunde.Playoffs_setztenOderZerstören();
+                _Turnier.Trostrunde.Playoffs_aktiv = value;
                 NotifyPropertyChanged("Trostrunde_mit_Playoffs");
                 NotifyPropertyChanged("Trostrunde_JederGegenJeden");
                 NotifyPropertyChanged("Trostrunde_Spielezahl");
@@ -152,10 +153,10 @@ namespace Turnier_Controller
         /// </summary>
         public bool Trostrunde_JederGegenJeden
         {
-            get { return _Turnier.Trostrunde.JederGegenJeden != null; }
+            get { return _Turnier.Trostrunde.JederGegenJeden_Aktiv; }
             set
             {
-                _Turnier.Trostrunde.JederGegenJeden_setztenOderZerstören(Trostrunde_Teilnehmerzahl);
+                _Turnier.Trostrunde.JederGegenJeden_Aktiv = value;
                 NotifyPropertyChanged("Trostrunde_mit_Playoffs");
                 NotifyPropertyChanged("Trostrunde_JederGegenJeden");
                 NotifyPropertyChanged("Trostrunde_Spielezahl");
@@ -166,7 +167,7 @@ namespace Turnier_Controller
         /// </summary>
         public int Trostrunde_Teilnehmerzahl
         {
-            get { return _Turnier.Mannschaften.Count - (int)_Turnier.Endrunde.Modus; }
+            get { return _Turnier.Trostrunde.Teilnehmerzahl; }
         }
         /// <summary>
         /// Gets the number of games played in consolation round
@@ -182,11 +183,7 @@ namespace Turnier_Controller
         {
             get
             {
-                if (_Turnier.Trostrunde.Playoffs != null)
-                {
-                    return _Turnier.Trostrunde.Playoffs.Modus;
-                }
-                else return Modus.Viertelfinale;
+                return _Turnier.Trostrunde.Playoffs.Modus;
             }
             set
             {
@@ -214,7 +211,9 @@ namespace Turnier_Controller
             _Fenster.AddParticipationRule += AddParticipationRule;
             _Fenster.DeleteParticipationRule += DeleteParticipationRule;
             _Fenster.TeilnahmeregelAnzeigen += TeilnahmeregelAnzeigen;
+            _Fenster.EndrundenbaumErzeugen += EndrundenbaumErzeugen;
         }
+
 
         private int CalculateNumberOfGames()
         {
@@ -280,6 +279,36 @@ namespace Turnier_Controller
             NotifyPropertyChanged("Warnfarbe");
         }
 
+        private void EndrundenbaumErzeugen(object sender, EventArgs e)
+        {
+            _Turnier.Endrunde.RundenErzeugen();
+            //ui kacke folgt
+            _Fenster.grid_Endrundenbaum.Children.Clear();
+            _Fenster.grid_Endrundenbaum.RowDefinitions.Clear();
+            _Fenster.grid_Endrundenbaum.ColumnDefinitions.Clear();
+            int modus = (int)_Turnier.Endrunde.Modus;
+            foreach (Runde runde in _Turnier.Endrunde.Runden)
+            {
+                string rundenname = Convert.ToString((Modus)modus);
+                _Fenster.grid_Endrundenbaum.RowDefinitions.Add(new RowDefinition());
+                Grid grid = new Grid();
+                _Fenster.grid_Endrundenbaum.Children.Add(grid);
+                Grid.SetRow(grid, _Fenster.grid_Endrundenbaum.RowDefinitions.Count - 1);
+                int spielnr = 1;
+                foreach (Paarung paarung in runde.Paarungen)
+                {
+                    paarung.Name = rundenname + " " + spielnr;
+                    paarung.Turnier = _Turnier.Name;
+                    grid.ColumnDefinitions.Add(new ColumnDefinition());
+                    Spielpaarungsbaustein_Minified spiel = new Spielpaarungsbaustein_Minified();
+                    spiel.DataContext = paarung;
+                    grid.Children.Add(spiel);
+                    Grid.SetColumn(spiel, grid.ColumnDefinitions.Count - 1);
+                    spielnr++;
+                }
+                modus = modus / 2;
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

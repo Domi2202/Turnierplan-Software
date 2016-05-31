@@ -8,66 +8,90 @@ namespace Turnierklassen
 {
     public class Trostrunde
     {
+        private bool _gruppeAktiv;
+        private bool _endrundeAktiv;
+        private int _teilnehmerAnzahl;
         private Gruppe _jederGegenJeden;
         private Endrunde _playoffs;
-        public Gruppe JederGegenJeden
+
+        #region PublicProperties
+
+        public bool JederGegenJeden_Aktiv
         {
-            get { return _jederGegenJeden; }
+            get { return _gruppeAktiv; }
             set
             {
-                _jederGegenJeden = value;
-                _playoffs = null;
+                _gruppeAktiv = value;
+                if (value == true)
+                {
+                    _endrundeAktiv = false;
+                }
                 Datei_Interakteur.Save_Temp();
             }
         }
+
+        public bool Playoffs_aktiv
+        {
+            get { return _endrundeAktiv; }
+            set
+            {
+                _endrundeAktiv = value;
+                if (value == true)
+                {
+                    _gruppeAktiv = false;
+                }
+                Datei_Interakteur.Save_Temp();
+            }
+        }
+
+        public int Teilnehmerzahl
+        {
+            get { return _teilnehmerAnzahl; }
+            set
+            {
+                _teilnehmerAnzahl = value;
+                _jederGegenJeden.Anzahl_Teilnehmer = value;
+                Datei_Interakteur.Save_Temp();
+            }
+        }
+
         public Endrunde Playoffs
         {
             get { return _playoffs; }
-            set
-            {
-                _playoffs = value;
-                _jederGegenJeden = null;
-                Datei_Interakteur.Save_Temp();
-            }
         }
 
-        public void JederGegenJeden_setztenOderZerstören(int teilnehmer)
+        public Gruppe JederGegenJeden
         {
-            if (_jederGegenJeden == null)
-            {
-                JederGegenJeden = new Gruppe("Trostrunde", teilnehmer);
-            }
-            else
-            {
-                _jederGegenJeden = null;
-                Datei_Interakteur.Save_Temp();
-            }
+            get { return _jederGegenJeden; }
         }
 
-        public void Playoffs_setztenOderZerstören()
+        #endregion
+
+        #region PublicConstructors
+
+        public Trostrunde()
         {
-            if (_playoffs == null)
-            {
-                Playoffs = new Endrunde();
-            }
-            else
-            {
-                _playoffs = null;
-                Datei_Interakteur.Save_Temp();
-            }
+            _jederGegenJeden = new Gruppe();
+            _playoffs = new Endrunde();
         }
+
+        #endregion
+
+        #region PublicFunctions
 
         public int AnzahlSpieleBerechnen()
         {
-            if (_playoffs != null)
+            if (_endrundeAktiv)
             {
                 return (int)_playoffs.Modus;
             }
-            else if (_jederGegenJeden != null)
+            else if (_gruppeAktiv)
             {
                 return _jederGegenJeden.AnzahlSpieleBerechnen();
             }
             else return 0;
         }
+
+        #endregion
     }
 }
