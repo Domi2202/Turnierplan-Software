@@ -99,6 +99,7 @@
     <Compile Include="Mannschaftsseite_Interakteur.cs" />
     <Compile Include="Teilnahmeregel_Interakteur.cs" />
     <Compile Include="Turnierfenster_Interakteur.cs" />
+    <Compile Include="Uebersichtsseite_Interakteur.cs" />
     <Compile Include="Veranstaltungsmanager_Interakteur.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DialogFensterVeranstaltung_Interakteur.cs" />

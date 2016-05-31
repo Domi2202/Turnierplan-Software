@@ -101,6 +101,8 @@ namespace Turnier_Controller
             _Hauptfenster.Grid_Mannschaften.Children.Clear();
             _Hauptfenster.Grid_Gruppeneinteilung.Children.Clear();
             _Hauptfenster.Grid_Endrunde.Children.Clear();
+            _Hauptfenster.Grid_Uebersicht.Children.Clear();
+
         }
 
         #endregion Ansicht
@@ -196,7 +198,10 @@ namespace Turnier_Controller
                 Informationsgitter_bereinigen();
                 new Turnierfenster_Interakteur(_Hauptfenster.Grid_Mannschaften, angeklickt.Details);
                 new Gruppeneinteilung_Interakteur(_Hauptfenster.Grid_Gruppeneinteilung, angeklickt.Details);
-                new Endrundeneinteilung_Interakteur(_Hauptfenster.Grid_Endrunde, angeklickt.Details);
+                new Endrundeneinteilung_Interakteur(_Hauptfenster.Grid_Endrunde, angeklickt.Details);   
+                new Uebersichtsseite_Interakteur(_Hauptfenster.Grid_Uebersicht, angeklickt.Details);
+
+
             }
         }
 

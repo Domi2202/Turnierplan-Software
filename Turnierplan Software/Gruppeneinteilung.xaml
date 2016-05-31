@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" d:DesignWidth="788" Height="800">
+             mc:Ignorable="d" d:DesignWidth="788" Height="500">
     <Grid>
         <Grid x:Name="grid_kopfdaten" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="788">
             <Label x:Name="label_turniername" Content="Label" Margin="10,21,10,0" VerticalAlignment="Top" FontWeight="Bold"/>
@@ -39,9 +39,9 @@
             <Button x:Name="btn_ausleeren" Content="Ausleeren" HorizontalAlignment="Left" Margin="20,0,0,35" VerticalAlignment="Bottom" Width="165" Click="btn_ausleeren_Click"/>
             <Button x:Name="btn_bestätigen" Content="Bestätigen" HorizontalAlignment="Left" Margin="20,0,0,10" Width="165" Click="btn_bestätigen_Click" Height="19" VerticalAlignment="Bottom"/>
         </Grid>
-        <Grid x:Name="grid_leiste" HorizontalAlignment="Left" Margin="0,0,0,0" Width="573" Height="25" VerticalAlignment="Bottom">
-            <Button x:Name="btn_rechts" Content="&gt;" HorizontalAlignment="Left" Margin="300,0,0,0" VerticalAlignment="Top" Width="25" Height="20" RenderTransformOrigin="2.36,0.7" Click="btn_rechts_Click"/>
-            <Button x:Name="btn_links" Content="&lt;" HorizontalAlignment="Left" Margin="250,0,0,0" Width="25" RenderTransformOrigin="2.36,0.7" Height="20" VerticalAlignment="Top" Click="btn_links_Click"/>
+        <Grid x:Name="grid_leiste" HorizontalAlignment="Left" Width="573" Height="25" VerticalAlignment="Bottom">
+            <Button x:Name="btn_rechts" Content="&gt;" HorizontalAlignment="Left" Margin="300,0,0,0" VerticalAlignment="Top" Width="25" Height="20" Click="btn_rechts_Click"/>
+            <Button x:Name="btn_links" Content="&lt;" HorizontalAlignment="Left" Margin="250,0,0,0" Width="25" Height="20" VerticalAlignment="Top" Click="btn_links_Click"/>
         </Grid>
 
     </Grid>
