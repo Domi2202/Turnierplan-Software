@@ -9,8 +9,8 @@
     <Grid>
         <Rectangle Fill="#FFF4F4F5" Margin="0,20,0,0" Stroke="Black"/>
         <Separator Margin="1,20,1,0"/>
-        <Label x:Name="label_team1" Content="Team 1" HorizontalAlignment="Left" Margin="0,16,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label_team2" Content="Team 2" HorizontalAlignment="Left" Margin="0,36,0,-3" VerticalAlignment="Top" Height="27"/>
+        <Label x:Name="label_team1" Content="{Binding Name_MannschaftA}" HorizontalAlignment="Left" Margin="0,16,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_team2" Content="{Binding Name_MannschaftB}" HorizontalAlignment="Left" Margin="0,36,0,-3" VerticalAlignment="Top" Height="27"/>
         <Label x:Name="label_name" Content="{Binding Name}" HorizontalAlignment="Left" Margin="0,-2,0,0" VerticalAlignment="Top"/>
     </Grid>
 </UserControl>

@@ -282,28 +282,48 @@ namespace Turnier_Controller
         private void EndrundenbaumErzeugen(object sender, EventArgs e)
         {
             _Turnier.Endrunde.RundenErzeugen();
+            EndrundenspieleMitDatenVersehen();
             //ui kacke folgt
             _Fenster.grid_Endrundenbaum.Children.Clear();
             _Fenster.grid_Endrundenbaum.RowDefinitions.Clear();
             _Fenster.grid_Endrundenbaum.ColumnDefinitions.Clear();
-            int modus = (int)_Turnier.Endrunde.Modus;
+
             foreach (Runde runde in _Turnier.Endrunde.Runden)
             {
-                string rundenname = Convert.ToString((Modus)modus);
+                
                 _Fenster.grid_Endrundenbaum.RowDefinitions.Add(new RowDefinition());
                 Grid grid = new Grid();
                 _Fenster.grid_Endrundenbaum.Children.Add(grid);
                 Grid.SetRow(grid, _Fenster.grid_Endrundenbaum.RowDefinitions.Count - 1);
+                
+                foreach (Paarung paarung in runde.Paarungen)
+                {
+                    grid.ColumnDefinitions.Add(new ColumnDefinition());
+                    Spielpaarungsbaustein_Minified spiel = new Spielpaarungsbaustein_Minified();
+                    spiel.DataContext = paarung;
+                    grid.Children.Add(spiel);
+                    Grid.SetColumn(spiel, grid.ColumnDefinitions.Count - 1);                   
+                }
+                
+            }
+        }
+
+        private void EndrundenspieleMitDatenVersehen()
+        {
+            int modus = (int)_Turnier.Endrunde.Modus;
+            foreach (Runde runde in _Turnier.Endrunde.Runden)
+            {
+                string rundenname = Convert.ToString((Modus)modus);
                 int spielnr = 1;
                 foreach (Paarung paarung in runde.Paarungen)
                 {
                     paarung.Name = rundenname + " " + spielnr;
                     paarung.Turnier = _Turnier.Name;
-                    grid.ColumnDefinitions.Add(new ColumnDefinition());
-                    Spielpaarungsbaustein_Minified spiel = new Spielpaarungsbaustein_Minified();
-                    spiel.DataContext = paarung;
-                    grid.Children.Add(spiel);
-                    Grid.SetColumn(spiel, grid.ColumnDefinitions.Count - 1);
+                    if(runde != _Turnier.Endrunde.Runden.First())
+                    {
+                        paarung.Vorheriges_Spiel_A = Convert.ToString((Modus)(modus * 2)) + " " + (spielnr * 2 - 1);
+                        paarung.Vorheriges_Spiel_B = Convert.ToString((Modus)(modus * 2)) + " " + (spielnr * 2);
+                    }
                     spielnr++;
                 }
                 modus = modus / 2;
