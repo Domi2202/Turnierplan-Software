@@ -19,6 +19,8 @@ namespace Turnierklassen
         public Trostrunde Trostrunde { get; set; }
         public int Gruppen_von_Teilnehmerzahl { get; set; }
         public int Gruppen_bis_Teilnehmerzahl { get; set; }
+        public TimeSpan Halbzeitdauer;
+        public TimeSpan Pausendauer;
 
 
         public Geschlecht Geschlecht {
@@ -48,11 +50,40 @@ namespace Turnierklassen
             Trostrunde = new Trostrunde();
             Endrunde = new Endrunde();
             Altersgruppe = Turnierklassen.Altersgruppe.Erwachsene;
+            Halbzeitdauer = new TimeSpan(0, 0, 0);
+            Pausendauer = new TimeSpan(0, 0, 0);
+
             Gruppen_von_Teilnehmerzahl = 3;
             Gruppen_bis_Teilnehmerzahl = 5;
         }
-   
 
-        
+
+        public void HalbzeitMinutenSetzen(int minuten)
+        {
+            int sek_akt = Halbzeitdauer.Seconds;
+            Halbzeitdauer = new TimeSpan(0, minuten, sek_akt);
+            Datei_Interakteur.Save_Temp();
+        }
+
+        public void Halbzeitsekundensetzten(int sekunden)
+        {
+            int min_akt = Halbzeitdauer.Minutes;
+            Halbzeitdauer = new TimeSpan(0, min_akt, sekunden);
+            Datei_Interakteur.Save_Temp();
+        }
+
+        public void Pausensekundensetzten(int sekunden)
+        {
+            int min_akt = Pausendauer.Minutes;
+            Pausendauer = new TimeSpan(0, min_akt, sekunden);
+            Datei_Interakteur.Save_Temp();
+        }
+
+        public void Pausenminutensetzten(int minuten)
+        {
+            int sek_akt = Pausendauer.Seconds;
+            Pausendauer = new TimeSpan(0, sek_akt, minuten);
+            Datei_Interakteur.Save_Temp();
+        }
     }
 }

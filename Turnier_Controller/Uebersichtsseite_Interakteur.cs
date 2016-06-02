@@ -20,6 +20,7 @@ namespace Turnier_Controller
         private Turnier _Turnier;
         private übersichtsseite _Fenster;
         private Grid _Darstellungsbereich;
+       
 
         public Uebersichtsseite_Interakteur(Grid darstellungsbereich, Turnier turnier)
         {
@@ -32,12 +33,74 @@ namespace Turnier_Controller
 
 
         }
+       public int Zeit_Halbzeit_Minuten
+        {
+
+            get
+            {
+                return _Turnier.Halbzeitdauer.Minutes;
+            }
+            set
+            {
+                _Turnier.HalbzeitMinutenSetzen(value);
+            }
+        }
+       public int Zeit_Halbzeit_Sekunden
+       {
+
+           get
+           {
+
+               return _Turnier.Halbzeitdauer.Seconds;
+           }
+           set
+           {
+               _Turnier.Halbzeitsekundensetzten(value);
+           }
+       }
+
+       public int Zeit_Pausendauert_Sekunden
+       {
+
+           get
+           {
+
+               return _Turnier.Pausendauer.Seconds;
+           }
+           set
+           {
+               _Turnier.Pausensekundensetzten(value);
+           }
+       }
+       public int Zeit_Pausendauer_Minuten
+       {
+
+           get
+           {
+
+               return _Turnier.Pausendauer.Minutes;
+           }
+           set
+           {
+               _Turnier.Pausenminutensetzten(value);
+           }
+       }
+        
+
+        
+        
 
         public string Name
         {
             get { return _Turnier.Name; }
             
         }
+
+        public int Anzahl_Trostrundenspiele
+        {
+            get { return _Turnier.Trostrunde.AnzahlSpieleBerechnen(); }
+        }
+
         public string Endrundenmodus
         {
             get { return Convert.ToString(_Turnier.Endrunde.Modus); }
@@ -49,7 +112,29 @@ namespace Turnier_Controller
         {
             get { return _Turnier.Endrunde.SpielezahlBerechnen(); }
         }
+        public int Anzahl_Spiele_Gesamt
+        {
+            get { return Spielanzahl_gesamt_berechnen(); }
 
+        }
+
+        public string Trostrunde_Modus
+        {
+            get {
+
+                if (_Turnier.Trostrunde.JederGegenJeden_Aktiv)
+                {
+                    return "Jeder gegen Jeden";
+
+                }
+                else
+                {
+                    return "Playoffs";
+
+                }
+            
+            }
+        }
 
         public int Gruppenzahl
         {
@@ -101,6 +186,10 @@ namespace Turnier_Controller
             NotifyPropertyChanged("Gruppenspielzahl");
             NotifyPropertyChanged("Gruppenzahl");
             NotifyPropertyChanged("Anzahl_Spiele");
+            NotifyPropertyChanged("Anzahl_Trostrundenspiele");
+            NotifyPropertyChanged("Anzahl_Spiele_Gesamt");
+            NotifyPropertyChanged("Trostrunde_Modus");
+
 
 
 
@@ -147,6 +236,15 @@ namespace Turnier_Controller
                 }
             }
             return spiele;
+        }
+
+        private int Spielanzahl_gesamt_berechnen()
+        {
+            int spiele = 0;
+            spiele = Anzahl_Spiele + Anzahl_Trostrundenspiele + Gruppenspielzahl;
+                return spiele;
+
+
         }
 
 

@@ -19,12 +19,12 @@
         <ComboBox   SelectedItem="{Binding geschlecht}" Name="combobox_geschlecht" HorizontalAlignment="Left" Margin="168,112,0,0"  ItemsSource="{Binding Moegliche_Geschlechter}" VerticalAlignment="Top" Width="120"/>
         <ComboBox    SelectedItem="{Binding altersgruppe}" Name="combobox_altersgruppe" HorizontalAlignment="Left" Margin="168,147,0,0"  ItemsSource="{Binding Moegliche_Altersgruppen}" VerticalAlignment="Top" Width="120"/>
         <Label  x:Name="label_anzahlgruppen" Content="{Binding Gruppenzahl}" HorizontalAlignment="Left" Margin="168,211,0,0" VerticalAlignment="Top"/>
-        <Label  x:Name="label_anzahlspiele" Content="Anzahl Spiele gesamt" HorizontalAlignment="Left" Margin="168,421,0,0" VerticalAlignment="Top"/>
-        <Label  x:Name="label_trostrundenmodus" Content="Trostrundenmodus" HorizontalAlignment="Left" Margin="168,273,0,0" VerticalAlignment="Top"/>
+        <Label  x:Name="label_anzahlspiele" Content="{Binding Anzahl_Spiele_Gesamt}" HorizontalAlignment="Left" Margin="168,421,0,0" VerticalAlignment="Top"/>
+        <Label  x:Name="label_trostrundenmodus" Content="{Binding Trostrunde_Modus}" HorizontalAlignment="Left" Margin="168,273,0,0" VerticalAlignment="Top"/>
         <Label  x:Name="label_anzahlendrundenspiele" Content="{Binding Anzahl_Spiele}" HorizontalAlignment="Left" Margin="168,390,0,0" VerticalAlignment="Top"/>
         <Label  x:Name="label_endrundenmodus" Content="{Binding Endrundenmodus}" HorizontalAlignment="Left" Margin="168,242,0,0" VerticalAlignment="Top"/>
         <Label Content="Anzahl Trostrundenspiele" HorizontalAlignment="Left" Margin="30,359,0,0" VerticalAlignment="Top"/>
-        <Label  x:Name="label_anzahltrostrundenspiele" Content="Anzahl Trostrundenspiele" HorizontalAlignment="Left" Margin="168,359,0,0" VerticalAlignment="Top"/>
+        <Label  x:Name="label_anzahltrostrundenspiele" Content="{Binding Anzahl_Trostrundenspiele}" HorizontalAlignment="Left" Margin="168,359,0,0" VerticalAlignment="Top"/>
         <Label Content="Halbzeitdauer" HorizontalAlignment="Left" Margin="30,477,0,0" VerticalAlignment="Top"/>
         <Label Content="Pausendauer" HorizontalAlignment="Left" Margin="30,508,0,0" VerticalAlignment="Top"/>
         <Label Content="Allgemein" HorizontalAlignment="Left" Margin="30,53,0,0" VerticalAlignment="Top" FontStyle="Italic"/>
@@ -35,10 +35,16 @@
         <Separator HorizontalAlignment="Left" Height="7" Margin="0,320,0,0" VerticalAlignment="Top" Width="350"/>
         <Label Content="Spieldauer" HorizontalAlignment="Left" Margin="31,449,0,0" VerticalAlignment="Top" FontStyle="Italic"/>
         <Separator HorizontalAlignment="Left" Height="7" Margin="1,469,-1,0" VerticalAlignment="Top" Width="350"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="168,479,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="168,508,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox    Name="Halbzeitdauer_Minuten" HorizontalAlignment="Left" Height="23" Margin="204,479,0,0" TextWrapping="Wrap" Text="{Binding Zeit_Halbzeit_Minuten}" VerticalAlignment="Top" Width="35"/>
         <Label Content="Anzahl Guppenspiele" HorizontalAlignment="Left" Margin="30,328,0,0" VerticalAlignment="Top"/>
         <Label  x:Name="label_anzahlgruppenspiele" Content="{Binding Gruppenspielzahl}" HorizontalAlignment="Left" Margin="168,328,0,0" VerticalAlignment="Top"/>
+        <Label Content="Minuten" HorizontalAlignment="Left" Margin="150,477,0,0" VerticalAlignment="Top"/>
+        <Label Content="Sekunden" HorizontalAlignment="Left" Margin="244,477,0,0" VerticalAlignment="Top"/>
+        <TextBox  Name="Halbzeit_Sekunden" HorizontalAlignment="Left" Height="23" Margin="307,479,0,0" TextWrapping="Wrap" Text="{Binding Zeit_Halbzeit_Sekunden}" VerticalAlignment="Top" Width="35"/>
+        <TextBox  Name="Pausendauer_Minuten" HorizontalAlignment="Left" Height="23" Margin="204,510,0,0" TextWrapping="Wrap" Text="{Binding Zeit_Pausendauer_Minuten}" VerticalAlignment="Top" Width="35"/>
+        <Label Content="Minuten" HorizontalAlignment="Left" Margin="150,508,0,0" VerticalAlignment="Top"/>
+        <Label Content="Sekunden" HorizontalAlignment="Left" Margin="244,508,0,0" VerticalAlignment="Top"/>
+        <TextBox  Name="Pausendauer_Sekunden" HorizontalAlignment="Left" Height="23" Margin="307,510,0,0" TextWrapping="Wrap" Text="{Binding Zeit_Pausendauert_Sekunden}" VerticalAlignment="Top" Width="35"/>
 
 
 
