@@ -10,6 +10,7 @@ namespace Turnierklassen
     {
         private Modus _Modus;
         private bool _kleinesFinale;
+        private bool _loserBracket;
 
         /// <summary>
         /// Gets or sets the selected mode for the final round
@@ -33,16 +34,32 @@ namespace Turnierklassen
             set
             {
                 _kleinesFinale = value;
+                if (value == false) _loserBracket = false;
+                Datei_Interakteur.Save_Temp();
+            }
+        }
+        /// <summary>
+        /// Gets or sets wether a loser round is played
+        /// </summary>
+        public bool Loser_Bracket
+        {
+            get { return _loserBracket; }
+            set
+            {
+                _loserBracket = value;
+                if (value == true) _kleinesFinale = true;
                 Datei_Interakteur.Save_Temp();
             }
         }
         public List<Teilnahmerregel> Teilnahmeregeln { get; set; }
         public List<Runde> Runden { get; set; }
+        public List<Runde> Verliererrunde { get; set; }
 
         public Endrunde()
         {
             Teilnahmeregeln = new List<Teilnahmerregel>();
             Runden = new List<Runde>();
+            Verliererrunde = new List<Runde>();
             Modus = Modus.Keiner;
         }
 
@@ -92,6 +109,24 @@ namespace Turnierklassen
                 Runde runde = new Runde(i / 2);
                 Runden.Add(runde);
             }
+            if (_loserBracket)
+            {
+                VerliererrundenErzeugen();
+            }
+            else
+            {
+                Datei_Interakteur.Save_Temp();
+            }
+        }
+
+        public void VerliererrundenErzeugen()
+        {
+            Verliererrunde.Clear();
+            for (int i = (int)Modus / 2; i > 1; i = i / 2)
+            {
+                Runde runde = new Runde(i / 2);
+                Verliererrunde.Add(runde);
+            }
             Datei_Interakteur.Save_Temp();
         }
 
@@ -116,6 +151,11 @@ namespace Turnierklassen
         public int ID { get; set; }
         public int Anzahl_Paarungen { get; set; }
         public List<Paarung> Paarungen { get; set; }
+
+        public Runde()
+        {
+            Paarungen = new List<Paarung>();
+        }
 
         public Runde(int anzahl_paarungen)
         {

@@ -13,6 +13,7 @@
                 <Label x:Name="label_modus" Content="Beginnen mit" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.145,1.385" Height="30" Width="130"/>
                 <ComboBox x:Name="combobox_modus" Height="25" Margin="10,71,10,0" VerticalAlignment="Top" ItemsSource="{Binding Moegliche_Modi}" SelectedItem="{Binding Modus}"/>
                 <CheckBox x:Name="checkBox_3punkte" Content="Spiel um Platz 3" HorizontalAlignment="Left" Height="20" Margin="10,110,0,0" VerticalAlignment="Top" Width="130" IsChecked="{Binding Kleines_Finale}" IsEnabled="{Binding Kleines_Finale_moeglich}"/>
+                <CheckBox x:Name="checkBox_loserbracket" Content="Verliererrunde" HorizontalAlignment="Left" Height="20" Margin="10,130,0,0" VerticalAlignment="Top" Width="130" IsChecked="{Binding Loser_Bracket}" IsEnabled="{Binding Kleines_Finale_moeglich}"/>
                 <Label Content="Spiele :" HorizontalAlignment="Left" Margin="10,150,0,0" VerticalAlignment="Top" Width="95"/>
                 <Label x:Name="label_spielezahl" Content="{Binding Anzahl_Spiele}" HorizontalAlignment="Left" Margin="165,150,0,0" VerticalAlignment="Top" Height="25" Width="35"/>
                 <Label x:Name="label_teilnehmer" Content="Teilnehmer :" HorizontalAlignment="Left" Margin="10,180,0,0" VerticalAlignment="Top" Width="95"/>
@@ -35,6 +36,8 @@
                 <ComboBox x:Name="comboBox_trostrunde_modi" Margin="10,120,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="220" ItemsSource="{Binding Moegliche_Modi}" SelectedItem="{Binding Trostrunde_Modus}" IsEnabled="{Binding Trostrunde_mit_Playoffs}"/>
                 <CheckBox x:Name="checkBox_trostrunde_gruppe" Content="Jeder gegen jeden" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top" IsChecked="{Binding Trostrunde_JederGegenJeden}"/>
                 <CheckBox x:Name="checkBox_trostrunde_playoff" Content="Playoffs" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" IsChecked="{Binding Trostrunde_mit_Playoffs}"/>
+                <Button Content="Gewinnerbaum" HorizontalAlignment="Left" Margin="213,10,0,0" VerticalAlignment="Top" Width="111" Click="Button_Click_1"/>
+                <Button x:Name="btn_verliererbaum" Content="Verliererbaum" HorizontalAlignment="Left" Margin="350,10,0,0" VerticalAlignment="Top" Width="111" Click="btn_verliererbaum_Click"/>
 
             </Grid>
             <Grid Name="grid_endrundenbaum" Margin="242,0,0,150">

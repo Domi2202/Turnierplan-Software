@@ -10,8 +10,8 @@ namespace Turnierklassen
     {
         public Teilnahmerregel Regel_Mannschaft_A { get; set; }
         public Teilnahmerregel Regel_Mannschaft_B { get; set; }
-        public string Vorheriges_Spiel_A { get; set; }
-        public string Vorheriges_Spiel_B { get; set; }
+        public Qualifikationsspiel Vorheriges_Spiel_A { get; set; }
+        public Qualifikationsspiel Vorheriges_Spiel_B { get; set; }
         public string Mannschaft_A { get; set; }
         public string Mannschaft_B { get; set; }
         public string Name { get; set; }
@@ -31,7 +31,7 @@ namespace Turnierklassen
             }
             else if (Vorheriges_Spiel_A != null)
             {
-                return Vorheriges_Spiel_A;
+                return Vorheriges_Spiel_A.Titel();
             }
             else if (Regel_Mannschaft_A != null)
             {
@@ -48,7 +48,7 @@ namespace Turnierklassen
             }
             else if (Vorheriges_Spiel_B != null)
             {
-                return Vorheriges_Spiel_B;
+                return Vorheriges_Spiel_B.Titel();
             }
             else if (Regel_Mannschaft_B != null)
             {
@@ -61,6 +61,18 @@ namespace Turnierklassen
         public string Sieger()
         {
             return "Sieger " + Name;
+        }
+
+        public void QualifikationsSpielSetzen_TeamA(Qualifikationsspiel quali)
+        {
+            Vorheriges_Spiel_A = new Qualifikationsspiel(quali.Name, quali.Gewinner);
+            Datei_Interakteur.Save_Temp();
+        }
+
+        public void QualifikationsSpielSetzen_TeamB(Qualifikationsspiel quali)
+        {
+            Vorheriges_Spiel_B = new Qualifikationsspiel(quali.Name, quali.Gewinner);
+            Datei_Interakteur.Save_Temp();
         }
     }
 

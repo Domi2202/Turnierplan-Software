@@ -29,6 +29,8 @@ namespace Turnierplan_Software
         public EventHandler DeleteParticipationRule { get; set; }
         public EventHandler TeilnahmeregelAnzeigen { get; set; }
         public EventHandler EndrundenbaumErzeugen { get; set; }
+        public EventHandler VerliererbaumZeigen { get; set; }
+        public EventHandler GewinnerbaumZeigen { get; set; }
 
         public Endrundeneinteilung()
         {
@@ -76,6 +78,22 @@ namespace Turnierplan_Software
             if (EndrundenbaumErzeugen != null)
             {
                 EndrundenbaumErzeugen(this, null);
+            }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (GewinnerbaumZeigen != null)
+            {
+                GewinnerbaumZeigen(this, null);
+            }
+        }
+
+        private void btn_verliererbaum_Click(object sender, RoutedEventArgs e)
+        {
+            if (VerliererbaumZeigen != null)
+            {
+                VerliererbaumZeigen(this, null);
             }
         }
     }
