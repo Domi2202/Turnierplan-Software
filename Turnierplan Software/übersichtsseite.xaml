@@ -21,7 +21,7 @@
         <Label  x:Name="label_anzahlgruppen" Content="{Binding Gruppenzahl}" HorizontalAlignment="Left" Margin="168,211,0,0" VerticalAlignment="Top"/>
         <Label  x:Name="label_anzahlspiele" Content="Anzahl Spiele gesamt" HorizontalAlignment="Left" Margin="168,421,0,0" VerticalAlignment="Top"/>
         <Label  x:Name="label_trostrundenmodus" Content="Trostrundenmodus" HorizontalAlignment="Left" Margin="168,273,0,0" VerticalAlignment="Top"/>
-        <Label  x:Name="label_anzahlendrundenspiele" Content="Anzahl Endrundenspiele" HorizontalAlignment="Left" Margin="168,390,0,0" VerticalAlignment="Top"/>
+        <Label  x:Name="label_anzahlendrundenspiele" Content="{Binding Anzahl_Spiele}" HorizontalAlignment="Left" Margin="168,390,0,0" VerticalAlignment="Top"/>
         <Label  x:Name="label_endrundenmodus" Content="{Binding Endrundenmodus}" HorizontalAlignment="Left" Margin="168,242,0,0" VerticalAlignment="Top"/>
         <Label Content="Anzahl Trostrundenspiele" HorizontalAlignment="Left" Margin="30,359,0,0" VerticalAlignment="Top"/>
         <Label  x:Name="label_anzahltrostrundenspiele" Content="Anzahl Trostrundenspiele" HorizontalAlignment="Left" Margin="168,359,0,0" VerticalAlignment="Top"/>

@@ -89,6 +89,19 @@ namespace Turnierklassen
             Datei_Interakteur.Save_Temp();
         }
 
+        public int SpielezahlBerechnen()
+        {
+            int games = 0;
+            int teams = (int)Modus;
+            while (teams > 1)
+            {
+                games += teams / 2;
+                teams = teams / 2;
+            }
+            if (Kleines_Finale) games += 1;
+            return games;
+        }
+
         #endregion
     }
 

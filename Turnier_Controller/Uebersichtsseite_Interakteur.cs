@@ -45,6 +45,12 @@ namespace Turnier_Controller
 
         }
 
+        public int Anzahl_Spiele
+        {
+            get { return _Turnier.Endrunde.SpielezahlBerechnen(); }
+        }
+
+
         public int Gruppenzahl
         {
             get { return _Turnier.Gruppen.Count; }
@@ -93,6 +99,10 @@ namespace Turnier_Controller
             NotifyPropertyChanged("Mannschaftszahl");
             NotifyPropertyChanged("Endrundenmodus");
             NotifyPropertyChanged("Gruppenspielzahl");
+            NotifyPropertyChanged("Gruppenzahl");
+            NotifyPropertyChanged("Anzahl_Spiele");
+
+
 
 
 
@@ -138,6 +148,8 @@ namespace Turnier_Controller
             }
             return spiele;
         }
+
+
 
     }
 }
