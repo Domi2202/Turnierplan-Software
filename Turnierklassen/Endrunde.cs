@@ -78,6 +78,12 @@ namespace Turnierklassen
             Datei_Interakteur.Save_Temp();
         }
 
+        public void DeleteParticipationRule(Teilnahmerregel regel)
+        {
+            Teilnahmeregeln.Remove(regel);
+            Datei_Interakteur.Save_Temp();
+        }
+
         public void RundenErzeugen()
         {
             Runden.Clear();

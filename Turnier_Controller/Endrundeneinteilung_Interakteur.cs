@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using Turnierplan_Software;
 using Turnierklassen;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Diagnostics;
@@ -94,17 +95,16 @@ namespace Turnier_Controller
         /// <summary>
         /// Gets a observeable list of all current participation rules names
         /// </summary>
-        public ObservableCollection<string> ParticipationRules
+        public ObservableCollection<Listenelement<Teilnahmerregel>> ParticipationRules
         {
             get
             {
-                List<string> rules = new List<string>();
+                ObservableCollection<Listenelement<Teilnahmerregel>> regeln = new ObservableCollection<Listenelement<Teilnahmerregel>>();
                 foreach (Teilnahmerregel rule in _Turnier.Endrunde.Teilnahmeregeln)
                 {
-                    rules.Add(rule.Name);
-                }
-                ObservableCollection<string> rulesAsStrings = new ObservableCollection<string>(rules);
-                return rulesAsStrings;
+                    regeln.Add(new Listenelement<Teilnahmerregel>(rule, rule.Name));
+                }               
+                return regeln;
             }
         }
         /// <summary>
@@ -212,6 +212,7 @@ namespace Turnier_Controller
             _Fenster.DeleteParticipationRule += DeleteParticipationRule;
             _Fenster.TeilnahmeregelAnzeigen += TeilnahmeregelAnzeigen;
             _Fenster.EndrundenbaumErzeugen += EndrundenbaumErzeugen;
+            _Fenster.IsVisibleChanged += EndrundenbaumDarstellen;
         }
 
 
@@ -283,28 +284,33 @@ namespace Turnier_Controller
         {
             _Turnier.Endrunde.RundenErzeugen();
             EndrundenspieleMitDatenVersehen();
-            //ui kacke folgt
+            EndrundenbaumDarstellen();
+        }
+
+        private void EndrundenbaumDarstellen()
+        {
             _Fenster.grid_Endrundenbaum.Children.Clear();
             _Fenster.grid_Endrundenbaum.RowDefinitions.Clear();
             _Fenster.grid_Endrundenbaum.ColumnDefinitions.Clear();
 
             foreach (Runde runde in _Turnier.Endrunde.Runden)
             {
-                
+
                 _Fenster.grid_Endrundenbaum.RowDefinitions.Add(new RowDefinition());
                 Grid grid = new Grid();
                 _Fenster.grid_Endrundenbaum.Children.Add(grid);
                 Grid.SetRow(grid, _Fenster.grid_Endrundenbaum.RowDefinitions.Count - 1);
-                
+
                 foreach (Paarung paarung in runde.Paarungen)
                 {
                     grid.ColumnDefinitions.Add(new ColumnDefinition());
-                    Spielpaarungsbaustein_Minified spiel = new Spielpaarungsbaustein_Minified();
-                    spiel.DataContext = paarung;
-                    grid.Children.Add(spiel);
-                    Grid.SetColumn(spiel, grid.ColumnDefinitions.Count - 1);                   
+                    Spielpaarungsbaustein_Minified_Interakteur spiel_int = new Spielpaarungsbaustein_Minified_Interakteur(paarung, _Fenster.listbox_Teilnehmer);
+                    grid.Children.Add(spiel_int.Paarungsfeld);
+                    spiel_int.Platzieren(grid.ColumnDefinitions.Count - 1);
+                    spiel_int.RegelAusPoolGenommen += RegelAusPoolEntfernen;
+                    spiel_int.RegelInPoolGelegt += RegelZuPoolHinzufuegen;
                 }
-                
+
             }
         }
 
@@ -321,8 +327,8 @@ namespace Turnier_Controller
                     paarung.Turnier = _Turnier.Name;
                     if(runde != _Turnier.Endrunde.Runden.First())
                     {
-                        paarung.Vorheriges_Spiel_A = Convert.ToString((Modus)(modus * 2)) + " " + (spielnr * 2 - 1);
-                        paarung.Vorheriges_Spiel_B = Convert.ToString((Modus)(modus * 2)) + " " + (spielnr * 2);
+                        paarung.Vorheriges_Spiel_A = "Sieger " + Convert.ToString((Modus)(modus * 2)) + " " + (spielnr * 2 - 1);
+                        paarung.Vorheriges_Spiel_B = "Sieger " + Convert.ToString((Modus)(modus * 2)) + " " + (spielnr * 2);
                     }
                     spielnr++;
                 }
@@ -340,6 +346,24 @@ namespace Turnier_Controller
             }
         }
 
+        public void EndrundenbaumDarstellen(object sender, DependencyPropertyChangedEventArgs e) 
+        {
+            EndrundenbaumDarstellen();
+        }
+
+        public void RegelAusPoolEntfernen(object sender, EventArgs e)
+        {
+            Teilnahmerregel regel = sender as Teilnahmerregel;
+            _Turnier.Endrunde.DeleteParticipationRule(regel);
+            NotifyPropertyChanged("ParticipationRules");
+        }
+
+        public void RegelZuPoolHinzufuegen(object sender, EventArgs e)
+        {
+            Teilnahmerregel regel = sender as Teilnahmerregel;
+            _Turnier.Endrunde.AddNewParticipationRule(regel);
+            NotifyPropertyChanged("ParticipationRules");
+        }
         #endregion
     }
 }

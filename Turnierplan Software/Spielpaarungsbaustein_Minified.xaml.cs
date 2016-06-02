@@ -20,9 +20,46 @@ namespace Turnierplan_Software
     /// </summary>
     public partial class Spielpaarungsbaustein_Minified : UserControl
     {
+        public EventHandler TeamA_Add { get; set; }
+        public EventHandler TeamB_Add { get; set; }
+        public EventHandler TeamA_Remove { get; set; }
+        public EventHandler TeamB_Remove { get; set; }
+
         public Spielpaarungsbaustein_Minified()
         {
             InitializeComponent();
+        }
+
+        private void button_teamA_add_Click(object sender, RoutedEventArgs e)
+        {
+            if (TeamA_Add != null)
+            {
+                TeamA_Add(this, null);
+            }
+        }
+
+        private void button_teamA_remove_Click(object sender, RoutedEventArgs e)
+        {
+            if (TeamA_Remove != null)
+            {
+                TeamA_Remove(this, null);
+            }
+        }
+
+        private void button_teamB_add_Click(object sender, RoutedEventArgs e)
+        {
+            if (TeamB_Add != null)
+            {
+                TeamB_Add(this, null);
+            }
+        }
+
+        private void button_teamB_remove_Click(object sender, RoutedEventArgs e)
+        {
+            if (TeamB_Remove != null)
+            {
+                TeamB_Remove(this, null);
+            }
         }
     }
 }

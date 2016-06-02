@@ -23,44 +23,39 @@ namespace Turnierklassen
             Halbzeitergebnisse = new List<Halbzeitergebnis>();
         }
 
-        public string Name_MannschaftA
+        public string Name_MannschaftA()
         {
-            get
+            if (Mannschaft_A != null)
             {
-                if (Mannschaft_A != null)
-                {
-                    return Mannschaft_A;
-                }
-                else if (Vorheriges_Spiel_A != null)
-                {
-                    return Vorheriges_Spiel_A;
-                }
-                else if (Regel_Mannschaft_A != null)
-                {
-                    return Regel_Mannschaft_A.Name;
-                }
-                else return "Team A";
+                return Mannschaft_A;
             }
+            else if (Vorheriges_Spiel_A != null)
+            {
+                return Vorheriges_Spiel_A;
+            }
+            else if (Regel_Mannschaft_A != null)
+            {
+                return Regel_Mannschaft_A.Name;
+            }
+            else return "Team A";
         }
 
-        public string Name_MannschaftB
+        public string Name_MannschaftB()
         {
-            get
+            if (Mannschaft_B != null)
             {
-                if (Mannschaft_B != null)
-                {
-                    return Mannschaft_B;
-                }
-                else if (Vorheriges_Spiel_B != null)
-                {
-                    return Vorheriges_Spiel_B;
-                }
-                else if (Regel_Mannschaft_B != null)
-                {
-                    return Regel_Mannschaft_B.Name;
-                }
-                else return "Team B";
+                return Mannschaft_B;
             }
+            else if (Vorheriges_Spiel_B != null)
+            {
+                return Vorheriges_Spiel_B;
+            }
+            else if (Regel_Mannschaft_B != null)
+            {
+                return Regel_Mannschaft_B.Name;
+            }
+            else return "Team B";
+
         }
 
         public string Sieger()

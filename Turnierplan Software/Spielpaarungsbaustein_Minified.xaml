@@ -5,12 +5,23 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Turnierplan_Software"
              mc:Ignorable="d" 
-             d:DesignHeight="60" d:DesignWidth="100" MaxHeight="60" MaxWidth="100">
+             d:DesignHeight="120" d:DesignWidth="120" MaxHeight="120" MaxWidth="110">
     <Grid>
-        <Rectangle Fill="#FFF4F4F5" Margin="0,20,0,0" Stroke="Black"/>
-        <Separator Margin="1,20,1,0"/>
-        <Label x:Name="label_team1" Content="{Binding Name_MannschaftA}" HorizontalAlignment="Left" Margin="0,16,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label_team2" Content="{Binding Name_MannschaftB}" HorizontalAlignment="Left" Margin="0,36,0,-3" VerticalAlignment="Top" Height="27"/>
-        <Label x:Name="label_name" Content="{Binding Name}" HorizontalAlignment="Left" Margin="0,-2,0,0" VerticalAlignment="Top"/>
+        <Rectangle Fill="#FFF4F4F5" Margin="0,20,20,0" Stroke="Black"/>
+        <Separator Margin="1,20,21,0"/>
+        <Grid Margin="0,20,0,0">
+            <Grid Height="50" VerticalAlignment="Top" Margin="0,0,0,0">
+                <TextBlock x:Name="label_team1" Text="{Binding NameTeamA}" Margin="5,5,25,5" TextWrapping="Wrap"/>
+                <Button x:Name="button_teamA_add" HorizontalAlignment="Right" VerticalAlignment="Top" Height="16" Width="20" Content="+" Margin="0,7,0,0" VerticalContentAlignment="Top" Padding="0" FontSize="9" Click="button_teamA_add_Click"/>
+                <Button x:Name="button_teamA_remove" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="16" Width="20" Content="-" Margin="0,0,0,7" VerticalContentAlignment="Bottom" FontSize="9" Padding="0" Click="button_teamA_remove_Click"/>
+            </Grid>
+            <Grid Height="50" VerticalAlignment="Bottom">
+                <TextBlock x:Name="label_team2" Text="{Binding NameTeamB}" Margin="5,5,25,5" TextWrapping="Wrap"/>
+                <Button x:Name="button_teamB_add" HorizontalAlignment="Right" VerticalAlignment="Top" Height="16" Width="20" Content="+" Margin="0,7,0,0" VerticalContentAlignment="Top" Padding="0" FontSize="9" Click="button_teamB_add_Click"/>
+                <Button x:Name="button_teamB_remove" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="16" Width="20" Content="-" Margin="0,0,0,7" VerticalContentAlignment="Bottom" FontSize="9" Padding="0" Click="button_teamB_remove_Click"/>
+            </Grid>
+        </Grid>
+        <Label x:Name="label_name" Content="{Binding NameDerPaarung}" HorizontalAlignment="Left" Margin="0,-2,0,0" VerticalAlignment="Top"/>
+        
     </Grid>
 </UserControl>
