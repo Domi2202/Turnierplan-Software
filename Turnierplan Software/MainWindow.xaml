@@ -12,6 +12,7 @@
             <Button x:Name="button_speichern" Content="Speichern" Click="button_speichern_Click"/>
             <Button x:Name="button_laden" Content="Meine Veranstaltungen" Click="button_laden_Click"/>
             <Button x:Name="button_crash" Content="Absturz" Click="button_crash_Click"/>
+            <Button x:Name="button_veranstaltungsuebersicht" Content="Veranstaltungsübersicht" Click="button_veranstaltungsuebersicht_Click" />
         </StackPanel>
         <TabControl x:Name="tabControl" Margin="220,105,9.6,10.4">
             <TabItem Header="Mannschaften">

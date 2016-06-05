@@ -117,6 +117,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Veranstaltungsuebersicht.xaml.cs">
+      <DependentUpon>Veranstaltungsuebersicht.xaml</DependentUpon>
+    </Compile>
     <Compile Include="übersichtsseite.xaml.cs">
       <DependentUpon>übersichtsseite.xaml</DependentUpon>
     </Compile>
@@ -205,6 +208,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Turnierfenster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Veranstaltungsuebersicht.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

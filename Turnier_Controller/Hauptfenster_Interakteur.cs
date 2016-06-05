@@ -103,6 +103,7 @@ namespace Turnier_Controller
             _Hauptfenster.Grid_Endrunde.Children.Clear();
             _Hauptfenster.Grid_Uebersicht.Children.Clear();
 
+
         }
 
         #endregion Ansicht
@@ -145,6 +146,7 @@ namespace Turnier_Controller
         {
             new DialogFensterTurnier_Interakteur(Turnierliste_erneuern);
         }
+
 
         private void TurnierLoeschen(object sender, EventArgs e)
         {

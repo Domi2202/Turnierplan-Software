@@ -25,6 +25,7 @@ namespace Turnierplan_Software
         public EventHandler TurnierLoeschen { get; set; }
         public EventHandler Speichern { get; set; }
         public EventHandler Laden { get; set; }
+        public EventHandler Veranstaltungsuebersicht { get; set; }
         public CancelEventHandler ProgrammBeenden { get; set; }
         public Label Label_Veranstaltung { get; set; }
         public Grid Grid_Mannschaften { get; set; }
@@ -92,6 +93,14 @@ namespace Turnierplan_Software
             if (TurnierLoeschen != null)
             {
                 TurnierLoeschen(this, null);
+            }
+        }
+
+        private void button_veranstaltungsuebersicht_Click(object sender, RoutedEventArgs e)
+        {
+            if (Veranstaltungsuebersicht != null)
+            {
+                Veranstaltungsuebersicht(this, null);
             }
         }
     }

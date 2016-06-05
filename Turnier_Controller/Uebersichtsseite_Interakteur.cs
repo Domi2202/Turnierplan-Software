@@ -189,13 +189,6 @@ namespace Turnier_Controller
             NotifyPropertyChanged("Anzahl_Trostrundenspiele");
             NotifyPropertyChanged("Anzahl_Spiele_Gesamt");
             NotifyPropertyChanged("Trostrunde_Modus");
-
-
-
-
-
-
-
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
