@@ -29,6 +29,7 @@ namespace Turnierplan_Software
         public CancelEventHandler ProgrammBeenden { get; set; }
         public Label Label_Veranstaltung { get; set; }
         public Grid Grid_Mannschaften { get; set; }
+        public Grid Grid_Veranstaltungsuebersicht { get; set; }
         public Grid Grid_Gruppeneinteilung { get; set; }
         public Grid Grid_Endrunde { get; set; }
         public Grid Grid_Uebersicht { get; set; }
@@ -48,6 +49,9 @@ namespace Turnierplan_Software
             Grid_Gruppeneinteilung = grid_gruppeneinteilung;
             Grid_Endrunde = grid_endrunde;
             Grid_Uebersicht = grid_uebersicht;
+            Grid_Veranstaltungsuebersicht = grid_veranstaltungsuebersicht;
+
+
 
         }
 

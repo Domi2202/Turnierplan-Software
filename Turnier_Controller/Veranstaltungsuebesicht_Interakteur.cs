@@ -39,6 +39,8 @@ namespace Turnier_Controller
             _Darstellungsbereich = darstellungsbereich;
             _Veranstaltung = veranstaltung;
             _Fenster = new Veranstaltungsuebersicht();
+            _Fenster.Visibility = Visibility.Visible;
+
             Ansicht_Laden();
             _Fenster.DataContext = this;
             _Fenster.IsVisibleChanged += AnsichtAktualisieren;
@@ -56,18 +58,38 @@ namespace Turnier_Controller
         {
             get { return _Veranstaltung.Name; }
         }
+        public int Spiele
+        {
+            get { return Spieleberechnen(); }
+        }
         private void Ansicht_Laden()
         {
             _Darstellungsbereich.Children.Add(_Fenster);
         }
-        private void Spieleberechnen()
+        private int Spieleberechnen()
         {
             int counter = 0;
-            foreach (Turnier turniere in _Veranstaltung) // was will der motherfucker
-                {
-                counter += turniere.Endrunde.SpielezahlBerechnen() + turniere.Trostrunde.AnzahlSpieleBerechnen() + turniere.spieleberechnen();
+            foreach (Turnier turnier in Datei_Interakteur.Geladene_Veranstaltung.Turniere) // was will der motherfucker
+            {
+                counter += turnier.Endrunde.SpielezahlBerechnen() + turnier.Trostrunde.AnzahlSpieleBerechnen() + Spielanzahl_berechnen(turnier);
 
             }
+            return counter;
+
+        }
+        private int Spielanzahl_berechnen(Turnier turnier)
+        {
+            int spiele = 0;
+            foreach (Gruppe gruppe in turnier.Gruppen)
+            {
+                int n = gruppe.Anzahl_Teilnehmer - 1;
+                while (n > 0)
+                {
+                    spiele += n;
+                    n--;
+                }
+            }
+            return spiele;
         }
 
     }
