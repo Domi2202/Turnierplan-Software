@@ -19,7 +19,7 @@ namespace Turnier_Controller
     class Veranstaltungsuebersicht_Interakteur : INotifyPropertyChanged
     {
         private Veranstaltung _Veranstaltung;
-        private Turnier _Turnier;
+        //private Turnier _Turnier; brauchst du natürlich nicht, geht ja um die ganze veranstaltung ;)
         private Grid _Darstellungsbereich;
         private Veranstaltungsuebersicht _Fenster;
 
@@ -39,7 +39,7 @@ namespace Turnier_Controller
             _Darstellungsbereich = darstellungsbereich;
             _Veranstaltung = veranstaltung;
             _Fenster = new Veranstaltungsuebersicht();
-            _Fenster.Visibility = Visibility.Visible;
+            //_Fenster.Visibility = Visibility.Visible; ich denke wir starten fürs erste weiterhin in der Turnieransicht
 
             Ansicht_Laden();
             _Fenster.DataContext = this;

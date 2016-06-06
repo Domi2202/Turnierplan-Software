@@ -27,6 +27,7 @@ namespace Turnierplan_Software
         public EventHandler Laden { get; set; }
         public EventHandler Veranstaltungsuebersicht { get; set; }
         public CancelEventHandler ProgrammBeenden { get; set; }
+        public TabControl Turnierdetails { get; set; }
         public Label Label_Veranstaltung { get; set; }
         public Grid Grid_Mannschaften { get; set; }
         public Grid Grid_Veranstaltungsuebersicht { get; set; }
@@ -50,7 +51,7 @@ namespace Turnierplan_Software
             Grid_Endrunde = grid_endrunde;
             Grid_Uebersicht = grid_uebersicht;
             Grid_Veranstaltungsuebersicht = grid_veranstaltungsuebersicht;
-
+            Turnierdetails = tabControl_turnier;
 
 
         }
