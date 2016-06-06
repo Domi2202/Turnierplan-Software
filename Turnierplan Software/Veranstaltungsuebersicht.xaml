@@ -16,9 +16,9 @@
         <Label x:Name="label_turnierbeginn_Minute" Content="Minute :" HorizontalAlignment="Left" Margin="237,80,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.899,0.446"/>
         <TextBox x:Name="textBox_turnierbeginn_minute" HorizontalAlignment="Left" Height="23" Margin="290,83,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="40"/>
         <Label x:Name="label_anzahl_pleatze" Content="Bespielbare Felder :" HorizontalAlignment="Left" Margin="10,111,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBox_anzahl_turniertage_Copy2" HorizontalAlignment="Left" Height="23" Margin="122,114,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="40"/>
+        <TextBox x:Name="textBox_bespielbar_felder" HorizontalAlignment="Left" Height="23" Margin="122,114,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="40" Text="{Binding Bespielbare_Felder}"/>
         <Label x:Name="label_anzahl_spiele" Content="Spiele gesamt :" HorizontalAlignment="Left" Margin="10,142,0,0" VerticalAlignment="Top" />
-        <Label x:Name="label_anzahl_spiele_gesamt" Content="{Binding Spieleberechnen}" HorizontalAlignment="Left" Margin="122,142,0,0" VerticalAlignment="Top" />
+        <Label x:Name="label_anzahl_spiele_gesamt" Content="{Binding Spiele}" HorizontalAlignment="Left" Margin="122,142,0,0" VerticalAlignment="Top" />
 
     </Grid>
 </UserControl>

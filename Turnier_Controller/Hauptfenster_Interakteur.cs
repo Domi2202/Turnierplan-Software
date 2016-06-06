@@ -202,12 +202,14 @@ namespace Turnier_Controller
                 new Gruppeneinteilung_Interakteur(_Hauptfenster.Grid_Gruppeneinteilung, angeklickt.Details);
                 new Endrundeneinteilung_Interakteur(_Hauptfenster.Grid_Endrunde, angeklickt.Details);   
                 new Uebersichtsseite_Interakteur(_Hauptfenster.Grid_Uebersicht, angeklickt.Details);
+                //_Hauptfenster.Grid_Veranstaltungsuebersicht.Visibility = Visibility.Hidden;
+                //_Hauptfenster.Turnierdetails.Visibility = Visibility.Visible;
             }
         }
         private void On_Veranstaltungsuebersicht_angeklickt(object sender, EventArgs e)
         {        
             _Hauptfenster.Grid_Veranstaltungsuebersicht.Visibility = Visibility.Visible;
-            _Hauptfenster.Turnierdetails.Visibility = Visibility.Hidden;
+            //_Hauptfenster.Turnierdetails.Visibility = Visibility.Hidden;
         }
 
         private void On_Shutdown(object sender, EventArgs e)

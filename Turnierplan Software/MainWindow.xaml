@@ -14,20 +14,35 @@
             <Button x:Name="button_crash" Content="Absturz" Click="button_crash_Click"/>
             <Button x:Name="button_veranstaltungsuebersicht" Content="Veranstaltungsübersicht" Click="button_veranstaltungsuebersicht_Click" />
         </StackPanel>
-        <Grid x:Name="grid_veranstaltungsuebersicht" Background="#FFE5E5E5" Width="776" Height="503" Margin="220,137,20,10" Visibility="Hidden" />
-        <TabControl x:Name="tabControl_turnier" Margin="220,105,9.6,10.4" Visibility="Visible">
-            <TabItem Header="Mannschaften">
-                <Grid x:Name="grid_mannschaften" Background="#FFE5E5E5"/>
+        <TabControl x:Name="tabControl_Alles" Margin="220,85,10,10" Visibility="Visible">
+            <TabItem Header="Veranstaltung">
+                <TabControl x:Name="tabControl_veranstaltung" Margin="0,0,10,10" Visibility="Visible">
+                    <TabItem Header="Übersicht">
+                        <Grid x:Name="grid_veranstaltungsuebersicht" Background="#FFE5E5E5"  Visibility="Visible" />
+                    </TabItem>
+                    <TabItem Header="Feldeinteilung">
+
+                    </TabItem>
+
+                </TabControl>
             </TabItem>
-            <TabItem Header="Gruppen">
-                <Grid x:Name="grid_gruppeneinteilung" Background="#FFE5E5E5"/>
-            </TabItem>
-            <TabItem Header="Endrunde">
-                <Grid x:Name="grid_endrunde" Background="#FFE5E5E5"/>
-            </TabItem>
-            <TabItem Header="Übersicht">
-                <Grid x:Name="grid_uebersicht" Background="#FFE5E5E5"/>
+            <TabItem Header="Turnier">
+                <TabControl x:Name="tabControl_turnier" Margin="0,0,10,10" Visibility="Visible">
+                    <TabItem Header="Mannschaften">
+                        <Grid x:Name="grid_mannschaften" Background="#FFE5E5E5"/>
+                    </TabItem>
+                    <TabItem Header="Gruppen">
+                        <Grid x:Name="grid_gruppeneinteilung" Background="#FFE5E5E5"/>
+                    </TabItem>
+                    <TabItem Header="Endrunde">
+                        <Grid x:Name="grid_endrunde" Background="#FFE5E5E5"/>
+                    </TabItem>
+                    <TabItem Header="Übersicht">
+                        <Grid x:Name="grid_uebersicht" Background="#FFE5E5E5"/>
+                    </TabItem>
+                </TabControl>
             </TabItem>
         </TabControl>
+
     </Grid>
 </Window>

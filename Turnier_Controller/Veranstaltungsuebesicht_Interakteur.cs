@@ -48,7 +48,14 @@ namespace Turnier_Controller
         private void AnsichtAktualisieren(object sender, DependencyPropertyChangedEventArgs e)
         {
             NotifyPropertyChanged("Name");
+            NotifyPropertyChanged("Spiele");
 
+
+        }
+        public int Bespielbare_Felder
+        {
+            get { return _Veranstaltung.Anzahl_Spielfelder; }
+            set { _Veranstaltung.Anzahl_Spielfelder_setzten(value); }
         }
         public int Anzahl_tage
         {

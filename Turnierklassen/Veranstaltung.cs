@@ -20,6 +20,11 @@ namespace Turnierklassen
             Spieltage = new List<Spieltag>();
             Spielplan = new List<Slot>();
         }
+        public void Anzahl_Spielfelder_setzten(int anzahl)
+        {
+            Anzahl_Spielfelder = anzahl;
+            Datei_Interakteur.Save_Temp();
+        }
     }
 
     public class Spieltag
