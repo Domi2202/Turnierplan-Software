@@ -52,23 +52,62 @@ namespace Turnier_Controller
 
 
         }
+
+        #region BindingProperties
+
+        public int Anzahl_Spieltage
+        {
+            get { return _Veranstaltung.Spieltage.Count; }
+            set 
+            {
+                if (_Veranstaltung.Spieltage.Count < value)
+                {
+                    _Veranstaltung.NeuerSpieltag(value - _Veranstaltung.Spieltage.Count);
+                }
+                else if (_Veranstaltung.Spieltage.Count > value)
+                {
+                    _Veranstaltung.Spieltage_loeschen(_Veranstaltung.Spieltage.Count - value);
+                }
+                NotifyPropertyChanged("Spieltage");
+            }
+        }
         public int Bespielbare_Felder
         {
             get { return _Veranstaltung.Anzahl_Spielfelder; }
             set { _Veranstaltung.Anzahl_Spielfelder_setzten(value); }
         }
+
         public int Anzahl_tage
         {
             get { return _Veranstaltung.Spieltage.Count; }
         }
+
         public string Name
         {
             get { return _Veranstaltung.Name; }
         }
+
         public int Spiele
         {
             get { return Spieleberechnen(); }
         }
+
+        public IEnumerable<UIElement> Spieltage
+        {
+            get 
+            {
+                List<SpieltagBox> spieltagboxen = new List<SpieltagBox>();
+                foreach (Spieltag spieltag in _Veranstaltung.Spieltage)
+                {
+                    spieltagboxen.Add(new Spieltagbox_Interakteur(spieltag).SpieltagBox);
+                   
+                }
+                return spieltagboxen;
+            }
+        }
+
+        #endregion
+
         private void Ansicht_Laden()
         {
             _Darstellungsbereich.Children.Add(_Fenster);
@@ -76,7 +115,7 @@ namespace Turnier_Controller
         private int Spieleberechnen()
         {
             int counter = 0;
-            foreach (Turnier turnier in Datei_Interakteur.Geladene_Veranstaltung.Turniere) // was will der motherfucker
+            foreach (Turnier turnier in Datei_Interakteur.Geladene_Veranstaltung.Turniere) 
             {
                 counter += turnier.Endrunde.SpielezahlBerechnen() + turnier.Trostrunde.AnzahlSpieleBerechnen() + Spielanzahl_berechnen(turnier);
 

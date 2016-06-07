@@ -97,6 +97,7 @@
     <Compile Include="Hauptfenster_Interakteur.cs" />
     <Compile Include="Konfiguration.cs" />
     <Compile Include="Mannschaftsseite_Interakteur.cs" />
+    <Compile Include="Spieltagbox_Interakteur.cs" />
     <Compile Include="Teilnahmeregel_Interakteur.cs" />
     <Compile Include="Turnierfenster_Interakteur.cs" />
     <Compile Include="Veranstaltungsuebesicht_Interakteur.cs" />
