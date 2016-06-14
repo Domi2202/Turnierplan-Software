@@ -101,34 +101,36 @@ namespace Turnierklassen
             Datei_Interakteur.Save_Temp();
         }
 
-        public void RundenErzeugen()
+        public void StartrundeAnlegen()
         {
             Runden.Clear();
-            for (int i = (int)Modus; i > 1; i = i/2)
-            {
-                Runde runde = new Runde(i / 2);
-                Runden.Add(runde);
-            }
-            if (_loserBracket)
-            {
-                VerliererrundenErzeugen();
-            }
-            else
-            {
-                Datei_Interakteur.Save_Temp();
-            }
-        }
-
-        public void VerliererrundenErzeugen()
-        {
-            Verliererrunde.Clear();
-            for (int i = (int)Modus / 2; i > 1; i = i / 2)
-            {
-                Runde runde = new Runde(i / 2);
-                Verliererrunde.Add(runde);
-            }
+            Runde startrunde = new Runde((int)_Modus / 2);
+            startrunde.NamenSetzen(_Modus.ToString());
+            Runden.Add(startrunde);
             Datei_Interakteur.Save_Temp();
         }
+
+        public void RundeHinzufuegen(Runde vorgaenger)
+        {
+            Runde neueRunde = new Runde(vorgaenger.Paarungen.Count / 2);
+            neueRunde.Vorgaenerrunde = vorgaenger.ID;
+            neueRunde.Siegerrunde = true;
+            Modus neu = (Modus)(neueRunde.Paarungen.Count * 2);
+            neueRunde.NamenSetzen(neu.ToString());
+            Runden.Add(neueRunde);
+            Datei_Interakteur.Save_Temp();
+        }
+
+        //public void VerliererrundenErzeugen()
+        //{
+        //    Verliererrunde.Clear();
+        //    for (int i = (int)Modus / 2; i > 1; i = i / 2)
+        //    {
+        //        Runde runde = new Runde(i / 2);
+        //        Verliererrunde.Add(runde);
+        //    }
+        //    Datei_Interakteur.Save_Temp();
+        //}
 
         public int SpielezahlBerechnen()
         {
@@ -144,33 +146,6 @@ namespace Turnierklassen
         }
 
         #endregion
-    }
-
-    public class Runde
-    {
-        public int ID { get; set; }
-        public int Anzahl_Paarungen { get; set; }
-        public List<Paarung> Paarungen { get; set; }
-
-        public Runde()
-        {
-            Paarungen = new List<Paarung>();
-        }
-
-        public Runde(int anzahl_paarungen)
-        {
-            Paarungen = new List<Paarung>();
-            Anzahl_Paarungen = anzahl_paarungen;
-            PaarungenErzeugen();
-        }
-
-        private void PaarungenErzeugen()
-        {
-            for(int i = 0; i < Anzahl_Paarungen; i++)
-            {
-                Paarungen.Add(new Paarung());
-            }
-        }
     }
 
     public enum Modus { Keiner = 0, Finale = 2, Halbfinale = 4, Viertelfinale = 8, Achtelfinale = 16, Sechzehntelfinale = 32 }

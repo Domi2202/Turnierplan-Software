@@ -19,7 +19,7 @@ namespace Turnierplan_Software
     /// </summary>
     public partial class Teilnahmeregel_Dialog : Window
     {
-        public ListBox Teilnahmeregeln { get; set; }
+        public ItemsControl Teilnahmeregeln { get; set; }
         public TextBox NameDerRegel { get; set; }
         public EventHandler RegelSpeichern { get; set; }
         public Teilnahmeregel_Dialog()

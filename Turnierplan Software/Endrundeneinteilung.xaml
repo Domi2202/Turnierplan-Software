@@ -40,14 +40,17 @@
                 <Button x:Name="btn_verliererbaum" Content="Verliererbaum" HorizontalAlignment="Left" Margin="350,10,0,0" VerticalAlignment="Top" Width="111" Click="btn_verliererbaum_Click"/>
 
             </Grid>
-            <Grid Name="grid_endrundenbaum" Margin="242,0,0,150">
+            <Grid Margin="242,0,0,150">
+            <ScrollViewer>
+            <ItemsControl Name="grid_endrundenbaum" ItemsSource="{Binding Runden}">
                 <!-- <Grid  Name="grid_sechzehntel" HorizontalAlignment="Left" Height="107" VerticalAlignment="Top" Width="588"/>
                 <Grid  Name="grid_achtel" HorizontalAlignment="Left" Height="107" VerticalAlignment="Top" Width="588" Margin="0,107,0,0"/>
                 <Grid  Name="grid_viertel" HorizontalAlignment="Left" Height="107" VerticalAlignment="Top" Width="588" Margin="0,214,0,0"/>
                 <Grid  Name="grid_halb" HorizontalAlignment="Left" Height="107" VerticalAlignment="Top" Width="588" Margin="0,321,0,0"/>
                 <Grid  Name="grid_finale" HorizontalAlignment="Left" Height="107" VerticalAlignment="Top" Width="588" Margin="0,428,0,0"/>-->
+            </ItemsControl>
+            </ScrollViewer>
             </Grid>
-
         </Grid>
 
     </Grid>

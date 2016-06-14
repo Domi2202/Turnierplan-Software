@@ -84,6 +84,7 @@
     <Compile Include="Mannschaft.cs" />
     <Compile Include="Paarung.cs" />
     <Compile Include="Qualifikationsspiel.cs" />
+    <Compile Include="Runde.cs" />
     <Compile Include="Teilnahmeregel.cs" />
     <Compile Include="Trostrunde.cs" />
     <Compile Include="Turnier.cs" />

@@ -207,6 +207,31 @@ namespace Turnier_Controller
                 NotifyPropertyChanged("Trostrunde_Spielezahl");
             }
         }
+
+        public IEnumerable<UIElement> Runden
+        {
+            get
+            {
+                List<RundenBox> rundenboxen = new List<RundenBox>();
+                foreach(Runde runde in _Turnier.Endrunde.Runden) 
+                {
+                    Rundenbox_Interakteur runden_int = new Rundenbox_Interakteur(runde);
+                    runden_int.NeueRunde += RundeHinzufuegen;
+                    RundenBox box = runden_int.Box;                    
+                    foreach (Paarung paarung in runde.Paarungen)
+                    {
+                        box.Spiele.ColumnDefinitions.Add(new ColumnDefinition());
+                        Spielpaarungsbaustein_Minified_Interakteur_ObereEbene spiel_int = new Spielpaarungsbaustein_Minified_Interakteur_ObereEbene(paarung, _Fenster.listbox_Teilnehmer);
+                        spiel_int.RegelAusPoolGenommen += RegelAusPoolEntfernen;
+                        spiel_int.RegelInPoolGelegt += RegelZuPoolHinzufuegen;
+                        spiel_int.Platzieren(box.Spiele.ColumnDefinitions.Count - 1);
+                        box.Spiele.Children.Add(spiel_int.Paarungsfeld);
+                    }
+                    rundenboxen.Add(box);
+                }
+                return rundenboxen;
+            }
+        }
         #endregion
 
         #region PrivateFunctions
@@ -227,10 +252,10 @@ namespace Turnier_Controller
             _Fenster.AddParticipationRule += AddParticipationRule;
             _Fenster.DeleteParticipationRule += DeleteParticipationRule;
             _Fenster.TeilnahmeregelAnzeigen += TeilnahmeregelAnzeigen;
-            _Fenster.EndrundenbaumErzeugen += EndrundenbaumErzeugen;
-            _Fenster.IsVisibleChanged += EndrundenbaumDarstellen;
-            _Fenster.VerliererbaumZeigen += VerliererbaumDarstellen;
-            _Fenster.GewinnerbaumZeigen += GewinnerbaumDarstellen;
+            _Fenster.EndrundenbaumErzeugen += StartrundeErzeugen;
+            //_Fenster.IsVisibleChanged += EndrundenbaumDarstellen;
+            //_Fenster.VerliererbaumZeigen += VerliererbaumDarstellen;
+            //_Fenster.GewinnerbaumZeigen += GewinnerbaumDarstellen;
         }
 
 
@@ -250,7 +275,7 @@ namespace Turnier_Controller
 
         #region PublicFunctions
 
-        public void DeleteParticipationRule(int index)
+        public void DeleteParticipationRule(int index) //kaputt!!!
         {
             _Turnier.Endrunde.DeleteParticipationRule(index);
             NotifyPropertyChanged("PaticipantsProvided");
@@ -298,121 +323,113 @@ namespace Turnier_Controller
             NotifyPropertyChanged("Warnfarbe");
         }
 
-        private void EndrundenbaumErzeugen(object sender, EventArgs e)
-        {
-            _Turnier.Endrunde.RundenErzeugen();
-            EndrundenspieleMitDatenVersehen();
-            VerliererrundeMitDatenVersehen();
-            EndrundenbaumDarstellen(_Turnier.Endrunde.Runden, false);
-        }
-
         #region Endrundenbaum
 
-        private void EndrundenbaumDarstellen(List<Runde> baum, bool verliererbaum)
-        {
-            EndrundenbaumGridBereinigen();
-            foreach (Runde runde in baum)
-            {
-                Grid grid = NeueSpalteMitGridErzeugen();
-                foreach (Paarung paarung in runde.Paarungen)
-                {
-                    grid.ColumnDefinitions.Add(new ColumnDefinition());
-                    if (runde == _Turnier.Endrunde.Runden.ElementAt(0))
-                    {
-                        PaarungsbausteinFuerObersteEbeneErstellen(grid, paarung);
-                    }
-                    else
-                    {
-                        int rundenNr = baum.IndexOf(runde);
-                        if (!verliererbaum) rundenNr--;
-                        PaarungsbausteinFuerUntereEbenenErstellen(grid, paarung, rundenNr, verliererbaum);
-                    }              
-                }
-            }
-        }
+        //private void EndrundenbaumDarstellen(List<Runde> baum, bool verliererbaum)
+        //{
+        //    EndrundenbaumGridBereinigen();
+        //    foreach (Runde runde in baum)
+        //    {
+        //        Grid grid = NeueSpalteMitGridErzeugen();
+        //        foreach (Paarung paarung in runde.Paarungen)
+        //        {
+        //            grid.ColumnDefinitions.Add(new ColumnDefinition());
+        //            if (runde == _Turnier.Endrunde.Runden.ElementAt(0))
+        //            {
+        //                PaarungsbausteinFuerObersteEbeneErstellen(grid, paarung);
+        //            }
+        //            else
+        //            {
+        //                int rundenNr = baum.IndexOf(runde);
+        //                if (!verliererbaum) rundenNr--;
+        //                PaarungsbausteinFuerUntereEbenenErstellen(grid, paarung, rundenNr, verliererbaum);
+        //            }              
+        //        }
+        //    }
+        //}
 
-        private void EndrundenbaumGridBereinigen()
-        {
-            _Fenster.grid_Endrundenbaum.Children.Clear();
-            _Fenster.grid_Endrundenbaum.RowDefinitions.Clear();
-            _Fenster.grid_Endrundenbaum.ColumnDefinitions.Clear();
-        }
+        //private void EndrundenbaumGridBereinigen()
+        //{
+        //    _Fenster.grid_Endrundenbaum.Children.Clear();
+        //    _Fenster.grid_Endrundenbaum.RowDefinitions.Clear();
+        //    _Fenster.grid_Endrundenbaum.ColumnDefinitions.Clear();
+        //}
 
-        private Grid NeueSpalteMitGridErzeugen()
-        {
-            _Fenster.grid_Endrundenbaum.RowDefinitions.Add(new RowDefinition());
-            Grid grid = new Grid();
-            _Fenster.grid_Endrundenbaum.Children.Add(grid);
-            Grid.SetRow(grid, _Fenster.grid_Endrundenbaum.RowDefinitions.Count - 1);
-            return grid;
-        }
+        //private Grid NeueSpalteMitGridErzeugen()
+        //{
+        //    _Fenster.grid_Endrundenbaum.RowDefinitions.Add(new RowDefinition());
+        //    Grid grid = new Grid();
+        //    _Fenster.grid_Endrundenbaum.Children.Add(grid);
+        //    Grid.SetRow(grid, _Fenster.grid_Endrundenbaum.RowDefinitions.Count - 1);
+        //    return grid;
+        //}
 
-        private void PaarungsbausteinFuerObersteEbeneErstellen(Grid grid, Paarung paarung)
-        {
-            Spielpaarungsbaustein_Minified_Interakteur_ObereEbene spiel_int = new Spielpaarungsbaustein_Minified_Interakteur_ObereEbene(paarung, _Fenster.listbox_Teilnehmer);
-            grid.Children.Add(spiel_int.Paarungsfeld);
-            spiel_int.Platzieren(grid.ColumnDefinitions.Count - 1);
-            spiel_int.RegelAusPoolGenommen += RegelAusPoolEntfernen;
-            spiel_int.RegelInPoolGelegt += RegelZuPoolHinzufuegen;
-        }
+        //private void PaarungsbausteinFuerObersteEbeneErstellen(Grid grid, Paarung paarung)
+        //{
+        //    Spielpaarungsbaustein_Minified_Interakteur_ObereEbene spiel_int = new Spielpaarungsbaustein_Minified_Interakteur_ObereEbene(paarung, _Fenster.listbox_Teilnehmer);
+        //    grid.Children.Add(spiel_int.Paarungsfeld);
+        //    spiel_int.Platzieren(grid.ColumnDefinitions.Count - 1);
+        //    spiel_int.RegelAusPoolGenommen += RegelAusPoolEntfernen;
+        //    spiel_int.RegelInPoolGelegt += RegelZuPoolHinzufuegen;
+        //}
 
-        private void PaarungsbausteinFuerUntereEbenenErstellen(Grid grid, Paarung paarung, int rundenNr, bool verliererbaum)
-        {
-            Spielpaarungsbaustein_Minified_Interakteur_UntereEbenen spiel_int = new Spielpaarungsbaustein_Minified_Interakteur_UntereEbenen(paarung, _Turnier.Endrunde.Runden.ElementAt(rundenNr));
-            spiel_int.FuerSiegerbaum = !verliererbaum;
-            grid.Children.Add(spiel_int.Paarungsfeld);
-            spiel_int.Platzieren(grid.ColumnDefinitions.Count - 1);
-        }
+        //private void PaarungsbausteinFuerUntereEbenenErstellen(Grid grid, Paarung paarung, int rundenNr, bool verliererbaum)
+        //{
+        //    Spielpaarungsbaustein_Minified_Interakteur_UntereEbenen spiel_int = new Spielpaarungsbaustein_Minified_Interakteur_UntereEbenen(paarung, _Turnier.Endrunde.Runden.ElementAt(rundenNr));
+        //    spiel_int.FuerSiegerbaum = !verliererbaum;
+        //    grid.Children.Add(spiel_int.Paarungsfeld);
+        //    spiel_int.Platzieren(grid.ColumnDefinitions.Count - 1);
+        //}
         #endregion
 
         #region DatenFürEndrunde
 
-        private void EndrundenspieleMitDatenVersehen()
-        {
-            int modus = (int)_Turnier.Endrunde.Modus;
-            Runde vorherigeRunde = new Runde();
-            foreach (Runde runde in _Turnier.Endrunde.Runden)
-            {
-                string rundenname = Convert.ToString((Modus)modus);
-                int spielnr = 1;
-                foreach (Paarung paarung in runde.Paarungen)
-                {
-                    paarung.Name = rundenname + " " + spielnr;
-                    paarung.Turnier = _Turnier.Name;
-                    if(runde != _Turnier.Endrunde.Runden.First())
-                    {
-                        paarung.Vorheriges_Spiel_A = new Qualifikationsspiel(vorherigeRunde.Paarungen.ElementAt((spielnr * 2) - 2), true);
-                        paarung.Vorheriges_Spiel_B = new Qualifikationsspiel(vorherigeRunde.Paarungen.ElementAt((spielnr * 2) - 1), true);
-                    }
-                    spielnr++;
-                }
-                vorherigeRunde = runde;
-                modus = modus / 2;
-            }
-        }
+        //private void EndrundenspieleMitDatenVersehen()
+        //{
+        //    int modus = (int)_Turnier.Endrunde.Modus;
+        //    Runde vorherigeRunde = new Runde();
+        //    foreach (Runde runde in _Turnier.Endrunde.Runden)
+        //    {
+        //        string rundenname = Convert.ToString((Modus)modus);
+        //        int spielnr = 1;
+        //        foreach (Paarung paarung in runde.Paarungen)
+        //        {
+        //            paarung.Name = rundenname + " " + spielnr;
+        //            paarung.Turnier = _Turnier.Name;
+        //            if(runde != _Turnier.Endrunde.Runden.First())
+        //            {
+        //                paarung.Vorheriges_Spiel_A = new Qualifikationsspiel(vorherigeRunde.Paarungen.ElementAt((spielnr * 2) - 2), true);
+        //                paarung.Vorheriges_Spiel_B = new Qualifikationsspiel(vorherigeRunde.Paarungen.ElementAt((spielnr * 2) - 1), true);
+        //            }
+        //            spielnr++;
+        //        }
+        //        vorherigeRunde = runde;
+        //        modus = modus / 2;
+        //    }
+        //}
 
-        private void VerliererrundeMitDatenVersehen()
-        {
-            int modus = (int)_Turnier.Endrunde.Modus;
-            int rundenNr = 0;
-            Runde vorherigeRunde = _Turnier.Endrunde.Runden.ElementAt(rundenNr);
-            foreach (Runde runde in _Turnier.Endrunde.Verliererrunde)
-            {
-                string rundenname = Convert.ToString((Modus)modus);
-                int spielnr = 1;
-                foreach (Paarung paarung in runde.Paarungen)
-                {
-                    //paarung.Name = rundenname + " " + spielnr;
-                    paarung.Turnier = _Turnier.Name;
-                    paarung.Vorheriges_Spiel_A = new Qualifikationsspiel(vorherigeRunde.Paarungen.ElementAt((spielnr * 2) - 2), false);
-                    paarung.Vorheriges_Spiel_B = new Qualifikationsspiel(vorherigeRunde.Paarungen.ElementAt((spielnr * 2) - 1), false);
-                    spielnr++;
-                }
-                rundenNr++;
-                vorherigeRunde = _Turnier.Endrunde.Runden.ElementAt(rundenNr);
-                modus = modus / 2;
-            }
-        }
+        //private void VerliererrundeMitDatenVersehen()
+        //{
+        //    int modus = (int)_Turnier.Endrunde.Modus;
+        //    int rundenNr = 0;
+        //    Runde vorherigeRunde = _Turnier.Endrunde.Runden.ElementAt(rundenNr);
+        //    foreach (Runde runde in _Turnier.Endrunde.Verliererrunde)
+        //    {
+        //        string rundenname = Convert.ToString((Modus)modus);
+        //        int spielnr = 1;
+        //        foreach (Paarung paarung in runde.Paarungen)
+        //        {
+        //            //paarung.Name = rundenname + " " + spielnr;
+        //            paarung.Turnier = _Turnier.Name;
+        //            paarung.Vorheriges_Spiel_A = new Qualifikationsspiel(vorherigeRunde.Paarungen.ElementAt((spielnr * 2) - 2), false);
+        //            paarung.Vorheriges_Spiel_B = new Qualifikationsspiel(vorherigeRunde.Paarungen.ElementAt((spielnr * 2) - 1), false);
+        //            spielnr++;
+        //        }
+        //        rundenNr++;
+        //        vorherigeRunde = _Turnier.Endrunde.Runden.ElementAt(rundenNr);
+        //        modus = modus / 2;
+        //    }
+        //}
 
         #endregion
 
@@ -426,19 +443,25 @@ namespace Turnier_Controller
             }
         }
 
-        public void EndrundenbaumDarstellen(object sender, DependencyPropertyChangedEventArgs e) 
-        {
-            EndrundenbaumDarstellen(_Turnier.Endrunde.Runden, false);
-        }
+        //public void EndrundenbaumDarstellen(object sender, DependencyPropertyChangedEventArgs e) 
+        //{
+        //    EndrundenbaumDarstellen(_Turnier.Endrunde.Runden, false);
+        //}
 
-        public void VerliererbaumDarstellen(object sender, EventArgs e)
-        {
-            EndrundenbaumDarstellen(_Turnier.Endrunde.Verliererrunde, true);
-        }
+        //public void VerliererbaumDarstellen(object sender, EventArgs e)
+        //{
+        //    EndrundenbaumDarstellen(_Turnier.Endrunde.Verliererrunde, true);
+        //}
 
-        public void GewinnerbaumDarstellen(object sender, EventArgs e)
+        //public void GewinnerbaumDarstellen(object sender, EventArgs e)
+        //{
+        //    EndrundenbaumDarstellen(_Turnier.Endrunde.Runden, false);
+        //}
+
+        public void StartrundeErzeugen(object sender, EventArgs e)
         {
-            EndrundenbaumDarstellen(_Turnier.Endrunde.Runden, false);
+            _Turnier.Endrunde.StartrundeAnlegen();
+            NotifyPropertyChanged("Runden");
         }
 
         public void RegelAusPoolEntfernen(object sender, EventArgs e)
@@ -453,6 +476,13 @@ namespace Turnier_Controller
             Teilnahmerregel regel = sender as Teilnahmerregel;
             _Turnier.Endrunde.AddNewParticipationRule(regel);
             NotifyPropertyChanged("ParticipationRules");
+        }
+
+        public void RundeHinzufuegen(object sender, EventArgs e)
+        {
+            Runde vorgaenger = sender as Runde;
+            _Turnier.Endrunde.RundeHinzufuegen(vorgaenger);
+            NotifyPropertyChanged("Runden");
         }
         #endregion
     }

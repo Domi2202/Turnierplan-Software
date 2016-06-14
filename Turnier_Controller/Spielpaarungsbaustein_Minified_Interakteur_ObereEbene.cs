@@ -38,6 +38,7 @@ namespace Turnier_Controller
         private void TeamA_setzen(object sender, EventArgs e)
         {
             if (_Pool.SelectedItem == null) return;
+            if (_Paarung.Regel_Mannschaft_A != null) return;
             Listenelement<Teilnahmerregel> listeneintrag = _Pool.SelectedItem as Listenelement<Teilnahmerregel>;
             Teilnahmerregel regel = listeneintrag.Details;
             _Paarung.Regel_Mannschaft_A = regel;
@@ -51,6 +52,7 @@ namespace Turnier_Controller
         private void TeamB_setzen(object sender, EventArgs e)
         {
             if (_Pool.SelectedItem == null) return;
+            if (_Paarung.Regel_Mannschaft_B != null) return;
             Listenelement<Teilnahmerregel> listeneintrag = _Pool.SelectedItem as Listenelement<Teilnahmerregel>;
             Teilnahmerregel regel = listeneintrag.Details;
             _Paarung.Regel_Mannschaft_B = regel;

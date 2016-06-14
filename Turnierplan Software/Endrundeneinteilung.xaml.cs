@@ -24,7 +24,7 @@ namespace Turnierplan_Software
         public ComboBox Modus_Auswahl { get; set; }
         public CheckBox checkbox_Punkte { get; set; }
         public ListBox listbox_Teilnehmer { get; set; }
-        public Grid grid_Endrundenbaum { get; set; }
+        public ItemsControl Endrundenbaum { get; set; }
         public EventHandler AddParticipationRule { get; set; }
         public EventHandler DeleteParticipationRule { get; set; }
         public EventHandler TeilnahmeregelAnzeigen { get; set; }
@@ -45,7 +45,7 @@ namespace Turnierplan_Software
             label_Turniername = label_turniername;
             checkbox_Punkte = checkBox_3punkte;
             listbox_Teilnehmer = listBox_teilnehmer;
-            grid_Endrundenbaum = grid_endrundenbaum;
+            Endrundenbaum = grid_endrundenbaum;
             Modus_Auswahl = combobox_modus;
         }
 
