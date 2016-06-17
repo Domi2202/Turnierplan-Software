@@ -10,15 +10,10 @@
         <Label x:Name="label_veranstaltungsname" Content="{Binding Name}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label_turniertage" Content="Anzahl Turniertage :" HorizontalAlignment="Left" Margin="10,49,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="textBox_anzahl_turniertage" HorizontalAlignment="Left" Height="23" Margin="140,52,0,0" TextWrapping="Wrap" Text="{Binding Anzahl_Spieltage}" VerticalAlignment="Top" Width="50"/>
-        <Label x:Name="label_turnierbeginn" Content="Uhrzeit Turnierbeginn" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label_turnierbeginn_stunde" Content="Stunde :" HorizontalAlignment="Left" Margin="140,80,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBox_turnierbeginn_stunde" HorizontalAlignment="Left" Height="23" Margin="192,83,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="40"/>
-        <Label x:Name="label_turnierbeginn_Minute" Content="Minute :" HorizontalAlignment="Left" Margin="237,80,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.899,0.446"/>
-        <TextBox x:Name="textBox_turnierbeginn_minute" HorizontalAlignment="Left" Height="23" Margin="290,83,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="40"/>
-        <Label x:Name="label_anzahl_pleatze" Content="Bespielbare Felder :" HorizontalAlignment="Left" Margin="10,111,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBox_bespielbar_felder" HorizontalAlignment="Left" Height="23" Margin="122,114,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="40" Text="{Binding Bespielbare_Felder}"/>
-        <Label x:Name="label_anzahl_spiele" Content="Spiele gesamt :" HorizontalAlignment="Left" Margin="10,142,0,0" VerticalAlignment="Top" />
-        <Label x:Name="label_anzahl_spiele_gesamt" Content="{Binding Spiele}" HorizontalAlignment="Left" Margin="122,142,0,0" VerticalAlignment="Top" />
+        <Label x:Name="label_anzahl_pleatze" Content="Bespielbare Felder :" HorizontalAlignment="Left" Margin="10,82,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBox_bespielbar_felder" HorizontalAlignment="Left" Height="23" Margin="140,85,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="40" Text="{Binding Bespielbare_Felder}"/>
+        <Label x:Name="label_anzahl_spiele" Content="Spiele gesamt :" HorizontalAlignment="Left" Margin="10,113,0,0" VerticalAlignment="Top" />
+        <Label x:Name="label_anzahl_spiele_gesamt" Content="{Binding Spiele}" HorizontalAlignment="Left" Margin="122,113,0,0" VerticalAlignment="Top" />
         <Grid Margin="10,200,10,10">
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             <ItemsControl  ItemsSource="{Binding Spieltage}"/>
