@@ -215,18 +215,19 @@ namespace Turnier_Controller
                 List<RundenBox> rundenboxen = new List<RundenBox>();
                 foreach(Runde runde in _Turnier.Endrunde.Runden) 
                 {
-                    Rundenbox_Interakteur runden_int = new Rundenbox_Interakteur(runde);
+                    Rundenbox_Interakteur runden_int = new Rundenbox_Interakteur(runde, _Turnier.Endrunde);
                     runden_int.NeueRunde += RundeHinzufuegen;
-                    RundenBox box = runden_int.Box;                    
-                    foreach (Paarung paarung in runde.Paarungen)
-                    {
-                        box.Spiele.ColumnDefinitions.Add(new ColumnDefinition());
-                        Spielpaarungsbaustein_Minified_Interakteur_ObereEbene spiel_int = new Spielpaarungsbaustein_Minified_Interakteur_ObereEbene(paarung, _Fenster.listbox_Teilnehmer);
-                        spiel_int.RegelAusPoolGenommen += RegelAusPoolEntfernen;
-                        spiel_int.RegelInPoolGelegt += RegelZuPoolHinzufuegen;
-                        spiel_int.Platzieren(box.Spiele.ColumnDefinitions.Count - 1);
-                        box.Spiele.Children.Add(spiel_int.Paarungsfeld);
-                    }
+                    runden_int.RundeLoeschen += RundeLoeschen;
+                    RundenBox box = runden_int.Box;
+                    //foreach (Paarung paarung in runde.Paarungen)
+                    //{
+                    //    box.Spiele.ColumnDefinitions.Add(new ColumnDefinition());
+                    //    Spielpaarungsbaustein_Minified_Interakteur_ObereEbene spiel_int = new Spielpaarungsbaustein_Minified_Interakteur_ObereEbene(paarung, _Fenster.listbox_Teilnehmer);
+                    //    spiel_int.RegelAusPoolGenommen += RegelAusPoolEntfernen;
+                    //    spiel_int.RegelInPoolGelegt += RegelZuPoolHinzufuegen;
+                    //    spiel_int.Platzieren(box.Spiele.ColumnDefinitions.Count - 1);
+                    //    box.Spiele.Children.Add(spiel_int.Paarungsfeld);
+                    //}
                     rundenboxen.Add(box);
                 }
                 return rundenboxen;
@@ -482,6 +483,13 @@ namespace Turnier_Controller
         {
             Runde vorgaenger = sender as Runde;
             _Turnier.Endrunde.RundeHinzufuegen(vorgaenger);
+            NotifyPropertyChanged("Runden");
+        }
+
+        public void RundeLoeschen(object sender, EventArgs e)
+        {
+            Runde zuLoeschen = sender as Runde;
+            _Turnier.Endrunde.RundeLoeschen(zuLoeschen);
             NotifyPropertyChanged("Runden");
         }
         #endregion

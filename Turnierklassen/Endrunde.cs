@@ -106,19 +106,56 @@ namespace Turnierklassen
             Runden.Clear();
             Runde startrunde = new Runde((int)_Modus / 2);
             startrunde.NamenSetzen(_Modus.ToString());
+            startrunde.Siegerrunde = true;
             Runden.Add(startrunde);
             Datei_Interakteur.Save_Temp();
         }
 
         public void RundeHinzufuegen(Runde vorgaenger)
         {
+            if (vorgaenger.Paarungen.Count == 1) return;
             Runde neueRunde = new Runde(vorgaenger.Paarungen.Count / 2);
             neueRunde.Vorgaenerrunde = vorgaenger.ID;
             neueRunde.Siegerrunde = true;
             Modus neu = (Modus)(neueRunde.Paarungen.Count * 2);
             neueRunde.NamenSetzen(neu.ToString());
+            neueRunde.SpieleBelegen(vorgaenger);
             Runden.Add(neueRunde);
             Datei_Interakteur.Save_Temp();
+        }
+
+        /// <summary>
+        /// Deletes the specified round and unsets it as a predecessor for other rounds if necessary
+        /// </summary>
+        /// <param name="zuLoeschendeRunde"></param>
+        public void RundeLoeschen(Runde zuLoeschendeRunde)
+        {
+            Runden.Remove(zuLoeschendeRunde);
+            foreach (Runde runde in Runden)
+            {
+                if (runde.Vorgaenerrunde == zuLoeschendeRunde.ID)
+                {
+                    runde.Vorgaenerrunde = Guid.Empty;
+                }
+            }
+            Datei_Interakteur.Save_Temp();
+        }
+
+        /// <summary>
+        /// Returns the round object with the submitted id or throws key not found exception
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Runde RundeMitID(Guid id) 
+        {
+            foreach(Runde runde in Runden)
+            {
+                if (runde.ID == id)
+                {
+                    return runde;
+                }
+            }
+            throw new KeyNotFoundException("Die keine Runde mit dieser ID wurde gefunden");
         }
 
         //public void VerliererrundenErzeugen()

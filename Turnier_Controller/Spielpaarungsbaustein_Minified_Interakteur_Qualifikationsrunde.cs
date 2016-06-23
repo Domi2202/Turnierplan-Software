@@ -15,13 +15,13 @@ using System.Windows.Media;
 
 namespace Turnier_Controller
 {
-    class Spielpaarungsbaustein_Minified_Interakteur_UntereEbenen : Spielpaarungsbaustein_Minified_Interakteur
+    class Spielpaarungsbaustein_Minified_Interakteur_Qualifikationsrunde : Spielpaarungsbaustein_Minified_Interakteur
     {
         private Runde _Qualifikationsrunde;
 
         public bool FuerSiegerbaum { get; set; }
 
-        public Spielpaarungsbaustein_Minified_Interakteur_UntereEbenen(Paarung paarung, Runde qualifikationsrunde) : base(paarung) 
+        public Spielpaarungsbaustein_Minified_Interakteur_Qualifikationsrunde(Paarung paarung, Runde qualifikationsrunde) : base(paarung) 
         {
             _Qualifikationsrunde = qualifikationsrunde;
             FuerSiegerbaum = true;

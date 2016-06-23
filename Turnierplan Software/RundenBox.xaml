@@ -13,9 +13,10 @@
             <Label Content="Spiele:" HorizontalAlignment="Left" Margin="3,26,0,0" VerticalAlignment="Top"/>
             <Label Margin="100,26,0,0" Content="{Binding Anzahl_Spiele}" VerticalAlignment="Top" HorizontalAlignment="Left" Width="30"/>
             <CheckBox Content="Siegerrunde" Margin="6,105,5,0" VerticalAlignment="Top" IsChecked="{Binding Siegerrunde}"/>
-            <ComboBox Margin="5,75,5,0" VerticalAlignment="Top"/>
+            <ComboBox Margin="5,75,5,0" VerticalAlignment="Top" ItemsSource="{Binding MoeglicheVorgaengerrunden}" SelectedIndex="{Binding Vorgaengerrunde}"/>
             <Label Content="Vorherige Runde:" Margin="3,50,5,0" VerticalAlignment="Top"/>
-            <Button Content="+" HorizontalAlignment="Left" Margin="50,125,0,0" VerticalAlignment="Top" Width="50" Click="Button_Click_1"/>
+            <Button Content="+" HorizontalAlignment="Left" Height="20" Margin="10,125,0,0" VerticalAlignment="Top" Width="50" Click="Button_Click_1"/>
+            <Button Content="-" HorizontalAlignment="Left" Height="20" Margin="75,125,0,0" VerticalAlignment="Top" Width="50" Click="Button_Click"/>
         </Grid>
         <Grid x:Name="grid_spiele" Margin="150,0,0,0"/>
     </Grid>

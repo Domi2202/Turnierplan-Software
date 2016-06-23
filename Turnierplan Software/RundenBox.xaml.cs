@@ -22,6 +22,7 @@ namespace Turnierplan_Software
     {
         public Grid Spiele { get; set; }
         public EventHandler Nachfolgerrunde { get; set; }
+        public EventHandler RundeEntfernen { get; set; }
 
         public RundenBox()
         {
@@ -39,6 +40,14 @@ namespace Turnierplan_Software
             if (Nachfolgerrunde != null)
             {
                 Nachfolgerrunde(this, null);
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (RundeEntfernen != null)
+            {
+                RundeEntfernen(this, null);
             }
         }
     }

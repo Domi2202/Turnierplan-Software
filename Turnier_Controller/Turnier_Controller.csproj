@@ -100,7 +100,7 @@
     <Compile Include="Rundenbox_Interakteur.cs" />
     <Compile Include="Spielpaarungsbaustein_Minified_Interakteur.cs" />
     <Compile Include="Spielpaarungsbaustein_Minified_Interakteur_ObereEbene.cs" />
-    <Compile Include="Spielpaarungsbaustein_Minified_Interakteur_UntereEbenen.cs" />
+    <Compile Include="Spielpaarungsbaustein_Minified_Interakteur_Qualifikationsrunde.cs" />
     <Compile Include="Teilnahmeregel_Interakteur.cs" />
     <Compile Include="Turnierfenster_Interakteur.cs" />
     <Compile Include="Uebersichtsseite_Interakteur.cs" />

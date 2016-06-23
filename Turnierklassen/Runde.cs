@@ -57,5 +57,32 @@ namespace Turnierklassen
             Siegerrunde = val;
             Datei_Interakteur.Save_Temp();
         }
+
+        public void SetVorgaengerRunde(Guid id)
+        {
+            Vorgaenerrunde = id;
+            Datei_Interakteur.Save_Temp();
+        }
+
+        public Paarung GetMatchByID(Guid id)
+        {
+            foreach (Paarung paarung in Paarungen)
+            {
+                if (paarung.ID == id)
+                {
+                    return paarung;
+                }
+            }
+            throw new KeyNotFoundException("Diese Paarung ist kein Teil dieser Runde");
+        }
+
+        public void SpieleBelegen(Runde vorgaenger)
+        {
+            for (int i = 0; i < Paarungen.Count; i++)
+            {
+                Paarungen.ElementAt(i).QualifikationsSpielSetzen_TeamA(new Qualifikationsspiel(vorgaenger.Paarungen.ElementAt(i * 2).Name, Siegerrunde));
+                Paarungen.ElementAt(i).QualifikationsSpielSetzen_TeamB(new Qualifikationsspiel(vorgaenger.Paarungen.ElementAt(i * 2 + 1).Name, Siegerrunde));
+            }
+        }
     }
 }

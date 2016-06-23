@@ -8,6 +8,7 @@ namespace Turnierklassen
 {
     public class Paarung
     {
+        public Guid ID { get; set; }
         public Teilnahmerregel Regel_Mannschaft_A { get; set; }
         public Teilnahmerregel Regel_Mannschaft_B { get; set; }
         public Qualifikationsspiel Vorheriges_Spiel_A { get; set; }
@@ -21,6 +22,7 @@ namespace Turnierklassen
         public Paarung()
         {
             Halbzeitergebnisse = new List<Halbzeitergebnis>();
+            ID = Guid.NewGuid();
         }
 
         public string Name_MannschaftA()
