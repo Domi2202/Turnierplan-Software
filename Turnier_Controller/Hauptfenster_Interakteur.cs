@@ -66,14 +66,14 @@ namespace Turnier_Controller
             Turnierliste_bereinigen();
             Veranstaltungsnamen_bereinigen();
             Informationsgitter_bereinigen();
-
             if (Datei_Interakteur.Geladene_Veranstaltung != null)
             {
                 Veranstaltungsnamen_setzen();
                 Turnierliste_aufbauen();
                 new Veranstaltungsuebersicht_Interakteur(_Hauptfenster.Grid_Veranstaltungsuebersicht, Datei_Interakteur.Geladene_Veranstaltung);
-            }
+            }         
         }
+
 
         private void Veranstaltungsnamen_setzen()
         {
@@ -104,6 +104,7 @@ namespace Turnier_Controller
             _Hauptfenster.Grid_Gruppeneinteilung.Children.Clear();
             _Hauptfenster.Grid_Endrunde.Children.Clear();
             _Hauptfenster.Grid_Uebersicht.Children.Clear();
+            _Hauptfenster.Grid_Veranstaltungsuebersicht.Children.Clear();
         }
 
         #endregion Ansicht
@@ -198,12 +199,11 @@ namespace Turnier_Controller
             if (angeklickt != null)
             {
                 Informationsgitter_bereinigen();
+                new Veranstaltungsuebersicht_Interakteur(_Hauptfenster.Grid_Veranstaltungsuebersicht, Datei_Interakteur.Geladene_Veranstaltung);
                 new Turnierfenster_Interakteur(_Hauptfenster.Grid_Mannschaften, angeklickt.Details);
                 new Gruppeneinteilung_Interakteur(_Hauptfenster.Grid_Gruppeneinteilung, angeklickt.Details);
                 new Endrundeneinteilung_Interakteur(_Hauptfenster.Grid_Endrunde, angeklickt.Details);   
                 new Uebersichtsseite_Interakteur(_Hauptfenster.Grid_Uebersicht, angeklickt.Details);
-                //_Hauptfenster.Grid_Veranstaltungsuebersicht.Visibility = Visibility.Hidden;
-                //_Hauptfenster.Turnierdetails.Visibility = Visibility.Visible;
             }
         }
         private void On_Veranstaltungsuebersicht_angeklickt(object sender, EventArgs e)
