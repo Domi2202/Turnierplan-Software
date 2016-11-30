@@ -101,8 +101,10 @@
     <Compile Include="Spielpaarungsbaustein_Minified_Interakteur.cs" />
     <Compile Include="Spielpaarungsbaustein_Minified_Interakteur_ObereEbene.cs" />
     <Compile Include="Spielpaarungsbaustein_Minified_Interakteur_Qualifikationsrunde.cs" />
+    <Compile Include="Spieltagbox_Interakteur.cs" />
     <Compile Include="Teilnahmeregel_Interakteur.cs" />
     <Compile Include="Turnierfenster_Interakteur.cs" />
+    <Compile Include="Veranstaltungsuebesicht_Interakteur.cs" />
     <Compile Include="Uebersichtsseite_Interakteur.cs" />
     <Compile Include="Veranstaltungsmanager_Interakteur.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

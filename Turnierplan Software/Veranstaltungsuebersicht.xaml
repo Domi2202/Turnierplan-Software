@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="Turnierplan_Software.Veranstaltungsuebersicht"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Turnierplan_Software"
+             mc:Ignorable="d" 
+             d:DesignHeight="550" d:DesignWidth="350">
+    <Grid>
+        <Label x:Name="label_veranstaltungsname" Content="{Binding Name}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_turniertage" Content="Anzahl Turniertage :" HorizontalAlignment="Left" Margin="10,49,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBox_anzahl_turniertage" HorizontalAlignment="Left" Height="23" Margin="140,52,0,0" TextWrapping="Wrap" Text="{Binding Anzahl_Spieltage}" VerticalAlignment="Top" Width="50"/>
+        <Label x:Name="label_anzahl_pleatze" Content="Bespielbare Felder :" HorizontalAlignment="Left" Margin="10,82,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBox_bespielbar_felder" HorizontalAlignment="Left" Height="23" Margin="140,85,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="40" Text="{Binding Bespielbare_Felder}"/>
+        <Label x:Name="label_anzahl_spiele" Content="Spiele gesamt :" HorizontalAlignment="Left" Margin="10,113,0,0" VerticalAlignment="Top" />
+        <Label x:Name="label_anzahl_spiele_gesamt" Content="{Binding Spiele}" HorizontalAlignment="Left" Margin="122,113,0,0" VerticalAlignment="Top" />
+        <Grid Margin="10,200,10,10">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <ItemsControl  ItemsSource="{Binding Spieltage}"/>
+        </ScrollViewer>
+        </Grid>
+    </Grid>
+</UserControl>

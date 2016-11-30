@@ -25,9 +25,12 @@ namespace Turnierplan_Software
         public EventHandler TurnierLoeschen { get; set; }
         public EventHandler Speichern { get; set; }
         public EventHandler Laden { get; set; }
+        public EventHandler Veranstaltungsuebersicht { get; set; }
         public CancelEventHandler ProgrammBeenden { get; set; }
+        public TabControl Turnierdetails { get; set; }
         public Label Label_Veranstaltung { get; set; }
         public Grid Grid_Mannschaften { get; set; }
+        public Grid Grid_Veranstaltungsuebersicht { get; set; }
         public Grid Grid_Gruppeneinteilung { get; set; }
         public Grid Grid_Endrunde { get; set; }
         public Grid Grid_Uebersicht { get; set; }
@@ -47,6 +50,9 @@ namespace Turnierplan_Software
             Grid_Gruppeneinteilung = grid_gruppeneinteilung;
             Grid_Endrunde = grid_endrunde;
             Grid_Uebersicht = grid_uebersicht;
+            Grid_Veranstaltungsuebersicht = grid_veranstaltungsuebersicht;
+            Turnierdetails = tabControl_turnier;
+
 
         }
 
@@ -92,6 +98,14 @@ namespace Turnierplan_Software
             if (TurnierLoeschen != null)
             {
                 TurnierLoeschen(this, null);
+            }
+        }
+
+        private void button_veranstaltungsuebersicht_Click(object sender, RoutedEventArgs e)
+        {
+            if (Veranstaltungsuebersicht != null)
+            {
+                Veranstaltungsuebersicht(this, null);
             }
         }
     }

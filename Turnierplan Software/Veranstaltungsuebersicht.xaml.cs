@@ -16,17 +16,13 @@ using System.Windows.Shapes;
 namespace Turnierplan_Software
 {
     /// <summary>
-    /// Interaktionslogik für übersichtsseite.xaml
+    /// Interaktionslogik für Veranstaltungsuebersicht.xaml
     /// </summary>
-    public partial class übersichtsseite : UserControl
+    public partial class Veranstaltungsuebersicht : UserControl
     {
-        
-        public übersichtsseite()
+        public Veranstaltungsuebersicht()
         {
             InitializeComponent();
         }
-
-       
-
     }
 }

@@ -16,17 +16,13 @@ using System.Windows.Shapes;
 namespace Turnierplan_Software
 {
     /// <summary>
-    /// Interaktionslogik für übersichtsseite.xaml
+    /// Interaktionslogik für SpieltagBox.xaml
     /// </summary>
-    public partial class übersichtsseite : UserControl
+    public partial class SpieltagBox : UserControl
     {
-        
-        public übersichtsseite()
+        public SpieltagBox()
         {
             InitializeComponent();
         }
-
-       
-
     }
 }

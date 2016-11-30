@@ -120,6 +120,12 @@
     <Compile Include="DropdownElement.cs" />
     <Compile Include="RundenBox.xaml.cs">
       <DependentUpon>RundenBox.xaml</DependentUpon>
+	 </Compile>
+    <Compile Include="SpieltagBox.xaml.cs">
+      <DependentUpon>SpieltagBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Veranstaltungsuebersicht.xaml.cs">
+      <DependentUpon>Veranstaltungsuebersicht.xaml</DependentUpon>
     </Compile>
     <Compile Include="übersichtsseite.xaml.cs">
       <DependentUpon>übersichtsseite.xaml</DependentUpon>
@@ -208,11 +214,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="SpieltagBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Teilnahmeregel_Dialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Turnierfenster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Veranstaltungsuebersicht.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
