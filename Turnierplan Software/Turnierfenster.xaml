@@ -17,7 +17,6 @@
             <ListBox x:Name="listBox_mannschaften" Margin="10,69,10,0" Height="255" VerticalAlignment="Top"/>
             <Button x:Name="button_hinzufügen" Content="Hinzufügen" Margin="10,329,204.8,0" RenderTransformOrigin="-0.016,0.405" Click="mannschaft_hinzufuegen_Click" Height="22" VerticalAlignment="Top"/>
             <Button x:Name="button_loeschen" Content="Löschen" Margin="10,359,204.8,0" RenderTransformOrigin="-0.016,0.405" Height="22" VerticalAlignment="Top" Click="button_loeschen_Click"/>
-            <Button x:Name="button_generieren" Content="Generieren" Margin="10,0,204.8,10" RenderTransformOrigin="-0.016,0.405" Height="22" VerticalAlignment="Bottom"/>
         </Grid>
         <Grid x:Name="grid_mannschaftsdetails" Margin="0,0,-0.2,0" HorizontalAlignment="Right" Width="344" Grid.ColumnSpan="2"/>
     </Grid>

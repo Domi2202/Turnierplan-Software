@@ -19,10 +19,6 @@
                     <TabItem Header="Übersicht">
                         <Grid x:Name="grid_veranstaltungsuebersicht" Background="#FFE5E5E5"  Visibility="Visible" />
                     </TabItem>
-                    <TabItem Header="Feldeinteilung">
-
-                    </TabItem>
-
                 </TabControl>
             </TabItem>
             <TabItem Header="Turnier">

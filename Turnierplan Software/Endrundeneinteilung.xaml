@@ -12,8 +12,6 @@
                 <Label x:Name="label_turniername" Content="{Binding Name}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="25" Width="130" FontWeight="Bold"/>
                 <Label x:Name="label_modus" Content="Beginnen mit" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.145,1.385" Height="30" Width="130"/>
                 <ComboBox x:Name="combobox_modus" Height="25" Margin="10,71,10,0" VerticalAlignment="Top" ItemsSource="{Binding Moegliche_Modi}" SelectedItem="{Binding Modus}"/>
-                <CheckBox x:Name="checkBox_3punkte" Content="Spiel um Platz 3" HorizontalAlignment="Left" Height="20" Margin="10,110,0,0" VerticalAlignment="Top" Width="130" IsChecked="{Binding Kleines_Finale}" IsEnabled="{Binding Kleines_Finale_moeglich}"/>
-                <CheckBox x:Name="checkBox_loserbracket" Content="Verliererrunde" HorizontalAlignment="Left" Height="20" Margin="10,130,0,0" VerticalAlignment="Top" Width="130" IsChecked="{Binding Loser_Bracket}" IsEnabled="{Binding Kleines_Finale_moeglich}"/>
                 <Label Content="Spiele :" HorizontalAlignment="Left" Margin="10,150,0,0" VerticalAlignment="Top" Width="95"/>
                 <Label x:Name="label_spielezahl" Content="{Binding Anzahl_Spiele}" HorizontalAlignment="Left" Margin="165,150,0,0" VerticalAlignment="Top" Height="25" Width="35"/>
                 <Label x:Name="label_teilnehmer" Content="Teilnehmer :" HorizontalAlignment="Left" Margin="10,180,0,0" VerticalAlignment="Top" Width="95"/>
@@ -26,7 +24,7 @@
                 <Button x:Name="btn_rule_delete" Margin="10,0,10,60" VerticalAlignment="Bottom" Content="Teilnahmeregel löschen" Click="btn_rule_delete_Click"/>
                 <Button x:Name="button_ok" Content="Endrundenbaum erzeugen" Margin="10,0,10,10" Height="30" VerticalAlignment="Bottom" Click="button_ok_Click"/>
             </Grid>
-            <Grid x:Name="grid_trostrunde" VerticalAlignment="Bottom" Height="150" Margin="242,0,0,0">
+            <!--<Grid x:Name="grid_trostrunde" VerticalAlignment="Bottom" Height="150" Margin="242,0,0,0">
                 <Separator Height="5" Margin="0,0,0,0" VerticalAlignment="Top"/>
                 <Label x:Name="label_trostrunde" Content="Trostrunde" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                 <Label x:Name="label_trostrunde_teilnehmer" Content="Teilnehmer:" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top"/>
@@ -39,8 +37,8 @@
                 <Button Content="Gewinnerbaum" HorizontalAlignment="Left" Margin="213,10,0,0" VerticalAlignment="Top" Width="111" Click="Button_Click_1"/>
                 <Button x:Name="btn_verliererbaum" Content="Verliererbaum" HorizontalAlignment="Left" Margin="350,10,0,0" VerticalAlignment="Top" Width="111" Click="btn_verliererbaum_Click"/>
 
-            </Grid>
-            <Grid Margin="242,0,0,150">
+            </Grid>-->
+            <Grid Margin="242,0,0,10">
             <ScrollViewer>
             <ItemsControl Name="grid_endrundenbaum" ItemsSource="{Binding Runden}">
                 <!-- <Grid  Name="grid_sechzehntel" HorizontalAlignment="Left" Height="107" VerticalAlignment="Top" Width="588"/>

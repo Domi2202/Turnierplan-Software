@@ -29,8 +29,6 @@ namespace Turnierplan_Software
         public EventHandler Btn_Zuteilen { get; set; }
         public EventHandler Btn_Ausleeren { get; set; }
         public EventHandler Btn_Bestätigen { get; set; }
-        public EventHandler Btn_Rechts { get; set; }
-        public EventHandler Btn_Links { get; set; }
         public Grid Grid_Gruppenboxen { get; set; }
         public TextBox Gruppen_von { get; set; }
         public TextBox Gruppen_bis { get; set; }
@@ -76,22 +74,6 @@ namespace Turnierplan_Software
             if (Btn_Bestätigen != null)
             {
                 Btn_Bestätigen(this, null);
-            }
-        }
-
-        private void btn_rechts_Click(object sender, RoutedEventArgs e)
-        {
-            if (Btn_Rechts != null)
-            {
-                Btn_Rechts(this, null);
-            }
-        }
-
-        private void btn_links_Click(object sender, RoutedEventArgs e)
-        {
-            if (Btn_Links != null)
-            {
-                Btn_Links(this, null);
             }
         }
 

@@ -43,7 +43,6 @@ namespace Turnierplan_Software
         private void XamlElemente_zuordnen()
         {
             label_Turniername = label_turniername;
-            checkbox_Punkte = checkBox_3punkte;
             listbox_Teilnehmer = listBox_teilnehmer;
             Endrundenbaum = grid_endrundenbaum;
             Modus_Auswahl = combobox_modus;

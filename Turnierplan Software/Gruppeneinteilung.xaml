@@ -39,10 +39,5 @@
             <Button x:Name="btn_ausleeren" Content="Ausleeren" HorizontalAlignment="Left" Margin="20,0,0,35" VerticalAlignment="Bottom" Width="165" Click="btn_ausleeren_Click"/>
             <Button x:Name="btn_bestätigen" Content="Bestätigen" HorizontalAlignment="Left" Margin="20,0,0,10" Width="165" Click="btn_bestätigen_Click" Height="19" VerticalAlignment="Bottom"/>
         </Grid>
-        <Grid x:Name="grid_leiste" Height="25" VerticalAlignment="Bottom" Margin="0,0,215,0">
-            <Button x:Name="btn_rechts" Content="&gt;" HorizontalAlignment="Left" Margin="300,0,0,0" VerticalAlignment="Top" Width="25" Height="20" Click="btn_rechts_Click"/>
-            <Button x:Name="btn_links" Content="&lt;" HorizontalAlignment="Left" Margin="250,0,0,0" Width="25" Height="20" VerticalAlignment="Top" Click="btn_links_Click"/>
-        </Grid>
-
     </Grid>
 </UserControl>
